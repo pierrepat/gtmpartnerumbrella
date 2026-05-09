@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GTM Partner — gtmpartner.ai
 
-## Getting Started
+Pay-per-lead for personal injury law firms + outbound/RevOps for B2B SaaS.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Pages
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| URL | Purpose |
+|---|---|
+| `/` | Homepage — pay-per-lead legal offer (main conversion page) |
+| `/outbound` | B2B outbound & RevOps with case studies |
+| `/about` | Pierre Patrouillard, CEO |
+| `/contact` | Contact form + Cal.com embed |
 
-## Learn More
+## Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js 16** (App Router, TypeScript)
+- **Tailwind CSS 4**
+- **Geist + Geist Mono** fonts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Placeholders to wire up
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Pilot form webhook** — in `src/components/pilot-form.tsx`, replace `WEBHOOK_URL` with your GHL webhook
+2. **Contact form** — in `src/components/contact-form.tsx`, currently logs to console. Wire to GHL or email API
+3. **Cal.com embed** — on `/contact`, embedded at `cal.com/gtmpartner/30min`. Update if URL changes
 
-## Deploy on Vercel
+## Deploy to Netlify
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run build
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Point Netlify to:
+- Build command: `npm run build`
+- Use Netlify's Next.js plugin for deployment
+
+## Assets
+
+- `/public/logos/` — client and partner favicons
+- `/public/headshot.jpg` — Pierre's headshot
+- `/public/proof-*.png` — performance screenshots from live campaigns
+- `/public/clay-social-proof.png` — Clay 316M+ stats
+- `/public/favicon.svg` — target logo mark
