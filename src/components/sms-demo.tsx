@@ -126,7 +126,7 @@ export function SmsDemo() {
       </div>
 
       {/* Thread */}
-      <div className="px-5 py-5 space-y-3 min-h-[260px] sm:min-h-[280px]">
+      <div className="px-5 py-5 space-y-3 min-h-[140px]">
         {messages.map((m, i) => (
           <div
             key={i}
@@ -163,7 +163,7 @@ export function SmsDemo() {
       </div>
 
       {/* Controls */}
-      <div className="px-5 py-4 border-t border-border-subtle bg-surface min-h-[58px] flex items-center">
+      <div className="px-5 py-4 border-t border-border-subtle bg-surface min-h-[84px] flex flex-col justify-center">
         {done ? (
           <div className="flex flex-wrap items-center justify-between gap-3 w-full">
             <span className="text-[11px] font-mono text-brand">
@@ -171,23 +171,28 @@ export function SmsDemo() {
             </span>
             <button
               onClick={replay}
-              className="text-xs font-medium text-text-muted hover:text-text-primary transition-colors"
+              className="px-3 py-1.5 rounded-lg border border-border-default text-xs font-medium text-text-secondary hover:border-brand/40 hover:text-text-primary transition-colors"
             >
               Replay &#8635;
             </button>
           </div>
         ) : current?.options ? (
-          <div className="flex flex-wrap gap-2">
-            {current.options.map((o) => (
-              <button
-                key={o.label}
-                onClick={() => choose(o)}
-                className="px-3.5 py-2 rounded-lg border border-border-default text-xs font-medium text-text-secondary hover:border-brand/40 hover:text-text-primary transition-colors"
-              >
-                {o.label}
-              </button>
-            ))}
-          </div>
+          <>
+            <p className="text-[10px] uppercase tracking-[0.15em] text-text-muted mb-2.5">
+              Tap a reply
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {current.options.map((o) => (
+                <button
+                  key={o.label}
+                  onClick={() => choose(o)}
+                  className="px-3.5 py-2 rounded-lg border border-brand/30 bg-brand/5 text-xs font-medium text-brand hover:bg-brand/15 hover:border-brand/60 transition-colors"
+                >
+                  {o.label}
+                </button>
+              ))}
+            </div>
+          </>
         ) : (
           <span className="text-xs text-text-muted">Sarah is typing&hellip;</span>
         )}
