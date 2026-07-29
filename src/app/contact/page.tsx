@@ -4,7 +4,7 @@ import { ContactForm } from "@/components/contact-form";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with GTM Partner. Pay-per-lead for PI law firms. Outbound systems for B2B SaaS. Based between New York and Lisbon.",
+    "Get in touch with GTM Partner. AI growth systems for law firms. Outbound systems for B2B companies. Based between New York and Lisbon.",
 };
 
 export default function ContactPage() {
@@ -19,8 +19,8 @@ export default function ContactPage() {
             Let&rsquo;s talk
           </h1>
           <p className="text-text-secondary leading-relaxed mb-16 max-w-xl">
-            Whether you&rsquo;re a PI firm looking for leads or a B2B company
-            that needs outbound infrastructure — start here.
+            A law firm that wants to sign more cases, or a B2B company that
+            needs outbound. Start here.
           </p>
 
           <div className="grid lg:grid-cols-2 gap-16">

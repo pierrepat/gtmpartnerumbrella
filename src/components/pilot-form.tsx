@@ -121,7 +121,7 @@ export function PilotForm() {
       {error && <p className="text-sm text-red-400">{error}</p>}
 
       <button type="submit" className="btn-primary w-full justify-center">
-        Submit pilot request
+        Book my growth assessment
       </button>
     </form>
   );

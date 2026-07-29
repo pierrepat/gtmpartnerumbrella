@@ -4,54 +4,59 @@ import { useState } from "react";
 
 const faqItems = [
   {
-    question: "How is this different from hiring a marketing agency?",
+    question: "How is this different from an agency or a lead vendor?",
     answer:
-      "An agency charges you a retainer AND you fund the ad spend. If the ads don't work, you still pay. With GTM Partner, we fund all ad spend ourselves and only charge you per qualified lead delivered. If we can't deliver, we eat the cost — not you.",
+      "A lead vendor sells you names. An agency runs your ads and hands you a report. We work the whole path, from first contact to signed retainer. We reactivate the leads you already have, respond to new ones in seconds, book consultations, and only then scale new demand. Everything is measured on signed cases, not clicks or lead counts. You keep your own accounts and data, and we improve the leads from every source, not just the ones we generate.",
   },
   {
-    question: "What makes your leads exclusive?",
+    question: "Do we have to replace our intake team?",
     answer:
-      "Every lead is sold to one firm only. Period. We never resell, recycle, or share leads with competing firms. When a lead hits your CRM, you're the only attorney they'll hear from through us.",
+      "No. The AI supports your team. It does not replace them. It handles the repetitive front end: instant response, follow-up, qualifying, and booking. Your people spend their time on real conversations and signing clients instead of chasing dead leads. Your team makes every legal decision. The AI just makes sure fewer signable cases slip through before they reach you.",
   },
   {
-    question: "How quickly are leads delivered?",
+    question: "What is a recovery pilot?",
     answer:
-      "Real-time. The moment a lead is verified and passes your criteria, it's pushed directly to your CRM. Average delivery time is under 60 seconds from form submission.",
+      "It is the easiest, lowest-risk way to start. We take the old, dormant leads already sitting in your CRM, people who never signed, and reactivate them with AI email and SMS. There is no new ad spend, and you only pay when one of them signs a case. It is a simple way to see how we work, on cases you already paid to generate, before we do anything bigger.",
+  },
+  {
+    question: "How does the AI contact people?",
+    answer:
+      "Mostly by text, because that is what people actually respond to. The AI opens with a short, human message, not a sales pitch, designed to get a reply. Then it answers questions, checks a couple of qualifying details, and books a consultation. It follows up if someone goes quiet and hands warm, qualified people to your intake team. Everything runs compliantly, from numbers registered to your firm, and only to leads who consented to be contacted.",
+  },
+  {
+    question: "What will we be able to see?",
+    answer:
+      "Everything. You get a live view of the full funnel: traffic, inquiries, qualified opportunities, booked consultations, and signed cases. No black box. You always know how each lead is progressing and exactly what a signed case cost you. That visibility is the whole point of a partnership.",
+  },
+  {
+    question: "Do you still do pay-per-lead?",
+    answer:
+      "Yes, as one option, not the whole relationship. Some firms want us to run new paid campaigns and deliver exclusive, qualified case leads. We do that as part of the Scale stage. But we usually start by fixing what you already have, old leads and slow follow-up, before spending a dollar on new ads. That is where the fastest and cheapest cases are.",
   },
   {
     question: "What if a lead is invalid?",
     answer:
-      "We replace it within 24-48 hours at no cost. Invalid means: wrong number, already represented, not injured, outside your geography, duplicate, or accident older than 60 days with no treatment. If it doesn't meet your agreed criteria, it's on us.",
-  },
-  {
-    question: "Is there a minimum commitment?",
-    answer:
-      "No. Month-to-month. No contracts. Start with as few as 10 leads per month and scale when you're ready. Pause or cancel anytime with no penalty.",
-  },
-  {
-    question: "How much do leads cost?",
-    answer:
-      "Pricing depends on your state, case type, and volume. Most MVA leads range from $250-$400 per exclusive, verified lead. Book a call and we'll give you exact pricing for your market in 15 minutes.",
+      "You do not pay for junk. If a lead does not meet the criteria we agreed on, such as a wrong number, no injury, already represented, out of area, or a duplicate, it does not count and we do not charge for it. We would rather earn on cases you can actually monetize.",
   },
   {
     question: "How do you verify leads?",
     answer:
-      "Every lead goes through OTP phone verification (one-time passcode via SMS) to confirm the phone number is real and belongs to the person. We also capture full TCPA consent metadata and TrustedForm certification through ActiveProspect.",
+      "Every lead is screened before it reaches you. We check injury, fault, representation status, case type, and whether it is still within the statute of limitations. New leads are also phone-verified by OTP and TrustedForm certified. The leads that hit your intake are ones your firm can actually sign, not a spreadsheet of random names.",
   },
   {
     question: "What states do you cover?",
     answer:
-      "We currently generate leads across all 50 states. You can filter to receive leads only from states where you are licensed to practice.",
+      "We work nationwide and tailor each campaign to your state, including local case values, statutes, and rules. We honor one firm per market for a given case type, so availability depends on whether your area is already taken. Tell us your states and we will confirm.",
   },
   {
-    question: "What CRMs do you integrate with?",
+    question: "What CRMs do you work with?",
     answer:
-      "We deliver leads via webhook to any CRM that accepts them — Litify, Clio, Filevine, MyCase, Salesforce, HubSpot, GoHighLevel, and more. If your CRM supports webhooks or Zapier, we can connect to it.",
+      "The major legal and marketing platforms: Salesforce and Litify, Filevine, CasePeer, SmartAdvocate, Clio, and GoHighLevel, among others. We plug into whatever you already run and feed qualified cases straight into it. We do not ask you to replace your system.",
   },
   {
-    question: "Why should I trust a company that also does B2B outbound?",
+    question: "Why trust a company that also does B2B outbound?",
     answer:
-      "Our B2B background is actually our advantage. We've spent years building AI-driven prospecting and data systems for 50+ companies, generating $15M+ in pipeline. The same infrastructure — automation, data enrichment, signal tracking, CRM integration — now powers our legal lead generation. We're not marketers who learned tech. We're systems builders who applied our stack to legal.",
+      "Because it is the same core skill applied to your world. We spent years building outreach, follow-up, and email and SMS infrastructure for demanding B2B companies. That engineering is exactly what powers the AI intake and reactivation we run for law firms. Legal is our focus. The B2B background is why our systems and deliverability are better than a typical legal marketing agency's.",
   },
 ];
 
@@ -118,7 +123,7 @@ export function FAQ() {
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index ? "max-h-96" : "max-h-0"
+                  openIndex === index ? "max-h-[36rem]" : "max-h-0"
                 }`}
               >
                 <div className="px-6 pb-5">

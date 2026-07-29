@@ -67,7 +67,7 @@ export function ContactForm() {
         <label className={labelClass}>I&rsquo;m interested in *</label>
         <select value={form.interest} onChange={(e) => update("interest", e.target.value)} className={inputClass}>
           <option value="">Select</option>
-          <option value="pay-per-lead">Pay-per-lead for my law firm</option>
+          <option value="law-firm">Growth systems for my law firm</option>
           <option value="outbound">Outbound systems for my B2B company</option>
           <option value="both">Both</option>
           <option value="other">Other</option>

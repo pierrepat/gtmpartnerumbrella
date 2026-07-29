@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About — Pierre Patrouillard, CEO",
   description:
-    "Founder and CEO of GTM Partner. French, Masters in Data Analytics. 50+ B2B companies. $15M+ in attributed revenue. Pay-per-lead for PI law firms.",
+    "Founder and CEO of GTM Partner. French, Masters in Data Analytics. 50+ B2B companies. $15M+ in attributed revenue. AI growth systems for law firms.",
 };
 
 export default function AboutPage() {
@@ -29,9 +29,9 @@ export default function AboutPage() {
                 and Lisbon.
               </p>
               <p className="text-text-secondary leading-relaxed">
-                GTM Partner operates two offers: pay-per-lead for personal
-                injury law firms, and AI-driven outbound systems for B2B SaaS
-                companies. Same infrastructure. Same team. Two verticals.
+                GTM Partner runs two businesses. AI growth systems for personal
+                injury law firms, and outbound systems for B2B companies. Same
+                infrastructure. Same team.
               </p>
             </div>
 
@@ -57,7 +57,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="card">
               <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-                Pay-Per-Lead — Legal
+                Legal
               </p>
               <ul className="space-y-3 text-sm text-text-secondary">
                 <li className="flex gap-3">
@@ -77,15 +77,15 @@ export default function AboutPage() {
                   delivered monthly
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-brand">&#x2022;</span> No retainers,
-                  100% pay per lead
+                  <span className="text-brand">&#x2022;</span> Firms pay for
+                  results, not retainers
                 </li>
               </ul>
             </div>
 
             <div className="card">
               <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-                Outbound &amp; RevOps — B2B
+                Outbound &amp; RevOps, B2B
               </p>
               <ul className="space-y-3 text-sm text-text-secondary">
                 <li className="flex gap-3">

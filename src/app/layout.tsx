@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "GTM Partner — Pay-Per-Lead for Personal Injury Law Firms",
+    default: "GTM Partner — AI Growth Partner for Law Firms",
     template: "%s | GTM Partner",
   },
   description:
-    "We fund your legal ads. You pay per qualified lead. Exclusive, OTP-verified MVA leads delivered to your CRM in real-time. $5M+/month in managed ad spend.",
+    "We use AI to turn more of your leads into signed cases: reactivation, intake, and new demand, with full visibility from click to signed retainer.",
   metadataBase: new URL("https://gtmpartner.ai"),
   icons: {
     icon: "/favicon.svg",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "GTM Partner",
-    title: "GTM Partner — Pay-Per-Lead for Personal Injury Law Firms",
+    title: "GTM Partner — AI Growth Partner for Law Firms",
     description:
-      "We fund your legal ads. You pay per qualified lead. Exclusive, OTP-verified MVA leads delivered to your CRM in real-time.",
+      "We use AI to turn more of your leads into signed cases: reactivation, intake, and new demand, with full visibility from click to signed retainer.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GTM Partner — Pay-Per-Lead for Personal Injury Law Firms",
+    title: "GTM Partner — AI Growth Partner for Law Firms",
     description:
-      "We fund your legal ads. You pay per qualified lead. Exclusive MVA leads delivered to your CRM.",
+      "We use AI to turn more of your leads into signed cases, with full visibility from click to signed retainer.",
   },
   robots: {
     index: true,
@@ -55,7 +55,7 @@ const jsonLd = {
   url: "https://gtmpartner.ai",
   logo: "https://gtmpartner.ai/favicon.svg",
   description:
-    "Pay-per-lead for personal injury law firms. Outbound and RevOps systems for B2B SaaS companies.",
+    "AI growth partner for law firms. Lead reactivation, intake, and new demand. Outbound and RevOps systems for B2B companies.",
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",

@@ -13,7 +13,7 @@ const caseStudies = [
     industry: "B2B Payments & Financial Services",
     logo: "/logos/worldpay.png",
     challenge: "110,000+ CRM records across multiple HubSpot instances with outdated data. 35% duplication rate.",
-    solution: '"The GTM Data Engine" — custom CRM enrichment and data hygiene bridging Clay and HubSpot with enterprise compliance.',
+    solution: '"The GTM Data Engine". Custom CRM enrichment and data hygiene bridging Clay and HubSpot with enterprise compliance.',
     results: [
       { metric: "Records Cleaned", value: "110K+" },
       { metric: "Duplicates Removed", value: "35%" },
@@ -40,7 +40,7 @@ const caseStudies = [
     industry: "B2B SaaS",
     logo: "/logos/cloud-capital.jpg",
     challenge: "Needed to reach high-value decision makers at scale without hiring additional SDRs.",
-    solution: "Built three intelligent Clay automation workflows: funding triggers, new-role targeting, and complete CRM enrichment — replacing 80% of SDR workload.",
+    solution: "Built three intelligent Clay automation workflows: funding triggers, new-role targeting, and complete CRM enrichment, replacing 80% of SDR workload.",
     results: [
       { metric: "SDR Workload Automated", value: "80%" },
       { metric: "Monthly Savings", value: "$105K" },
@@ -88,10 +88,10 @@ const caseStudies = [
 const capabilities = [
   { title: "Signal-Based Prospecting", desc: "Clay-powered enrichment with custom buying signals" },
   { title: "Email Infrastructure", desc: "Multi-domain warmup, SPF/DKIM/DMARC, deliverability monitoring" },
-  { title: "Outbound Execution", desc: "Instantly, HeyReach, LinkedIn — multi-channel at scale" },
-  { title: "RevOps Automation", desc: "n8n, Supabase, GHL, Claude Code — custom workflows" },
+  { title: "Outbound Execution", desc: "Instantly, HeyReach, LinkedIn. Multi-channel at scale" },
+  { title: "RevOps Automation", desc: "n8n, Supabase, GHL, Claude Code. Custom workflows" },
   { title: "CRM Integration", desc: "Pipeline from first touch to closed deal, full attribution" },
-  { title: "Ownership Transfer", desc: "SOPs, training, and documentation — you own everything" },
+  { title: "Ownership Transfer", desc: "SOPs, training, and documentation. You own everything" },
 ];
 
 export default function OutboundPage() {
@@ -160,7 +160,7 @@ export default function OutboundPage() {
           <div className="card mt-8 !border-brand/20">
             <p className="text-sm text-text-secondary">
               <span className="font-semibold text-text-primary">You own everything we build.</span>{" "}
-              The domains, the sequences, the data, the automations. We&rsquo;re not a SaaS tool you rent — we build infrastructure you control.
+              The domains, the sequences, the data, the automations. We&rsquo;re not a SaaS tool you rent. We build infrastructure you control.
             </p>
           </div>
         </div>
@@ -234,7 +234,7 @@ export default function OutboundPage() {
               <p className="text-text-secondary leading-relaxed mb-6">
                 This credential was sent directly from Clay to our CEO as a
                 recognized platform partner. We&rsquo;re one of the most active
-                Clay users globally — building prospecting, enrichment, and
+                Clay users globally. We build prospecting, enrichment, and
                 automation systems at scale.
               </p>
               <div className="flex items-center gap-4">
@@ -243,7 +243,7 @@ export default function OutboundPage() {
               </div>
             </div>
             <div>
-              <img src="/clay-social-proof.png" alt="Clay platform partner — 316M+ GTM tasks automated" className="w-full rounded-xl" />
+              <img src="/clay-social-proof.png" alt="Clay platform partner, 316M+ GTM tasks automated" className="w-full rounded-xl" />
             </div>
           </div>
 
@@ -301,11 +301,11 @@ export default function OutboundPage() {
             <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">Direct, transparent, scoped</h2>
             <p className="text-text-secondary leading-relaxed mb-4">
               Scoped engagements, no long-term retainers required. Direct
-              relationship with the CEO. 4-month initial agreement — month one is
+              relationship with the CEO. 4-month initial agreement. Month one is
               setup, three months of execution. After that, month-to-month.
             </p>
             <p className="text-text-secondary leading-relaxed mb-8">
-              Full transparency — live dashboards with deliverability, engagement,
+              Full transparency. Live dashboards with deliverability, engagement,
               pipeline, and infrastructure health metrics.
             </p>
             <a href="https://cal.com/gtmpartner/30min" target="_blank" rel="noopener noreferrer" className="btn-primary">

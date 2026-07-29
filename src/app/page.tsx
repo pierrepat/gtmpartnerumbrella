@@ -1,6 +1,21 @@
 import { LogoGrid } from "@/components/logo-grid";
 import { PilotForm } from "@/components/pilot-form";
 import { FAQ } from "@/components/faq";
+import { Funnel } from "@/components/funnel";
+import { SmsDemo } from "@/components/sms-demo";
+
+const icon = (path: string) => (
+  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.6} stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" d={path} />
+  </svg>
+);
+
+const icons = {
+  recover: icon("M16.023 9.348h4.992V4.356M2.985 19.644v-4.992h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"),
+  capture: icon("M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"),
+  convert: icon("M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"),
+  scale: icon("M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"),
+};
 
 const heroStats = [
   { value: "$5M+", label: "Monthly ad spend managed" },
@@ -11,52 +26,87 @@ const heroStats = [
 
 const painPoints = [
   {
-    problem: "Shared leads sold to 5+ firms",
-    detail: "You're racing to call a lead that 4 other attorneys already contacted. By the time you reach them, they've already signed.",
-    solution: "Every lead is 100% exclusive. Sold once. To your firm only.",
+    problem: "Old leads die in your CRM",
+    detail: "Every firm has thousands of past inquiries. Called twice, then forgotten. Some of them still have a case.",
+    solution: "AI works your old database again. No new ad spend.",
   },
   {
-    problem: "You fund the ads and take all the risk",
-    detail: "Agencies charge $5K-$15K/month retainers plus you fund ad spend. If the campaign underperforms, you still pay.",
-    solution: "We fund 100% of ad spend. You pay a flat fee per qualified lead. If we can't deliver, we eat the cost.",
+    problem: "Most visitors never call",
+    detail: "You pay for the click. They read two pages and leave. That traffic is already paid for.",
+    solution: "AI recovers the visitors, dropped forms, and missed calls.",
   },
   {
-    problem: "Fake leads, wrong numbers, already represented",
-    detail: "Half your leads are junk. Wrong numbers, people who never requested a lawyer, duplicates from last month.",
-    solution: "Every lead is OTP phone-verified, TrustedForm-certified, and screened for injury, fault, and representation status.",
+    problem: "Slow follow-up loses cases",
+    detail: "The first firm to answer usually signs the case. Nights and weekends are when they get away.",
+    solution: "AI answers in seconds, day or night, and books the consult.",
   },
   {
-    problem: "No visibility into where leads come from",
-    detail: "Your vendor won't tell you the source. You're buying from a black box that's probably reselling from another black box.",
-    solution: "We own the funnel end-to-end. Paid traffic, landing pages, qualification, verification — all in-house.",
+    problem: "You can't see what a case costs",
+    detail: "Vendors report leads. Your CRM reports retainers. Nobody connects the two.",
+    solution: "One view, from first click to signed retainer.",
+  },
+];
+
+const pillars = [
+  {
+    num: "01",
+    name: "Recover",
+    glyph: icons.recover,
+    tagline: "Win back the cases already in your system.",
+    desc: "Every firm has thousands of old leads that never signed. People who called once, no-showed a consult, or got chased for two days and written off. Most were not bad cases. Intake got busy and nobody followed up again. AI wakes that database up by email and SMS, screens against your criteria, and hands the live ones back to your intake. No new ad spend. You pay when a case signs.",
+    note: "We check accident dates against your state's statute of limitations, so we only chase cases you can still sign.",
+  },
+  {
+    num: "02",
+    name: "Capture",
+    glyph: icons.capture,
+    tagline: "Stop leaking the demand you already pay for.",
+    desc: "You already pay for traffic. SEO, referrals, LSAs, TV, your current ads. Most of those people never become a case. They leave without filling the form, they call after hours, or they start an intake and quit halfway. AI sits over that traffic. It recovers abandoned forms, texts back missed calls, and follows up on half-finished inquiries.",
+    note: "It does not touch your SEO or your ad vendors. It makes what they already produce convert.",
+  },
+  {
+    num: "03",
+    name: "Convert",
+    glyph: icons.convert,
+    tagline: "Turn more inquiries into signed retainers.",
+    desc: "This is where most firms lose the most cases. A good case comes in at 9pm on a Saturday, nobody calls until Monday, and it is gone to the firm that answered first. Studies put the loss at 40 to 60% in the first half hour. AI answers in seconds, from any source, asks your two questions, books the consult, and chases no-shows so people actually turn up.",
+    note: "Your team still does the legal judgment and signs the client. The conversation just starts instantly and arrives warm.",
+  },
+  {
+    num: "04",
+    name: "Scale",
+    glyph: icons.scale,
+    tagline: "Add new demand once the leaks are sealed.",
+    desc: "We only turn on new demand after the first three are working, so you are not pouring new leads into a leaky bucket. Meta and Google ads, retargeting your site visitors, and campaigns aimed at the case types you actually want. Not just the cheapest ones. Because intake and follow-up are already tight, each new lead converts better and your cost per signed case stays low.",
+    note: "Pay-per-lead lives here too, if you want it. One option inside the system, not the whole relationship.",
   },
 ];
 
 const comparisonRows = [
-  { feature: "Ad Spend", them: "You fund upfront", us: "We fund 100%" },
-  { feature: "Setup Cost", them: "$10K–$50K+", us: "$0" },
-  { feature: "Lead Exclusivity", them: "Shared with 3-5 firms", us: "100% exclusive" },
-  { feature: "Verification", them: "Maybe email verified", us: "OTP phone + TrustedForm" },
-  { feature: "Delivery Speed", them: "Batch email", us: "Real-time to CRM (<60s)" },
-  { feature: "Contract", them: "6-12 month lock-in", us: "Month-to-month" },
-  { feature: "Bad Lead Policy", them: "Fight for credits", us: "Free replacement, no questions" },
+  { feature: "Scope", them: "Leads only", us: "Your whole case system" },
+  { feature: "Your old leads", them: "Not their problem", us: "AI works them again" },
+  { feature: "Speed to lead", them: "You handle it", us: "AI answers in seconds" },
+  { feature: "Visibility", them: "Lead counts", us: "Click to signed retainer" },
+  { feature: "Ad spend", them: "You fund it", us: "We fund it" },
+  { feature: "You pay for", them: "Leads", us: "Results" },
+  { feature: "Relationship", them: "Vendor", us: "Partner on every source" },
 ];
 
 const steps = [
   {
     num: "01",
-    title: "Tell us what cases you want",
-    desc: "MVA, truck accidents, motorcycle, pedestrian — pick your case types. Set your state, injury severity, and any filters. We design a campaign around your criteria.",
+    title: "We map where cases leak",
+    desc: "We look at your traffic, your old leads, how fast intake responds, and what happens after a consult is booked. You see where cases are being lost.",
   },
   {
     num: "02",
-    title: "We build, fund & run everything",
-    desc: "Our team builds landing pages, writes ad creative, launches campaigns across Meta, Google, and YouTube — and funds 100% of the ad spend. You don't touch a thing.",
+    title: "We start with recovery",
+    desc: "AI works the leads already in your database. It screens against your criteria and books consults. No new ad budget. You pay when a case signs.",
   },
   {
     num: "03",
-    title: "Qualified leads hit your CRM",
-    desc: "Every lead is OTP phone-verified, screened for injury and fault, and delivered to your CRM in real-time. You only pay for leads that meet your agreed criteria.",
+    title: "We fix the next bottleneck",
+    desc: "Then capture, then intake speed, then new demand. We work in the order of what is costing you the most.",
   },
 ];
 
@@ -82,17 +132,20 @@ export default function Home() {
               For Personal Injury Law Firms
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-text-primary">
-              Stop buying shared leads.{" "}
-              <span className="text-gradient">Start signing cases.</span>
+              AI Growth Partner for{" "}
+              <span className="text-gradient">Modern Law Firms</span>
             </h1>
             <p className="mt-6 text-lg text-text-secondary leading-relaxed max-w-2xl">
-              We fund 100% of ad spend and deliver exclusive, OTP-verified MVA
-              leads directly to your CRM. You pay a flat fee per qualified lead.
-              If it doesn&rsquo;t meet your criteria, we replace it free.
+              We turn the leads you already have into signed cases. Then we go
+              get you more.
+            </p>
+            <p className="mt-4 text-sm text-text-muted leading-relaxed max-w-2xl">
+              Lead reactivation, AI intake, paid advertising, and pay-per-lead.
+              One system, measured on signed cases.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <a href="#pilot-form" className="btn-primary">
-                Request a pilot &rarr;
+                Book a Growth Assessment &rarr;
               </a>
               <a href="#how-it-works" className="btn-secondary">
                 See how it works
@@ -101,7 +154,7 @@ export default function Home() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-10 border-t border-border-subtle">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-20 pt-10 border-t border-border-subtle">
             {heroStats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-2xl sm:text-3xl stat-value">{s.value}</div>
@@ -113,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* ═══ LOGO MARQUEE ═══ */}
-      <LogoGrid title="The agency behind B2B growth for 50+ companies — now powering legal lead gen" />
+      <LogoGrid title="The team behind growth systems for 50+ companies, now building AI for law firms" />
 
       {/* ═══ PAIN POINTS ═══ */}
       <section className="py-20 lg:py-28 bg-surface-raised">
@@ -122,12 +175,11 @@ export default function Home() {
             Sound familiar?
           </p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-4">
-            The lead gen industry is broken
+            Most firms lose cases they already paid for
           </h2>
           <p className="text-text-secondary max-w-2xl mb-12">
-            Most PI firms have been burned by lead vendors. Shared leads, fake
-            numbers, retainers with no accountability. We built GTM Partner to
-            fix every one of these problems.
+            Getting someone to raise their hand is the expensive part. Most
+            firms do that well, then lose the case before the retainer.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -149,6 +201,68 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ THE SYSTEM ═══ */}
+      <section id="the-system" className="py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            The system
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+            Four parts. One system.
+          </h2>
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+            We run your case acquisition end to end. The order matters. We
+            start with the value already sitting in your firm, then add new
+            demand once the leaks are sealed.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {pillars.map((p) => (
+              <div key={p.name} className="card">
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="w-9 h-9 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center text-brand shrink-0">
+                    {p.glyph}
+                  </span>
+                  <span className="text-2xl font-bold stat-value">{p.num}</span>
+                </div>
+                <h3 className="text-lg font-semibold text-text-primary mb-1">{p.name}</h3>
+                <p className="text-sm font-medium text-brand mb-3">{p.tagline}</p>
+                <p className="text-sm text-text-secondary leading-relaxed">{p.desc}</p>
+                <div className="mt-4 pt-4 border-t border-border-subtle">
+                  <p className="text-xs text-text-muted leading-relaxed">{p.note}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Interactive SMS demo */}
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center mt-16">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+                Recover in action
+              </p>
+              <h3 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
+                This is what your old leads get
+              </h3>
+              <p className="text-text-secondary leading-relaxed mb-4">
+                A short text that reads like a person, not a campaign. Tap the
+                replies to see how it handles each one, including someone who
+                wants out.
+              </p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                Names and firm are made up. The flow is the real one.
+              </p>
+            </div>
+            <SmsDemo />
+          </div>
+
+          <p className="text-text-secondary leading-relaxed max-w-2xl mt-16">
+            One system that lifts the cases from every source, not just the
+            ones we generate.
+          </p>
+        </div>
+      </section>
+
       {/* ═══ COMPARISON TABLE ═══ */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-6">
@@ -156,7 +270,7 @@ export default function Home() {
             The difference
           </p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
-            Traditional lead vendors vs. GTM Partner
+            A lead vendor vs. a growth partner
           </h2>
 
           <div className="overflow-x-auto">
@@ -164,7 +278,7 @@ export default function Home() {
               <thead>
                 <tr className="border-b border-border-default">
                   <th className="text-left py-4 pr-8 font-medium text-text-muted text-xs uppercase tracking-wider w-1/3"></th>
-                  <th className="text-left py-4 pr-8 font-medium text-red-400/70 text-xs uppercase tracking-wider w-1/3">Other Vendors</th>
+                  <th className="text-left py-4 pr-8 font-medium text-red-400/70 text-xs uppercase tracking-wider w-1/3">Lead Vendors</th>
                   <th className="text-left py-4 font-medium text-brand text-xs uppercase tracking-wider w-1/3">GTM Partner</th>
                 </tr>
               </thead>
@@ -199,10 +313,10 @@ export default function Home() {
               </div>
               <ul className="space-y-4">
                 {[
-                  "PI firms spending $5K+/month on leads and tired of shared, low-quality inventory",
-                  "Managing partners who want predictable case flow without managing ad campaigns",
-                  "Firms scaling intake who need a partner, not another vendor to babysit",
-                  "Solo practitioners and small firms competing against mega-firms like Morgan & Morgan",
+                  "Firms with existing traffic, an old lead database, and an intake team",
+                  "Partners who want more signed cases from what they already pay for",
+                  "Firms who want one partner across every source",
+                  "Firms who want to see cost per signed case, not cost per lead",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="text-brand mt-0.5">&#10003;</span>
@@ -211,7 +325,7 @@ export default function Home() {
                 ))}
               </ul>
               <a href="#pilot-form" className="btn-primary w-full justify-center mt-8">
-                Request a pilot &rarr;
+                Book a Growth Assessment &rarr;
               </a>
             </div>
 
@@ -221,10 +335,10 @@ export default function Home() {
               </div>
               <ul className="space-y-4">
                 {[
-                  "Firms looking for the cheapest leads possible — we compete on quality, not price",
-                  "Firms that can't respond to leads within 15 minutes of delivery",
-                  "Firms looking for mass tort or class action leads",
-                  "Firms without an intake process or CRM in place",
+                  "Firms shopping for the cheapest leads",
+                  "Firms with no intake process or CRM",
+                  "Firms that can't follow up on a booked consult",
+                  "Mass tort or class action campaigns",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="text-red-400 mt-0.5">&#10005;</span>
@@ -247,7 +361,7 @@ export default function Home() {
             How it works
           </p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-16">
-            Three steps to qualified cases
+            How a partnership starts
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -269,11 +383,12 @@ export default function Home() {
             Our infrastructure
           </p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-            We own the funnel. Not a reseller.
+            We build the stack. We don&rsquo;t resell one.
           </h2>
           <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            Most pay-per-lead vendors are middlemen buying from ad networks and
-            marking up. We own and operate every layer of the lead generation stack.
+            The AI, the traffic, and the qualification layer are ours. So we
+            can fix what is broken in your funnel instead of handing you a
+            file.
           </p>
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
@@ -285,34 +400,34 @@ export default function Home() {
               </div>
               <h3 className="text-lg font-semibold text-text-primary mb-2">Paid Traffic</h3>
               <p className="text-sm text-text-secondary leading-relaxed">
-                Campaigns across Meta, Google, and YouTube — managed and funded
-                entirely by us. $5M+/month in total managed ad spend.
+                Meta, Google, and YouTube campaigns, managed and funded by us.
+                $5M+ a month in managed ad spend.
               </p>
             </div>
             <div className="card">
               <h3 className="text-lg font-semibold text-text-primary mb-2">Owned Qualification Funnel</h3>
               <p className="text-sm text-text-secondary leading-relaxed">
-                mvacompensation.com — quiz-based MVA qualification. Bilingual.
-                OTP phone-verified with Twilio. TrustedForm-certified.
+                mvacompensation.com. Quiz-based MVA qualification, bilingual,
+                OTP phone-verified, TrustedForm certified.
               </p>
             </div>
             <div className="card">
               <h3 className="text-lg font-semibold text-text-primary mb-2">Organic SEO Engine</h3>
               <p className="text-sm text-text-secondary leading-relaxed">
-                Content engine generating inbound leads at zero marginal cost.
-                State-specific pages, injury guides, settlement calculators.
+                A content engine that brings in leads at no extra cost. State
+                pages, injury guides, settlement calculators.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-medium">
-            <span className="px-4 py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">Paid + Organic</span>
+          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium">
+            <span className="px-3 py-2 sm:px-4 sm:py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">Paid + Organic</span>
             <span className="text-text-muted">&rarr;</span>
-            <span className="px-4 py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">Owned Funnel</span>
+            <span className="px-3 py-2 sm:px-4 sm:py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">Owned Funnel</span>
             <span className="text-text-muted">&rarr;</span>
-            <span className="px-4 py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">OTP + TrustedForm</span>
+            <span className="px-3 py-2 sm:px-4 sm:py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">Verified</span>
             <span className="text-text-muted">&rarr;</span>
-            <span className="px-4 py-2.5 bg-brand/10 border border-brand/30 rounded-lg text-brand font-semibold">Your CRM</span>
+            <span className="px-3 py-2 sm:px-4 sm:py-2.5 bg-brand/10 border border-brand/30 rounded-lg text-brand font-semibold">Your CRM</span>
           </div>
         </div>
       </section>
@@ -323,19 +438,19 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-                Exclusive vs. Shared
+                On the demand we generate
               </p>
               <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-                Why exclusive leads convert 4x better
+                Exclusive traffic signs more cases
               </h2>
               <p className="text-text-secondary leading-relaxed mb-6">
-                When a lead vendor sells the same lead to 5 firms, you&rsquo;re
-                in a race to call within 60 seconds. The prospect gets 5 calls,
-                picks the first one, and the other 4 firms paid for nothing.
+                Sell one lead to five firms and the prospect gets five calls.
+                They pick the first one. Four firms paid for nothing. Every
+                case we generate goes to one firm only.
               </p>
               <p className="text-text-secondary leading-relaxed">
-                With exclusive leads, you have days — not seconds. No
-                competition. Higher trust. Lower cost per signed case.
+                That means days to follow up instead of seconds. More trust.
+                And a lower cost per signed case.
               </p>
             </div>
             <div className="space-y-6">
@@ -359,26 +474,48 @@ export default function Home() {
             Real data
           </p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
-            The numbers don&rsquo;t lie
+            Real campaigns. Real signed cases.
           </h2>
+
+          {/* Google Ads Dashboard */}
+          <div className="card mb-8">
+            <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">Google Ads, February 2026</p>
+            <h3 className="text-xl font-bold text-text-primary mb-3">
+              $368K spend. 2,354 conversions.
+            </h3>
+            <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
+              {[
+                { value: "$368K", label: "Monthly ad spend" },
+                { value: "2,354", label: "Conversions" },
+                { value: "$156", label: "Cost / conversion" },
+                { value: "11.8M", label: "Impressions" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-xl font-bold stat-value">{s.value}</div>
+                  <div className="text-xs text-text-muted">{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <img src="/proof-google-ads.png" alt="Google Ads MVA campaign performance, February 2026" className="rounded-lg border border-border-subtle w-full" />
+          </div>
 
           <div className="card mb-8">
             <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
               <div>
-                <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">California PI Firm — Pilot Campaign</p>
+                <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">California PI Firm, Pilot Campaign</p>
                 <h3 className="text-xl font-bold text-text-primary mb-3">
-                  6 signed cases in 44 days at $186 avg CPL
+                  6 signed cases in 44 days
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                  Launched post-SB37 — one of the most disruptive regulatory
-                  changes in PI lead gen. Despite a tightened market, the pilot
-                  proved lead quality held up. Now scaling to 150+ leads/month.
+                  Launched right after SB37, one of the biggest regulatory
+                  changes in PI lead gen. Case quality held up in a tighter
+                  market. Now scaling to 150+ leads a month.
                 </p>
-                <div className="flex flex-wrap gap-6">
+                <div className="flex flex-wrap gap-4 sm:gap-6">
                   {[
                     { value: "6", label: "Signed cases" },
-                    { value: "$186", label: "Avg CPL" },
                     { value: "44", label: "Days" },
+                    { value: "$186", label: "Avg CPL" },
                   ].map((s) => (
                     <div key={s.label}>
                       <div className="text-xl font-bold stat-value">{s.value}</div>
@@ -396,14 +533,14 @@ export default function Home() {
           <div className="card">
             <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">Weekly Performance Snapshot</p>
             <h3 className="text-xl font-bold text-text-primary mb-3">
-              318 leads in one week — $55 CPL — 7 signed
+              7 signed cases from one week of traffic
             </h3>
-            <div className="flex flex-wrap gap-6 mb-6">
+            <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
               {[
+                { value: "7", label: "Signed cases" },
+                { value: "$2,519", label: "Cost per signed case" },
                 { value: "318", label: "Leads (1 week)" },
                 { value: "$55", label: "Cost per lead" },
-                { value: "7", label: "Sales" },
-                { value: "$2,519", label: "Cost per sale" },
               ].map((s) => (
                 <div key={s.label}>
                   <div className="text-xl font-bold stat-value">{s.value}</div>
@@ -413,27 +550,64 @@ export default function Home() {
             </div>
             <img src="/proof-weekly-analytics.png" alt="Weekly analytics dashboard" className="rounded-lg border border-border-subtle w-full" />
           </div>
+        </div>
+      </section>
 
-          {/* Google Ads Dashboard */}
-          <div className="card mt-8">
-            <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">Google Ads — February 2026</p>
-            <h3 className="text-xl font-bold text-text-primary mb-3">
-              $368K ad spend — 2,354 conversions — $156 cost per conversion
-            </h3>
-            <div className="flex flex-wrap gap-6 mb-6">
-              {[
-                { value: "$368K", label: "Monthly ad spend" },
-                { value: "2,354", label: "Conversions" },
-                { value: "$156", label: "Cost / conversion" },
-                { value: "11.8M", label: "Impressions" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="text-xl font-bold stat-value">{s.value}</div>
-                  <div className="text-xs text-text-muted">{s.label}</div>
-                </div>
-              ))}
+      {/* ═══ REPORTING / VISIBILITY ═══ */}
+      <section id="reporting" className="py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            Reporting
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+            See every dollar become a signed case.
+          </h2>
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+            You get a live view of every stage, from traffic to signed
+            retainer. No black box. You always know what a signed case really
+            cost.
+          </p>
+
+          <Funnel />
+        </div>
+      </section>
+
+      {/* ═══ WHY FIRMS STAY ═══ */}
+      <section className="py-20 lg:py-28 bg-surface-raised">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            Partnership
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+            Why firms stay
+          </h2>
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+            We are a partner, not a vendor. We improve the leads from all your
+            sources, not just ours.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="card">
+              <h3 className="text-lg font-semibold text-text-primary mb-2">Every source, not just ours</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Your referrals, your SEO, your other vendors. If a lead reaches
+                your firm, our system works it.
+              </p>
             </div>
-            <img src="/proof-google-ads.png" alt="Google Ads MVA campaign performance — February 2026" className="rounded-lg border border-border-subtle w-full" />
+            <div className="card">
+              <h3 className="text-lg font-semibold text-text-primary mb-2">You keep your accounts</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Ad accounts, CRM, and lead data stay in your name. Nothing is
+                held hostage if we part ways.
+              </p>
+            </div>
+            <div className="card">
+              <h3 className="text-lg font-semibold text-text-primary mb-2">We fix the next thing</h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                When one thing improves, we go fix whatever is limiting you
+                next.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -443,21 +617,21 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Pricing</p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-            Zero risk. We mean it.
+            We fund the work. You pay for results.
           </h2>
           <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            We fund campaigns with our own money. If a lead doesn&rsquo;t
-            qualify, we replace it. No minimums. Cancel anytime.
+            Start with a recovery pilot. It needs no new ad budget. We work the
+            leads already in your database, and you pay when a case signs.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {[
-              { title: "Zero Ad Spend Risk", desc: "We put our money where our mouth is. Your firm spends $0 on ads." },
-              { title: "Zero Setup Cost", desc: "No onboarding fee. No retainer. No minimum commitment." },
-              { title: "Flat CPL Pricing", desc: "Pay per qualified lead. Pricing varies by state and case type." },
-              { title: "Per Lead Engagement", desc: "No retainer handcuffs. Month-to-month. Pause or cancel anytime." },
-              { title: "Free Replacements", desc: "Wrong number? Already represented? Replaced within 24-48 hours." },
-              { title: "15-Min Intake SLA", desc: "Real-time delivery. We recommend 15-minute response for best conversion." },
+              { title: "No New Ad Budget", desc: "Recovery uses the leads you already have." },
+              { title: "Paid On Outcomes", desc: "On the recovery pilot, you pay when a case signs." },
+              { title: "We Fund The Work", desc: "Our capital goes behind the build and the media." },
+              { title: "Your Accounts, Your Data", desc: "Ad accounts, CRM, and lead data stay in your name." },
+              { title: "Clear Terms Upfront", desc: "Scope, pricing, and reporting agreed before we launch." },
+              { title: "One Partner", desc: "We improve the leads from all your channels, not just ours." },
             ].map((item) => (
               <div key={item.title} className="card">
                 <h3 className="text-brand font-semibold text-sm uppercase tracking-wider mb-3">{item.title}</h3>
@@ -469,7 +643,7 @@ export default function Home() {
           {/* Disqualifiers inline */}
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Terms</p>
+              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Pay-per-lead option: terms</p>
               <ul className="space-y-2.5 text-sm text-text-secondary">
                 {["CPL varies by state and case type", "Pilot cap on first engagement", "50% prepayment per batch", "7-day dispute window", "20% replacement cap", "Month-to-month"].map((t) => (
                   <li key={t} className="flex gap-3"><span className="text-brand">&#x2022;</span> {t}</li>
@@ -483,62 +657,6 @@ export default function Home() {
                   <li key={d} className="flex gap-3"><span className="text-brand">&#x2022;</span> {d}</li>
                 ))}
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ ADDITIONAL SERVICES ═══ */}
-      <section id="services" className="py-20 lg:py-28 bg-surface-raised">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Additional services for law firms
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
-            Beyond leads
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="card !border-brand/15 relative overflow-hidden">
-              <div className="absolute top-4 right-4">
-                <span className="px-3 py-1 rounded-full bg-brand/10 text-brand text-[10px] font-semibold uppercase tracking-wider">Free Redesign</span>
-              </div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-3">Website Design</p>
-              <h3 className="text-xl font-bold text-text-primary mb-3">
-                Free website redesign for your firm
-              </h3>
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                We redesign your law firm&rsquo;s website — modern,
-                conversion-optimized, mobile-first. The redesign is free.
-                You pay $99/month for hosting and maintenance.
-              </p>
-              <ul className="space-y-2 text-sm text-text-secondary mb-6">
-                <li className="flex gap-3"><span className="text-brand">&#10003;</span> Full custom redesign — $0 upfront</li>
-                <li className="flex gap-3"><span className="text-brand">&#10003;</span> Mobile-optimized, fast-loading, SEO-ready</li>
-                <li className="flex gap-3"><span className="text-brand">&#10003;</span> Hosting &amp; maintenance: $99/month</li>
-              </ul>
-              <a href="#pilot-form" className="btn-secondary text-sm">Ask about web design &rarr;</a>
-            </div>
-
-            <div className="card !border-brand/15 relative overflow-hidden">
-              <div className="absolute top-4 right-4">
-                <span className="px-3 py-1 rounded-full bg-brand/10 text-brand text-[10px] font-semibold uppercase tracking-wider">Guarantee</span>
-              </div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-3">Social Media</p>
-              <h3 className="text-xl font-bold text-text-primary mb-3">
-                1 million views or you don&rsquo;t pay
-              </h3>
-              <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                Morgan &amp; Morgan and Ben Crump built massive audiences. We help
-                firms build the same presence. If we don&rsquo;t hit 1M views,
-                you don&rsquo;t pay.
-              </p>
-              <ul className="space-y-2 text-sm text-text-secondary mb-6">
-                <li className="flex gap-3"><span className="text-brand">&#10003;</span> Attorney personal brand &amp; thought leadership</li>
-                <li className="flex gap-3"><span className="text-brand">&#10003;</span> Short-form legal content, scripted &amp; edited</li>
-                <li className="flex gap-3"><span className="text-brand">&#10003;</span> 1M views guarantee or money back</li>
-              </ul>
-              <a href="#pilot-form" className="btn-secondary text-sm">Ask about social media &rarr;</a>
             </div>
           </div>
         </div>
@@ -568,18 +686,18 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Get started</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">Request a pilot</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">Book a Growth Assessment</h2>
               <p className="text-text-secondary leading-relaxed mb-8">
-                Tell us about your firm and we&rsquo;ll design a lead program
-                for your market. Start small — scale when you&rsquo;re ready.
+                Tell us about your firm. We will show you where cases are
+                leaking and what a recovery pilot looks like for your database.
               </p>
 
               <div className="space-y-4">
                 {[
                   "We review your firm within 24 hours",
-                  "Custom lead program for your state and case type",
-                  "Pilot batch delivered within 2 weeks",
-                  "No commitment — pause or cancel anytime",
+                  "We map your funnel from first click to signed retainer",
+                  "You get a recovery plan for the leads you already have",
+                  "No new ad budget to start",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <span className="mt-0.5 w-5 h-5 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
@@ -601,13 +719,13 @@ export default function Home() {
       <section className="py-16 bg-surface-raised">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
-            Ready to stop paying for leads that don&rsquo;t convert?
+            Ready to turn more leads into signed cases?
           </h2>
           <p className="text-text-secondary mb-8">
-            We fund the ads. You pay when qualified leads hit your CRM.
+            We fund the work. You pay for results.
           </p>
           <a href="#pilot-form" className="btn-primary">
-            Request a pilot &rarr;
+            Book a Growth Assessment &rarr;
           </a>
         </div>
       </section>
