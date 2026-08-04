@@ -12,7 +12,6 @@ interface FormData {
   practiceArea: string;
   contactName: string;
   contactEmail: string;
-  contactPhone: string;
 }
 
 export function PilotForm() {
@@ -23,7 +22,6 @@ export function PilotForm() {
     practiceArea: "MVA",
     contactName: "",
     contactEmail: "",
-    contactPhone: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -107,15 +105,14 @@ export function PilotForm() {
         <input type="text" value={form.contactName} onChange={(e) => update("contactName", e.target.value)} className={inputClass} />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div>
-          <label className={labelClass}>Email *</label>
-          <input type="email" value={form.contactEmail} onChange={(e) => update("contactEmail", e.target.value)} className={inputClass} />
-        </div>
-        <div>
-          <label className={labelClass}>Phone</label>
-          <input type="tel" value={form.contactPhone} onChange={(e) => update("contactPhone", e.target.value)} className={inputClass} />
-        </div>
+      {/*
+        No phone field here by design. Toll-free SMS verification requires the
+        LeadConnector chat widget to be the only place on the site that collects
+        a phone number for opt-in consent. Adding one back breaks that attestation.
+      */}
+      <div>
+        <label className={labelClass}>Email *</label>
+        <input type="email" value={form.contactEmail} onChange={(e) => update("contactEmail", e.target.value)} className={inputClass} />
       </div>
 
       {error && <p className="text-sm text-red-400">{error}</p>}
