@@ -14,10 +14,11 @@ export function BackToTop() {
   if (!visible) return null;
 
   return (
-    // bottom-28 keeps it clear of the LeadConnector chat bubble in the corner
+    // Anchored left: the LeadConnector chat widget owns the bottom-right corner,
+    // and its expanded greeting card outranks this button's z-index.
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-28 right-6 z-40 w-10 h-10 rounded-full bg-surface-raised border border-border-default hover:border-brand/30 flex items-center justify-center transition-all hover:transform hover:-translate-y-0.5 shadow-lg"
+      className="fixed bottom-6 left-6 z-40 w-10 h-10 rounded-full bg-surface-raised border border-border-default hover:border-brand/30 flex items-center justify-center transition-all hover:transform hover:-translate-y-0.5 shadow-lg"
       aria-label="Back to top"
     >
       <svg
