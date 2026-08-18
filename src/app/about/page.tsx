@@ -73,6 +73,11 @@ export default function AboutPage() {
                   managed MVA ad spend
                 </li>
                 <li className="flex gap-3">
+                  <span className="text-brand">&#x2022;</span> Own and operate
+                  MVACompensation.com, our bilingual consumer property for
+                  accident victims
+                </li>
+                <li className="flex gap-3">
                   <span className="text-brand">&#x2022;</span> 2,500+ leads
                   delivered monthly
                 </li>

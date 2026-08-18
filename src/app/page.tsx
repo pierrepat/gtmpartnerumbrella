@@ -407,8 +407,8 @@ export default function Home() {
             <div className="card">
               <h3 className="text-lg font-semibold text-text-primary mb-2">Owned Qualification Funnel</h3>
               <p className="text-sm text-text-secondary leading-relaxed">
-                mvacompensation.com. Quiz-based MVA qualification, bilingual,
-                OTP phone-verified, TrustedForm certified.
+                Quiz-based MVA qualification, bilingual, OTP phone-verified,
+                TrustedForm certified.
               </p>
             </div>
             <div className="card">
@@ -417,6 +417,106 @@ export default function Home() {
                 A content engine that brings in leads at no extra cost. State
                 pages, injury guides, settlement calculators.
               </p>
+            </div>
+          </div>
+
+          {/* Owned property: MVACompensation */}
+          <div className="reveal rounded-xl border border-brand/20 bg-surface-raised overflow-hidden mb-12">
+            <div className="grid lg:grid-cols-[1.15fr_1fr]">
+              <div className="p-8 lg:p-10">
+                <div className="flex flex-wrap items-center gap-3 mb-6">
+                  <span className="w-9 h-9 rounded-lg bg-brand/10 border border-brand/30 flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-brand" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v5.5c0 4.2-2.9 7.9-7 9-4.1-1.1-7-4.8-7-9V6l7-3z" />
+                    </svg>
+                  </span>
+                  <span className="text-lg font-bold tracking-tight">
+                    <span className="text-text-primary">MVA</span>
+                    <span className="text-brand">Compensation</span>
+                  </span>
+                  <span className="px-2 py-1 rounded text-[10px] font-semibold tracking-[0.12em] uppercase bg-brand/10 border border-brand/30 text-brand">
+                    Owned &amp; operated
+                  </span>
+                </div>
+
+                <h3 className="text-2xl font-bold text-text-primary mb-4 leading-snug">
+                  We own the property the demand comes from.
+                </h3>
+                <p className="text-text-secondary leading-relaxed mb-6">
+                  MVACompensation.com is our own consumer brand. Accident
+                  victims land there researching what their claim is worth, get
+                  plain answers about their options, and get matched with a firm
+                  that fits their case. It is not a list we buy. It is a
+                  property we run.
+                </p>
+
+                <ul className="space-y-3 text-sm text-text-secondary mb-8">
+                  <li className="flex gap-3">
+                    <span className="text-brand shrink-0">&#x2022;</span>
+                    An organic engine, not rented traffic. State guides, injury
+                    breakdowns, and city pages that rank for what accident
+                    victims actually search.
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-brand shrink-0">&#x2022;</span>
+                    Bilingual end to end. Every section published in English and
+                    Spanish, reaching claimants most firms never reach.
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-brand shrink-0">&#x2022;</span>
+                    Genuinely useful to the public. A settlement estimator and
+                    plain-language guides, so people understand their claim
+                    before they ever speak to a lawyer.
+                  </li>
+                  <li className="flex gap-3">
+                    <span className="text-brand shrink-0">&#x2022;</span>
+                    Qualified before it reaches you. Quiz-based intake, OTP
+                    phone verification, TrustedForm certification.
+                  </li>
+                </ul>
+
+                <a
+                  href="https://mvacompensation.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-brand hover:text-brand-light transition-colors"
+                >
+                  Visit mvacompensation.com
+                  <span aria-hidden="true">&rarr;</span>
+                </a>
+              </div>
+
+              <div className="border-t lg:border-t-0 lg:border-l border-border-subtle bg-surface p-8 lg:p-10 flex flex-col justify-center">
+                <p className="text-xs font-semibold tracking-[0.2em] text-text-muted uppercase mb-6">
+                  The property today
+                </p>
+                <div className="grid grid-cols-2 gap-x-6 gap-y-7">
+                  <div>
+                    <p className="text-2xl font-bold text-brand mb-1">190+</p>
+                    <p className="text-xs text-text-muted leading-snug">Pages published</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-brand mb-1">31</p>
+                    <p className="text-xs text-text-muted leading-snug">States covered</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-brand mb-1">25</p>
+                    <p className="text-xs text-text-muted leading-snug">Cities covered</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-brand mb-1">16</p>
+                    <p className="text-xs text-text-muted leading-snug">Injury types</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-brand mb-1">EN / ES</p>
+                    <p className="text-xs text-text-muted leading-snug">Fully bilingual</p>
+                  </div>
+                  <div>
+                    <p className="text-2xl font-bold text-brand mb-1">Free</p>
+                    <p className="text-xs text-text-muted leading-snug">Settlement estimator</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

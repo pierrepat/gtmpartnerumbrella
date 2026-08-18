@@ -60,6 +60,13 @@ const jsonLd = {
     "@type": "PostalAddress",
     addressCountry: "US",
   },
+  brand: {
+    "@type": "Brand",
+    name: "MVACompensation",
+    url: "https://mvacompensation.com",
+    description:
+      "Bilingual consumer resource for US car accident victims. State and injury guides, settlement estimator, and free attorney matching. Owned and operated by GTM Partner.",
+  },
   sameAs: [
     "https://linkedin.com/in/pierrepatrouillard",
     "https://www.youtube.com/@gtmpartner",
