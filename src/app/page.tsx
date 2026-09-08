@@ -3,6 +3,9 @@ import { PilotForm } from "@/components/pilot-form";
 import { FAQ } from "@/components/faq";
 import { Funnel } from "@/components/funnel";
 import { SmsDemo } from "@/components/sms-demo";
+import { LeakyFunnel } from "@/components/leaky-funnel";
+import { Vsl } from "@/components/vsl";
+import { Testimonials } from "@/components/testimonials";
 
 const icon = (path: string) => (
   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.6} stroke="currentColor">
@@ -18,77 +21,54 @@ const icons = {
 };
 
 const heroStats = [
-  { value: "$5M+", label: "Monthly ad spend managed" },
-  { value: "2,500+", label: "Leads delivered monthly" },
-  { value: "15", label: "Partner law firms" },
-  { value: "<60s", label: "Avg delivery time" },
-];
-
-const painPoints = [
-  {
-    problem: "Old leads die in your CRM",
-    detail: "Every firm has thousands of past inquiries. Called twice, then forgotten. Some of them still have a case.",
-    solution: "AI works your old database again. No new ad spend.",
-  },
-  {
-    problem: "Most visitors never call",
-    detail: "You pay for the click. They read two pages and leave. That traffic is already paid for.",
-    solution: "AI recovers the visitors, dropped forms, and missed calls.",
-  },
-  {
-    problem: "Slow follow-up loses cases",
-    detail: "The first firm to answer usually signs the case. Nights and weekends are when they get away.",
-    solution: "AI answers in seconds, day or night, and books the consult.",
-  },
-  {
-    problem: "You can't see what a case costs",
-    detail: "Vendors report leads. Your CRM reports retainers. Nobody connects the two.",
-    solution: "One view, from first click to signed retainer.",
-  },
+  { value: "Pay per signed case", label: "Recover pricing" },
+  { value: "Under 60 seconds", label: "Response to every new lead" },
+  { value: "$5M+ a month", label: "Ad spend run with our media buying partners" },
+  { value: "$15M+", label: "Pipeline generated for 50+ B2B companies" },
 ];
 
 const pillars = [
   {
     num: "01",
     name: "Recover",
+    agent: "the Revive agent",
     glyph: icons.recover,
-    tagline: "Win back the cases already in your system.",
-    desc: "Every firm has thousands of old leads that never signed. People who called once, no-showed a consult, or got chased for two days and written off. Most were not bad cases. Intake got busy and nobody followed up again. AI wakes that database up by email and SMS, screens against your criteria, and hands the live ones back to your intake. No new ad spend. You pay when a case signs.",
-    note: "We check accident dates against your state's statute of limitations, so we only chase cases you can still sign.",
+    badge: "Where most firms start",
+    desc: "Revive works every old lead in your CRM, starting with the most recent. It texts and calls in your firm's name, in a voice you approve, and books the consult when someone is ready. Your intake team gets the conversation and signs the case.",
+    note: "Pay per signed case. No setup fee. No new ad budget.",
   },
   {
     num: "02",
     name: "Capture",
+    agent: "the Catch agent",
     glyph: icons.capture,
-    tagline: "Stop leaking the demand you already pay for.",
-    desc: "You already pay for traffic. SEO, referrals, LSAs, TV, your current ads. Most of those people never become a case. They leave without filling the form, they call after hours, or they start an intake and quit halfway. AI sits over that traffic. It recovers abandoned forms, texts back missed calls, and follows up on half-finished inquiries.",
-    note: "It does not touch your SEO or your ad vendors. It makes what they already produce convert.",
+    desc: "Catch recovers the people who reached out and slipped away: dropped forms, missed calls, visitors who left without calling. It does not touch your SEO or your ad vendors.",
   },
   {
     num: "03",
     name: "Convert",
+    agent: "the Respond agent",
     glyph: icons.convert,
-    tagline: "Turn more inquiries into signed retainers.",
-    desc: "This is where most firms lose the most cases. A good case comes in at 9pm on a Saturday, nobody calls until Monday, and it is gone to the firm that answered first. Studies put the loss at 40 to 60% in the first half hour. AI answers in seconds, from any source, asks your two questions, books the consult, and chases no-shows so people actually turn up.",
-    note: "Your team still does the legal judgment and signs the client. The conversation just starts instantly and arrives warm.",
+    desc: "Respond answers every new lead in under a minute, day or night, and follows up for five days if they go quiet. The first firm to respond usually signs the case. That firm is now you.",
   },
   {
     num: "04",
     name: "Scale",
+    agent: "the Fuel system",
     glyph: icons.scale,
-    tagline: "Add new demand once the leaks are sealed.",
-    desc: "We only turn on new demand after the first three are working, so you are not pouring new leads into a leaky bucket. Meta and Google ads, retargeting your site visitors, and campaigns aimed at the case types you actually want. Not just the cheapest ones. Because intake and follow-up are already tight, each new lead converts better and your cost per signed case stays low.",
-    note: "Pay-per-lead lives here too, if you want it. One option inside the system, not the whole relationship.",
+    badge: "Includes Revive",
+    desc: "Once the leaks are sealed, we add new demand. We run Meta and Google campaigns through our own bilingual, phone-verified qualification funnel and send you exclusive leads. You pay per qualified lead. Revive is included, and every lead we send is worked by Respond, so you never pay for a lead that gets ignored.",
   },
 ];
 
 const comparisonRows = [
+  { feature: "Your intake team", them: "Left to chase alone", us: "Backed by agents that never stop" },
   { feature: "Scope", them: "Leads only", us: "Your whole case system" },
-  { feature: "Your old leads", them: "Not their problem", us: "AI works them again" },
-  { feature: "Speed to lead", them: "You handle it", us: "AI answers in seconds" },
-  { feature: "Visibility", them: "Lead counts", us: "Click to signed retainer" },
+  { feature: "Your old leads", them: "Not their problem", us: "Revive works them again" },
+  { feature: "Speed to lead", them: "You handle it", us: "Respond answers in seconds" },
+  { feature: "Visibility", them: "Lead counts", us: "Click to signed case" },
   { feature: "Ad spend", them: "You fund it", us: "We fund it" },
-  { feature: "You pay for", them: "Leads", us: "Results" },
+  { feature: "You pay for", them: "Leads", us: "Signed cases" },
   { feature: "Relationship", them: "Vendor", us: "Partner on every source" },
 ];
 
@@ -96,17 +76,17 @@ const steps = [
   {
     num: "01",
     title: "We map where cases leak",
-    desc: "We look at your traffic, your old leads, how fast intake responds, and what happens after a consult is booked. You see where cases are being lost.",
+    desc: "We look at your traffic, your old leads, how fast intake answers, and what happens after a consult is booked. You see where cases are being lost.",
   },
   {
     num: "02",
-    title: "We start with recovery",
-    desc: "AI works the leads already in your database. It screens against your criteria and books consults. No new ad budget. You pay when a case signs.",
+    title: "We start with Revive",
+    desc: "Revive works the leads already in your CRM. It screens them against your rules and books consults. No new ad budget. You pay when a case signs.",
   },
   {
     num: "03",
-    title: "We fix the next bottleneck",
-    desc: "Then capture, then intake speed, then new demand. We work in the order of what is costing you the most.",
+    title: "We seal the next leak",
+    desc: "Then Catch, then Respond, then new demand. We work in the order of what is costing you the most.",
   },
 ];
 
@@ -127,77 +107,73 @@ export default function Home() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative mx-auto max-w-6xl px-6">
-          <div className="max-w-3xl">
-            <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-6">
-              For Personal Injury Law Firms
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1] text-text-primary">
-              AI Growth Partner for{" "}
-              <span className="text-gradient">Modern Law Firms</span>
-            </h1>
-            <p className="mt-6 text-lg text-text-secondary leading-relaxed max-w-2xl">
-              We turn the leads you already have into signed cases. Then we go
-              get you more.
-            </p>
-            <p className="mt-4 text-sm text-text-muted leading-relaxed max-w-2xl">
-              Lead reactivation, AI intake, paid advertising, and pay-per-lead.
-              One system, measured on signed cases.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a href="#pilot-form" className="btn-primary">
-                Book a Growth Assessment &rarr;
-              </a>
-              <a href="#how-it-works" className="btn-secondary">
-                See how it works
-              </a>
+          <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-6">
+                AI Growth Partner for Personal Injury Firms
+              </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight leading-[1.1] text-text-primary">
+                We turn the leads you already have into{" "}
+                <span className="text-gradient">signed cases.</span>
+              </h1>
+              <p className="mt-5 text-xl text-text-secondary font-medium">
+                Then we go get you more.
+              </p>
+              <p className="mt-5 text-base text-text-secondary leading-relaxed max-w-xl">
+                AI agents that work your old leads, answer new ones in seconds,
+                and follow up until the case is signed. You pay per signed case.
+              </p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <a href="#pilot-form" className="btn-primary">
+                  See what is in your database &rarr;
+                </a>
+                <a href="#how-it-works" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
+                  See how it works
+                </a>
+              </div>
             </div>
+
+            <Vsl />
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 mt-20 pt-10 border-t border-border-subtle">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mt-16 lg:mt-20 pt-10 border-t border-border-subtle">
             {heroStats.map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-2xl sm:text-3xl stat-value">{s.value}</div>
-                <div className="mt-1.5 text-xs text-text-muted tracking-wide uppercase">{s.label}</div>
+              <div key={s.label}>
+                <div className="text-lg sm:text-xl font-bold text-brand leading-snug">{s.value}</div>
+                <div className="mt-2 text-[11px] text-text-muted leading-snug">{s.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ═══ LOGO MARQUEE ═══ */}
-      <LogoGrid title="The team behind growth systems for 50+ companies, now building AI for law firms" />
+      {/* ═══ TRUST STRIP ═══ */}
+      <LogoGrid />
 
-      {/* ═══ PAIN POINTS ═══ */}
+      {/* ═══ THE PROBLEM ═══ */}
       <section className="py-20 lg:py-28 bg-surface-raised">
         <div className="mx-auto max-w-6xl px-6">
           <p className="reveal text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Sound familiar?
+            The problem
           </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-4">
-            Most firms lose cases they already paid for
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+            Your intake team is human.
           </h2>
-          <p className="text-text-secondary max-w-2xl mb-12">
-            Getting someone to raise their hand is the expensive part. Most
-            firms do that well, then lose the case before the retainer.
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-6">
+            Call your own intake line one afternoon and listen. Some days they
+            are sharp. Some days they are tired. Every day there are more leads
+            than hours. A lead that does not answer twice gets a note and drops
+            to the bottom of the pile. A lead that comes in at 9pm waits until
+            morning. A lead from four months ago is not called at all. You
+            already paid for every one of them.
+          </p>
+          <p className="text-text-primary font-medium leading-relaxed max-w-2xl mb-14">
+            We do not replace your intake team. We give them teammates that
+            never get tired.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {painPoints.map((p) => (
-              <div key={p.problem} className="card">
-                <h3 className="text-base font-semibold text-red-400 mb-2">
-                  {p.problem}
-                </h3>
-                <p className="text-sm text-text-muted mb-4">{p.detail}</p>
-                <div className="pt-4 border-t border-border-subtle">
-                  <p className="text-sm text-text-primary font-medium">
-                    <span className="text-brand mr-2">&#10003;</span>
-                    {p.solution}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <LeakyFunnel />
         </div>
       </section>
 
@@ -211,35 +187,50 @@ export default function Home() {
             Four parts. One system.
           </h2>
           <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            We run your case acquisition end to end. The order matters. We
-            start with the value already sitting in your firm, then add new
-            demand once the leaks are sealed.
+            Each part is an agent with one job. Most firms start with Revive,
+            because it costs nothing to find out what is in their database.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
             {pillars.map((p) => (
               <div key={p.name} className="card">
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="w-9 h-9 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center text-brand shrink-0">
-                    {p.glyph}
-                  </span>
-                  <span className="text-2xl font-bold stat-value">{p.num}</span>
+                <div className="flex items-center justify-between gap-3 mb-5">
+                  <div className="flex items-center gap-3">
+                    <span className="w-9 h-9 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center text-brand shrink-0">
+                      {p.glyph}
+                    </span>
+                    <span className="text-2xl font-bold stat-value">{p.num}</span>
+                  </div>
+                  {p.badge && (
+                    <span className="px-2.5 py-1 rounded-full bg-brand/10 border border-brand/25 text-[10px] font-semibold uppercase tracking-wider text-brand">
+                      {p.badge}
+                    </span>
+                  )}
                 </div>
-                <h3 className="text-lg font-semibold text-text-primary mb-1">{p.name}</h3>
-                <p className="text-sm font-medium text-brand mb-3">{p.tagline}</p>
-                <p className="text-sm text-text-secondary leading-relaxed">{p.desc}</p>
-                <div className="mt-4 pt-4 border-t border-border-subtle">
-                  <p className="text-xs text-text-muted leading-relaxed">{p.note}</p>
-                </div>
+                <h3 className="text-lg font-semibold text-text-primary mb-1">
+                  {p.name}, <span className="text-brand font-medium">{p.agent}</span>
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed mt-3">{p.desc}</p>
+                {p.note && (
+                  <div className="mt-4 pt-4 border-t border-border-subtle">
+                    <p className="text-xs text-text-muted leading-relaxed">{p.note}</p>
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Interactive SMS demo */}
+          <p className="text-text-secondary leading-relaxed max-w-3xl mt-12">
+            Start with Revive. Add Respond when you are ready. Scale when the
+            leaks are sealed. Or take the full suite and have one partner for
+            all of it.
+          </p>
+
+          {/* Revive in action */}
           <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center mt-16">
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-                Recover in action
+                Revive in action
               </p>
               <h3 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
                 This is what your old leads get
@@ -255,13 +246,137 @@ export default function Home() {
             </div>
             <SmsDemo />
           </div>
-
-          <p className="text-text-secondary leading-relaxed max-w-2xl mt-16">
-            One system that lifts the cases from every source, not just the
-            ones we generate.
-          </p>
         </div>
       </section>
+
+      {/* ═══ EXCLUSIVE VS SHARED ═══ */}
+      <section className="py-20 lg:py-28 bg-surface-raised">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+                On the demand we generate
+              </p>
+              <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+                Exclusive traffic signs more cases
+              </h2>
+              <p className="text-text-secondary leading-relaxed mb-6">
+                Sell one lead to five firms and the prospect gets five calls.
+                They pick the first one. Four firms paid for nothing. Every
+                case we generate goes to one firm only.
+              </p>
+              <p className="text-text-secondary leading-relaxed">
+                That means days to follow up instead of seconds. More trust.
+                And a lower cost per signed case.
+              </p>
+            </div>
+            <div className="space-y-6">
+              <div className="card !border-brand/20">
+                <div className="text-3xl font-bold stat-value mb-1">10-20%</div>
+                <p className="text-sm text-text-secondary">Sign rate on exclusive leads</p>
+              </div>
+              <div className="card">
+                <div className="text-3xl font-bold text-text-muted mb-1">1-5%</div>
+                <p className="text-sm text-text-muted">Sign rate on shared leads (sold to 5+ firms)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ PROOF: REAL PERFORMANCE DATA ═══ */}
+      <section className="py-20 lg:py-28 bg-surface-raised">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            Campaigns we run with our media buying partners
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-4">
+            Real campaigns. Real signed cases.
+          </h2>
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+            These are Scale engagements. Screenshots are from live accounts,
+            shared with permission.
+          </p>
+
+          {/* Google Ads Dashboard */}
+          <div className="card mb-8">
+            <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">Google Ads, February 2026</p>
+            <h3 className="text-xl font-bold text-text-primary mb-3">
+              $368K spend. 2,354 conversions.
+            </h3>
+            <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
+              {[
+                { value: "$368K", label: "Monthly ad spend" },
+                { value: "2,354", label: "Conversions" },
+                { value: "$156", label: "Cost / conversion" },
+                { value: "11.8M", label: "Impressions" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-xl font-bold stat-value">{s.value}</div>
+                  <div className="text-xs text-text-muted">{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <img src="/proof-google-ads.png" alt="Google Ads MVA campaign performance, February 2026" className="rounded-lg border border-border-subtle w-full" />
+          </div>
+
+          <div className="card mb-8">
+            <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
+              <div>
+                <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">California PI Firm, Pilot Campaign</p>
+                <h3 className="text-xl font-bold text-text-primary mb-3">
+                  6 signed cases in 44 days
+                </h3>
+                <p className="text-sm text-text-secondary leading-relaxed mb-6">
+                  Launched right after SB37, one of the biggest regulatory
+                  changes in PI lead gen. Case quality held up in a tighter
+                  market. Now scaling to 150+ leads a month.
+                </p>
+                <div className="flex flex-wrap gap-4 sm:gap-6">
+                  {[
+                    { value: "6", label: "Signed cases" },
+                    { value: "44", label: "Days" },
+                    { value: "$186", label: "Avg CPL" },
+                  ].map((s) => (
+                    <div key={s.label}>
+                      <div className="text-xl font-bold stat-value">{s.value}</div>
+                      <div className="text-xs text-text-muted">{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="hidden md:block w-80">
+                <img src="/proof-ca-pilot.png" alt="California pilot campaign dashboard" className="rounded-lg border border-border-subtle w-full" />
+              </div>
+            </div>
+          </div>
+
+          <div className="card">
+            <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">Weekly Performance Snapshot</p>
+            <h3 className="text-xl font-bold text-text-primary mb-3">
+              7 signed cases from one week of traffic
+            </h3>
+            <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
+              {[
+                { value: "7", label: "Signed cases" },
+                { value: "$2,519", label: "Cost per signed case" },
+                { value: "318", label: "Leads (1 week)" },
+                { value: "$55", label: "Cost per lead" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <div className="text-xl font-bold stat-value">{s.value}</div>
+                  <div className="text-xs text-text-muted">{s.label}</div>
+                </div>
+              ))}
+            </div>
+            <img src="/proof-weekly-analytics.png" alt="Weekly analytics dashboard" className="rounded-lg border border-border-subtle w-full" />
+          </div>
+        </div>
+      </section>
+
+
+      {/* ═══ TESTIMONIALS ═══ */}
+      <Testimonials />
 
       {/* ═══ COMPARISON TABLE ═══ */}
       <section className="py-20 lg:py-28">
@@ -313,10 +428,10 @@ export default function Home() {
               </div>
               <ul className="space-y-4">
                 {[
-                  "Firms with existing traffic, an old lead database, and an intake team",
-                  "Partners who want more signed cases from what they already pay for",
-                  "Firms who want one partner across every source",
-                  "Firms who want to see cost per signed case, not cost per lead",
+                  "Firms with old leads sitting in a CRM",
+                  "Firms with an intake team that is already busy",
+                  "Firms that want one partner, not five vendors",
+                  "Firms that want to know what a signed case costs",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="text-brand mt-0.5">&#10003;</span>
@@ -325,7 +440,7 @@ export default function Home() {
                 ))}
               </ul>
               <a href="#pilot-form" className="btn-primary w-full justify-center mt-8">
-                Book a Growth Assessment &rarr;
+                See what is in your database &rarr;
               </a>
             </div>
 
@@ -337,7 +452,7 @@ export default function Home() {
                 {[
                   "Firms shopping for the cheapest leads",
                   "Firms with no intake process or CRM",
-                  "Firms that can't follow up on a booked consult",
+                  "Firms that cannot call a booked consult",
                   "Mass tort or class action campaigns",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
@@ -376,6 +491,121 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ REPORTING / VISIBILITY ═══ */}
+      <section id="reporting" className="py-20 lg:py-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            Reporting
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+            See every lead become a signed case.
+          </h2>
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+            You get a live view of every stage, from traffic to signed case. No
+            black box. You always know what a signed case really cost.
+          </p>
+
+          <Funnel />
+        </div>
+      </section>
+
+      {/* ═══ PRICING ═══ */}
+      <section id="pricing" className="py-20 lg:py-28 bg-surface-raised">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Pricing</p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+            You pay for outcomes.
+          </h2>
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+            Start where it costs you the least to find out if this works. Most
+            firms start with Revive.
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="card !border-brand/25 flex flex-col">
+              <span className="inline-block self-start px-2.5 py-1 rounded-full bg-brand/10 border border-brand/25 text-[10px] font-semibold uppercase tracking-wider text-brand mb-5">
+                Where most firms start
+              </span>
+              <h3 className="text-xl font-bold text-text-primary mb-1">Revive</h3>
+              <p className="text-xs text-text-muted uppercase tracking-wider mb-4">Recover</p>
+              <p className="text-sm text-text-secondary leading-relaxed flex-1">
+                Pay per signed case. No setup fee. No software fee. No retainer.
+                No new ad budget. You confirm every case before we invoice.
+              </p>
+              <a href="#pilot-form" className="btn-primary w-full justify-center mt-6">
+                See what is in your database
+              </a>
+            </div>
+
+            <div className="card flex flex-col">
+              <h3 className="text-xl font-bold text-text-primary mb-1 mt-[38px]">Respond + Catch</h3>
+              <p className="text-xs text-text-muted uppercase tracking-wider mb-4">Convert and Capture</p>
+              <p className="text-sm text-text-secondary leading-relaxed flex-1">
+                Flat monthly fee once Revive has proven itself. Cancel any time.
+              </p>
+              <a href="/contact" className="btn-secondary w-full justify-center mt-6">
+                Talk to us
+              </a>
+            </div>
+
+            <div className="card flex flex-col">
+              <h3 className="text-xl font-bold text-text-primary mb-1 mt-[38px]">Fuel</h3>
+              <p className="text-xs text-text-muted uppercase tracking-wider mb-4">Scale</p>
+              <p className="text-sm text-text-secondary leading-relaxed flex-1">
+                Pay per qualified lead. Exclusive to your firm in your market.
+                Revive included. Every lead worked by Respond.
+              </p>
+              <a href="/contact" className="btn-secondary w-full justify-center mt-6">
+                Talk to us
+              </a>
+            </div>
+          </div>
+
+          <details className="mt-8 rounded-xl border border-border-subtle bg-surface overflow-hidden group">
+            <summary className="cursor-pointer list-none px-6 py-4 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors flex items-center justify-between">
+              <span>Fuel terms and disqualifiers</span>
+              <span className="text-text-muted text-lg group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div className="px-6 pb-6 pt-2 border-t border-border-subtle grid md:grid-cols-2 gap-8">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Terms</p>
+                <ul className="space-y-2.5 text-sm text-text-secondary">
+                  {["CPL varies by state and case type", "Pilot cap on first engagement", "50% prepayment per batch", "7-day dispute window", "20% replacement cap", "Month to month"].map((t) => (
+                    <li key={t} className="flex gap-3"><span className="text-brand">&#x2022;</span> {t}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Disqualifiers (free replacement)</p>
+                <ul className="space-y-2.5 text-sm text-text-secondary">
+                  {disqualifiers.map((d) => (
+                    <li key={d} className="flex gap-3"><span className="text-brand">&#x2022;</span> {d}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </details>
+
+          <p className="text-sm text-text-muted mt-10">
+            From the team that generated{" "}
+            <span className="text-text-secondary font-semibold">$15M+ in pipeline</span>{" "}
+            for{" "}
+            <span className="text-text-secondary font-semibold">50+ B2B companies</span>.{" "}
+            <a href="/outbound" className="text-brand hover:text-brand-light transition-colors">
+              See case studies &rarr;
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* ═══ FOR FIRMS READY TO SCALE ═══ */}
+      <div className="pt-20 lg:pt-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase">
+            For firms ready to Scale
+          </p>
+        </div>
+      </div>
       {/* ═══ VERTICAL INTEGRATION ═══ */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-6xl px-6">
@@ -401,7 +631,7 @@ export default function Home() {
               <h3 className="text-lg font-semibold text-text-primary mb-2">Paid Traffic</h3>
               <p className="text-sm text-text-secondary leading-relaxed">
                 Meta, Google, and YouTube campaigns, managed and funded by us.
-                $5M+ a month in managed ad spend.
+                $5M+ a month in ad spend run with our media buying partners.
               </p>
             </div>
             <div className="card">
@@ -532,250 +762,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ EXCLUSIVE VS SHARED ═══ */}
-      <section className="py-20 lg:py-28 bg-surface-raised">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-                On the demand we generate
-              </p>
-              <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-                Exclusive traffic signs more cases
-              </h2>
-              <p className="text-text-secondary leading-relaxed mb-6">
-                Sell one lead to five firms and the prospect gets five calls.
-                They pick the first one. Four firms paid for nothing. Every
-                case we generate goes to one firm only.
-              </p>
-              <p className="text-text-secondary leading-relaxed">
-                That means days to follow up instead of seconds. More trust.
-                And a lower cost per signed case.
-              </p>
-            </div>
-            <div className="space-y-6">
-              <div className="card !border-brand/20">
-                <div className="text-3xl font-bold stat-value mb-1">10-20%</div>
-                <p className="text-sm text-text-secondary">Sign rate on exclusive leads</p>
-              </div>
-              <div className="card">
-                <div className="text-3xl font-bold text-text-muted mb-1">1-5%</div>
-                <p className="text-sm text-text-muted">Sign rate on shared leads (sold to 5+ firms)</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ PROOF — REAL PERFORMANCE DATA ═══ */}
-      <section className="py-20 lg:py-28 bg-surface-raised">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Real data
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
-            Real campaigns. Real signed cases.
-          </h2>
-
-          {/* Google Ads Dashboard */}
-          <div className="card mb-8">
-            <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">Google Ads, February 2026</p>
-            <h3 className="text-xl font-bold text-text-primary mb-3">
-              $368K spend. 2,354 conversions.
-            </h3>
-            <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
-              {[
-                { value: "$368K", label: "Monthly ad spend" },
-                { value: "2,354", label: "Conversions" },
-                { value: "$156", label: "Cost / conversion" },
-                { value: "11.8M", label: "Impressions" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="text-xl font-bold stat-value">{s.value}</div>
-                  <div className="text-xs text-text-muted">{s.label}</div>
-                </div>
-              ))}
-            </div>
-            <img src="/proof-google-ads.png" alt="Google Ads MVA campaign performance, February 2026" className="rounded-lg border border-border-subtle w-full" />
-          </div>
-
-          <div className="card mb-8">
-            <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
-              <div>
-                <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">California PI Firm, Pilot Campaign</p>
-                <h3 className="text-xl font-bold text-text-primary mb-3">
-                  6 signed cases in 44 days
-                </h3>
-                <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                  Launched right after SB37, one of the biggest regulatory
-                  changes in PI lead gen. Case quality held up in a tighter
-                  market. Now scaling to 150+ leads a month.
-                </p>
-                <div className="flex flex-wrap gap-4 sm:gap-6">
-                  {[
-                    { value: "6", label: "Signed cases" },
-                    { value: "44", label: "Days" },
-                    { value: "$186", label: "Avg CPL" },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <div className="text-xl font-bold stat-value">{s.value}</div>
-                      <div className="text-xs text-text-muted">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="hidden md:block w-80">
-                <img src="/proof-ca-pilot.png" alt="California pilot campaign dashboard" className="rounded-lg border border-border-subtle w-full" />
-              </div>
-            </div>
-          </div>
-
-          <div className="card">
-            <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">Weekly Performance Snapshot</p>
-            <h3 className="text-xl font-bold text-text-primary mb-3">
-              7 signed cases from one week of traffic
-            </h3>
-            <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
-              {[
-                { value: "7", label: "Signed cases" },
-                { value: "$2,519", label: "Cost per signed case" },
-                { value: "318", label: "Leads (1 week)" },
-                { value: "$55", label: "Cost per lead" },
-              ].map((s) => (
-                <div key={s.label}>
-                  <div className="text-xl font-bold stat-value">{s.value}</div>
-                  <div className="text-xs text-text-muted">{s.label}</div>
-                </div>
-              ))}
-            </div>
-            <img src="/proof-weekly-analytics.png" alt="Weekly analytics dashboard" className="rounded-lg border border-border-subtle w-full" />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ REPORTING / VISIBILITY ═══ */}
-      <section id="reporting" className="py-20 lg:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Reporting
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-            See every dollar become a signed case.
-          </h2>
-          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            You get a live view of every stage, from traffic to signed
-            retainer. No black box. You always know what a signed case really
-            cost.
-          </p>
-
-          <Funnel />
-        </div>
-      </section>
-
-      {/* ═══ WHY FIRMS STAY ═══ */}
-      <section className="py-20 lg:py-28 bg-surface-raised">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Partnership
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-            Why firms stay
-          </h2>
-          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            We are a partner, not a vendor. We improve the leads from all your
-            sources, not just ours.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="card">
-              <h3 className="text-lg font-semibold text-text-primary mb-2">Every source, not just ours</h3>
-              <p className="text-sm text-text-secondary leading-relaxed">
-                Your referrals, your SEO, your other vendors. If a lead reaches
-                your firm, our system works it.
-              </p>
-            </div>
-            <div className="card">
-              <h3 className="text-lg font-semibold text-text-primary mb-2">You keep your accounts</h3>
-              <p className="text-sm text-text-secondary leading-relaxed">
-                Ad accounts, CRM, and lead data stay in your name. Nothing is
-                held hostage if we part ways.
-              </p>
-            </div>
-            <div className="card">
-              <h3 className="text-lg font-semibold text-text-primary mb-2">We fix the next thing</h3>
-              <p className="text-sm text-text-secondary leading-relaxed">
-                When one thing improves, we go fix whatever is limiting you
-                next.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ PRICING ═══ */}
-      <section id="pricing" className="py-20 lg:py-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Pricing</p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-            We fund the work. You pay for results.
-          </h2>
-          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            Start with a recovery pilot. It needs no new ad budget. We work the
-            leads already in your database, and you pay when a case signs.
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              { title: "No New Ad Budget", desc: "Recovery uses the leads you already have." },
-              { title: "Paid On Outcomes", desc: "On the recovery pilot, you pay when a case signs." },
-              { title: "We Fund The Work", desc: "Our capital goes behind the build and the media." },
-              { title: "Your Accounts, Your Data", desc: "Ad accounts, CRM, and lead data stay in your name." },
-              { title: "Clear Terms Upfront", desc: "Scope, pricing, and reporting agreed before we launch." },
-              { title: "One Partner", desc: "We improve the leads from all your channels, not just ours." },
-            ].map((item) => (
-              <div key={item.title} className="card">
-                <h3 className="text-brand font-semibold text-sm uppercase tracking-wider mb-3">{item.title}</h3>
-                <p className="text-sm text-text-secondary">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Disqualifiers inline */}
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Pay-per-lead option: terms</p>
-              <ul className="space-y-2.5 text-sm text-text-secondary">
-                {["CPL varies by state and case type", "Pilot cap on first engagement", "50% prepayment per batch", "7-day dispute window", "20% replacement cap", "Month-to-month"].map((t) => (
-                  <li key={t} className="flex gap-3"><span className="text-brand">&#x2022;</span> {t}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Disqualifiers (free replacement)</p>
-              <ul className="space-y-2.5 text-sm text-text-secondary">
-                {disqualifiers.map((d) => (
-                  <li key={d} className="flex gap-3"><span className="text-brand">&#x2022;</span> {d}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ CREDIBILITY LINE ═══ */}
-      <section className="py-10">
-        <div className="mx-auto max-w-6xl px-6 text-center">
-          <p className="text-sm text-text-muted">
-            From the team that generated{" "}
-            <span className="text-text-secondary font-semibold">$15M+ in pipeline</span>{" "}
-            for{" "}
-            <span className="text-text-secondary font-semibold">50+ B2B companies</span>.{" "}
-            <a href="/outbound" className="text-brand hover:text-brand-light transition-colors">
-              See case studies &rarr;
-            </a>
-          </p>
-        </div>
-      </section>
 
       {/* ═══ FAQ ═══ */}
       <FAQ />
@@ -786,17 +772,20 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Get started</p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">Book a Growth Assessment</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
+                See what is in your database
+              </h2>
               <p className="text-text-secondary leading-relaxed mb-8">
-                Tell us about your firm. We will show you where cases are
-                leaking and what a recovery pilot looks like for your database.
+                Tell us about your firm. We will show you how many leads are
+                sitting in your CRM, how many are still reachable, and what
+                Revive would do with them.
               </p>
 
               <div className="space-y-4">
                 {[
                   "We review your firm within 24 hours",
-                  "We map your funnel from first click to signed retainer",
-                  "You get a recovery plan for the leads you already have",
+                  "We tell you how many old leads are still reachable",
+                  "You see what Revive would do with them",
                   "No new ad budget to start",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
@@ -819,13 +808,13 @@ export default function Home() {
       <section className="py-16 bg-surface-raised">
         <div className="mx-auto max-w-6xl px-6 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
-            Ready to turn more leads into signed cases?
+            Ready to sign the cases you already paid for?
           </h2>
           <p className="text-text-secondary mb-8">
-            We fund the work. You pay for results.
+            Start with Revive. No new ad budget.
           </p>
           <a href="#pilot-form" className="btn-primary">
-            Book a Growth Assessment &rarr;
+            See what is in your database &rarr;
           </a>
         </div>
       </section>

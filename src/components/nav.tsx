@@ -7,8 +7,7 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/#the-system", label: "The System" },
   { href: "/#how-it-works", label: "How It Works" },
-  { href: "/outbound", label: "Outbound & RevOps" },
-  { href: "/about", label: "About" },
+  { href: "/#pricing", label: "Pricing" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -25,7 +24,7 @@ export function Nav() {
 
   // CTA destination depends on current page
   const ctaHref = pathname === "/" ? "#pilot-form" : "/contact";
-  const ctaLabel = pathname === "/" ? "Get Started" : "Get in Touch";
+  const ctaLabel = "See what is in your database";
 
   return (
     <nav

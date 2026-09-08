@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "GTM Partner — AI Growth Partner for Law Firms",
+    default: "GTM Partner | AI Growth Partner for Personal Injury Firms",
     template: "%s | GTM Partner",
   },
   description:
-    "We use AI to turn more of your leads into signed cases: reactivation, intake, and new demand, with full visibility from click to signed retainer.",
+    "We turn the leads you already have into signed cases. AI agents that reactivate old leads, answer new ones in seconds, and follow up until the case is signed. Pay per signed case.",
   metadataBase: new URL("https://gtmpartner.ai"),
   icons: {
     icon: "/favicon.svg",
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "GTM Partner",
-    title: "GTM Partner — AI Growth Partner for Law Firms",
+    title: "GTM Partner | AI Growth Partner for Personal Injury Firms",
     description:
-      "We use AI to turn more of your leads into signed cases: reactivation, intake, and new demand, with full visibility from click to signed retainer.",
+      "We turn the leads you already have into signed cases. AI agents that reactivate old leads, answer new ones in seconds, and follow up until the case is signed. Pay per signed case.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GTM Partner — AI Growth Partner for Law Firms",
+    title: "GTM Partner | AI Growth Partner for Personal Injury Firms",
     description:
-      "We use AI to turn more of your leads into signed cases, with full visibility from click to signed retainer.",
+      "We turn the leads you already have into signed cases. AI agents that reactivate old leads, answer new ones in seconds, and follow up until the case is signed. Pay per signed case.",
   },
   robots: {
     index: true,
@@ -55,7 +55,7 @@ const jsonLd = {
   url: "https://gtmpartner.ai",
   logo: "https://gtmpartner.ai/favicon.svg",
   description:
-    "AI growth partner for law firms. Lead reactivation, intake, and new demand. Outbound and RevOps systems for B2B companies.",
+    "AI growth partner for personal injury law firms. We reactivate old leads, answer new ones in seconds, and follow up until the case is signed.",
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",
@@ -96,7 +96,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col font-sans bg-surface text-text-primary">
-        {/* Google tag (gtag.js) — Google Ads AW-18250922700 */}
+        {/* Google tag (gtag.js), Google Ads AW-18250922700 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-18250922700"
           strategy="afterInteractive"

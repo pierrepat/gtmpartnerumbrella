@@ -24,7 +24,7 @@ export default function ContactPage() {
           </p>
 
           <div className="grid lg:grid-cols-2 gap-16">
-            {/* Left — form */}
+            {/* Left: form */}
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-text-muted uppercase mb-6">
                 Tell us about your needs
@@ -32,7 +32,7 @@ export default function ContactPage() {
               <ContactForm />
             </div>
 
-            {/* Right — direct contact + Cal.com */}
+            {/* Right: direct contact + Cal.com */}
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-text-muted uppercase mb-6">
                 Or reach out directly

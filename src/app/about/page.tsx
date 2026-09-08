@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About — Pierre Patrouillard, CEO",
+  title: "About Pierre Patrouillard, CEO",
   description:
-    "Founder and CEO of GTM Partner. French, Masters in Data Analytics. 50+ B2B companies. $15M+ in attributed revenue. AI growth systems for law firms.",
+    "Founder and CEO of GTM Partner. French, Masters in Data Analytics. 50+ B2B companies. $15M+ in attributed revenue. AI growth systems for personal injury law firms.",
 };
 
 export default function AboutPage() {
@@ -29,8 +29,8 @@ export default function AboutPage() {
                 and Lisbon.
               </p>
               <p className="text-text-secondary leading-relaxed">
-                GTM Partner runs two businesses. AI growth systems for personal
-                injury law firms, and outbound systems for B2B companies. Same
+                GTM Partner is the AI growth partner for personal injury firms. We
+                also build outbound systems for B2B companies. Same
                 infrastructure. Same team.
               </p>
             </div>
@@ -61,25 +61,21 @@ export default function AboutPage() {
               </p>
               <ul className="space-y-3 text-sm text-text-secondary">
                 <li className="flex gap-3">
-                  <span className="text-brand">&#x2022;</span> Work with 15
+                  <span className="text-brand">&#x2022;</span> Work with
                   personal injury law firms nationwide
                 </li>
                 <li className="flex gap-3">
                   <span className="text-brand">&#x2022;</span> Direct
-                  partnerships with media buyers spending 8 figures monthly
+                  partnerships with media buyers who run 8 figures a month
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-brand">&#x2022;</span> $5M+/month in
-                  managed MVA ad spend
+                  <span className="text-brand">&#x2022;</span> $5M+ a month in
+                  MVA ad spend run with those partners
                 </li>
                 <li className="flex gap-3">
                   <span className="text-brand">&#x2022;</span> Own and operate
                   MVACompensation.com, our bilingual consumer property for
                   accident victims
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand">&#x2022;</span> 2,500+ leads
-                  delivered monthly
                 </li>
                 <li className="flex gap-3">
                   <span className="text-brand">&#x2022;</span> Firms pay for

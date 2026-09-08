@@ -18,8 +18,7 @@ export function Footer() {
               </div>
             </div>
             <p className="text-sm text-text-muted leading-relaxed">
-              The AI growth partner for modern law firms. Outbound
-              systems for B2B companies.
+              The AI growth partner for personal injury firms.
             </p>
           </div>
           <div>
@@ -27,8 +26,9 @@ export function Footer() {
             <ul className="space-y-2.5">
               {[
                 { href: "/#the-system", label: "The System" },
-                { href: "/#reporting", label: "Reporting & Visibility" },
-                { href: "/#pilot-form", label: "Book a Growth Assessment" },
+                { href: "/#pricing", label: "Pricing" },
+                { href: "/#reporting", label: "Reporting" },
+                { href: "/#pilot-form", label: "See what is in your database" },
               ].map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-sm text-text-secondary hover:text-text-primary transition-colors">

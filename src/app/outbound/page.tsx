@@ -97,6 +97,21 @@ const capabilities = [
 export default function OutboundPage() {
   return (
     <>
+      {/* Context banner: this page is the B2B origin story */}
+      <div className="pt-24 lg:pt-28">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="rounded-xl border border-brand/20 bg-surface-raised px-6 py-5 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-sm text-text-secondary leading-relaxed max-w-2xl">
+              This is the work that built our AI and outbound systems. Today we
+              apply them to personal injury firms.
+            </p>
+            <a href="/" className="text-sm font-semibold text-brand hover:text-brand-light transition-colors whitespace-nowrap">
+              See what we do for law firms &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand/5 rounded-full blur-[120px] pointer-events-none" />

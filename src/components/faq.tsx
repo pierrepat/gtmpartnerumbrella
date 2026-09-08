@@ -11,7 +11,17 @@ const faqItems = [
   {
     question: "Do we have to replace our intake team?",
     answer:
-      "No. The AI supports your team. It does not replace them. It handles the repetitive front end: instant response, follow-up, qualifying, and booking. Your people spend their time on real conversations and signing clients instead of chasing dead leads. Your team makes every legal decision. The AI just makes sure fewer signable cases slip through before they reach you.",
+      "No. We give them teammates that never get tired. Your intake team is human. Some days they are sharp, some days they are tired, and every day there are more leads than hours. The agents handle the repetitive front end: instant response, follow-up, qualifying, and booking. Your people make every legal decision and sign every client. The agents just make sure fewer signable cases slip through before they reach you.",
+  },
+  {
+    question: "What happens to a lead once your agent books a consult?",
+    answer:
+      "The whole conversation and a plain summary go to your intake team, so they know what was said before they pick up the phone. We then confirm the consult was actually called. If it was not, we tell you. A booked consult that nobody rings is the same as a lost case.",
+  },
+  {
+    question: "Can we start with Scale without Revive?",
+    answer:
+      "You can. But Revive is included with every Scale engagement anyway, because it is the fastest way to lower your cost per case. It costs you nothing to run and it works leads you have already paid for, so there is no reason to leave it switched off while we spend money on new ones.",
   },
   {
     question: "What is a recovery pilot?",
@@ -56,7 +66,7 @@ const faqItems = [
   {
     question: "Why trust a company that also does B2B outbound?",
     answer:
-      "Because it is the same core skill applied to your world. We spent years building outreach, follow-up, and email and SMS infrastructure for demanding B2B companies. That engineering is exactly what powers the AI intake and reactivation we run for law firms. Legal is our focus. The B2B background is why our systems and deliverability are better than a typical legal marketing agency's.",
+      "Law firms are the focus. We run reactivation and intake for personal injury firms, we own and operate MVACompensation.com, and our campaign results are on this page. The B2B work is where the AI and outbound systems were built. Years of outreach, follow-up, and email and SMS infrastructure for demanding B2B companies is exactly what powers the agents now working your leads. It is the reason our deliverability and systems beat a typical legal marketing agency.",
   },
 ];
 
