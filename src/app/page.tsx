@@ -56,7 +56,7 @@ export default function Home() {
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight leading-[1.1] text-text-primary">
               Two ways to get more{" "}
-              <span className="text-gradient">signed cases.</span>
+              <span className="text-gradient whitespace-nowrap">signed cases.</span>
             </h1>
             <p className="mt-6 text-lg text-text-secondary leading-relaxed max-w-2xl">
               Recover the leads you already paid for. Or take exclusive new
@@ -286,13 +286,12 @@ export default function Home() {
           <div className="card mb-8">
             <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">Google Ads, February 2026</p>
             <h3 className="text-xl font-bold text-text-primary mb-3">
-              $368K spend. 2,354 conversions.
+              $368K in one month. 2,354 people asked for help.
             </h3>
             <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
               {[
                 { value: "$368K", label: "Monthly ad spend" },
                 { value: "2,354", label: "Conversions" },
-                { value: "$156", label: "Cost / conversion" },
                 { value: "11.8M", label: "Impressions" },
               ].map((s) => (
                 <div key={s.label}>
@@ -302,37 +301,6 @@ export default function Home() {
               ))}
             </div>
             <img src="/proof-google-ads.png" alt="Google Ads MVA campaign performance, February 2026" className="rounded-lg border border-border-subtle w-full" />
-          </div>
-
-          <div className="card mb-8">
-            <div className="grid md:grid-cols-[1fr_auto] gap-8 items-start">
-              <div>
-                <p className="text-xs font-semibold text-brand uppercase tracking-wider mb-2">California PI Firm, Pilot Campaign</p>
-                <h3 className="text-xl font-bold text-text-primary mb-3">
-                  6 signed cases in 44 days
-                </h3>
-                <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                  Launched right after SB37, one of the biggest regulatory
-                  changes in PI lead gen. Case quality held up in a tighter
-                  market. Now scaling to 150+ leads a month.
-                </p>
-                <div className="flex flex-wrap gap-4 sm:gap-6">
-                  {[
-                    { value: "6", label: "Signed cases" },
-                    { value: "44", label: "Days" },
-                    { value: "$186", label: "Avg CPL" },
-                  ].map((s) => (
-                    <div key={s.label}>
-                      <div className="text-xl font-bold stat-value">{s.value}</div>
-                      <div className="text-xs text-text-muted">{s.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="hidden md:block w-80">
-                <img src="/proof-ca-pilot.png" alt="California pilot campaign dashboard" className="rounded-lg border border-border-subtle w-full" />
-              </div>
-            </div>
           </div>
 
           <div className="card">
@@ -367,42 +335,12 @@ export default function Home() {
             We build the stack. We don&rsquo;t resell one.
           </h2>
           <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            The AI, the traffic, and the qualification layer are ours. So we
-            can fix what is broken in your funnel instead of handing you a
-            file.
+            We do not buy lists. We own the place accident victims go for
+            answers, so every Scale lead starts on a property we control.
           </p>
 
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
-            <div className="card">
-              <div className="flex items-center gap-3 mb-5">
-                <img src="/logos/meta.png" alt="Meta" className="w-7 h-7 rounded" />
-                <img src="/logos/google.png" alt="Google" className="w-7 h-7 rounded" />
-                <img src="/logos/youtube.png" alt="YouTube" className="w-7 h-7 rounded" />
-              </div>
-              <h3 className="text-lg font-semibold text-text-primary mb-2">Paid Traffic</h3>
-              <p className="text-sm text-text-secondary leading-relaxed">
-                Meta, Google, and YouTube campaigns, managed and funded by us.
-                $5M+ a month in ad spend run with our media buying partners.
-              </p>
-            </div>
-            <div className="card">
-              <h3 className="text-lg font-semibold text-text-primary mb-2">Owned Qualification Funnel</h3>
-              <p className="text-sm text-text-secondary leading-relaxed">
-                Quiz-based MVA qualification, bilingual, OTP phone-verified,
-                TrustedForm certified.
-              </p>
-            </div>
-            <div className="card">
-              <h3 className="text-lg font-semibold text-text-primary mb-2">Organic SEO Engine</h3>
-              <p className="text-sm text-text-secondary leading-relaxed">
-                A content engine that brings in leads at no extra cost. State
-                pages, injury guides, settlement calculators.
-              </p>
-            </div>
-          </div>
-
           {/* Owned property: MVACompensation */}
-          <div className="reveal rounded-xl border border-brand/20 bg-surface-raised overflow-hidden mb-12">
+          <div className="reveal rounded-xl border border-brand/20 bg-surface-raised overflow-hidden">
             <div className="grid lg:grid-cols-[1.15fr_1fr]">
               <div className="p-8 lg:p-10">
                 <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -501,76 +439,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm font-medium">
-            <span className="px-3 py-2 sm:px-4 sm:py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">Paid + Organic</span>
-            <span className="text-text-muted">&rarr;</span>
-            <span className="px-3 py-2 sm:px-4 sm:py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">Owned Funnel</span>
-            <span className="text-text-muted">&rarr;</span>
-            <span className="px-3 py-2 sm:px-4 sm:py-2.5 bg-surface-raised border border-border-default rounded-lg text-text-secondary">Verified</span>
-            <span className="text-text-muted">&rarr;</span>
-            <span className="px-3 py-2 sm:px-4 sm:py-2.5 bg-brand/10 border border-brand/30 rounded-lg text-brand font-semibold">Your CRM</span>
-          </div>
         </div>
       </section>
 
-
-      {/* ═══ WHO THIS IS FOR ═══ */}
-      <section className="py-14 lg:py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Fit check
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
-            Is this right for your firm?
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="card !border-brand/20">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-brand/10 border border-brand/20 mb-6">
-                <span className="text-xs font-semibold text-brand uppercase tracking-wider">Built for</span>
-              </div>
-              <ul className="space-y-4">
-                {[
-                  "Firms with old leads sitting in a CRM",
-                  "Firms with an intake team that is already busy",
-                  "Firms that want one partner, not five vendors",
-                  "Firms that want to know what a signed case costs",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-brand mt-0.5">&#10003;</span>
-                    <span className="text-sm text-text-secondary">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href="#pilot-form" className="btn-primary w-full justify-center mt-8">
-                Book a call &rarr;
-              </a>
-            </div>
-
-            <div className="card">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 mb-6">
-                <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Not for</span>
-              </div>
-              <ul className="space-y-4">
-                {[
-                  "Firms shopping for the cheapest leads",
-                  "Firms with no intake process or CRM",
-                  "Firms that cannot call a booked consult",
-                  "Mass tort or class action campaigns",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-red-400 mt-0.5">&#10005;</span>
-                    <span className="text-sm text-text-secondary">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href="#pilot-form" className="btn-secondary w-full justify-center mt-8">
-                Not sure? Let&rsquo;s talk &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ═══ HOW IT WORKS ═══ */}
       <section id="how-it-works" className="py-14 lg:py-20 bg-surface-raised">
@@ -634,7 +505,7 @@ export default function Home() {
                 {[
                   "We look at your lead sources and your intake response times",
                   "We tell you how many old leads are still reachable",
-                  "You see what Revive would do with them, and what it pays",
+                  "You see what Recover would do with them, and what it pays",
                   "You decide. There is nothing to install.",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
@@ -648,9 +519,8 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            {/* TODO(Pierre): the pilot form never had a working endpoint, so this
-                books straight into Cal.com instead. Restore <PilotForm /> once a
-                real webhook exists, or wire it to Netlify Forms. */}
+            {/* Booking goes straight to Cal.com. The old pilot form never had a
+                working endpoint and was removed. */}
             <div className="card !border-brand/25 flex flex-col">
               <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
                 Book a call
@@ -661,7 +531,7 @@ export default function Home() {
               <p className="text-sm text-text-secondary leading-relaxed mb-6">
                 Bring a rough number for how many old leads are sitting in your
                 CRM. We will tell you how many are likely still reachable, what
-                Revive would do with them, and what it would pay out. If there
+                Recover would do with them, and what it would pay out. If there
                 is nothing there, we will say so.
               </p>
 
@@ -704,7 +574,7 @@ export default function Home() {
             Ready to sign the cases you already paid for?
           </h2>
           <p className="text-text-secondary mb-8">
-            Start with Revive. No new ad budget.
+            Start with Recover. No new ad budget.
           </p>
           <a href="#pilot-form" className="btn-primary">
             Book a call &rarr;

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -19,7 +18,7 @@ export default function ContactPage() {
             Let&rsquo;s talk
           </h1>
           <p className="text-text-secondary leading-relaxed mb-16 max-w-xl">
-            A law firm that wants to sign more cases, or a B2B company that
+            A law firm that wants more signed cases, or a B2B company that
             needs outbound. Start here.
           </p>
 
@@ -27,9 +26,27 @@ export default function ContactPage() {
             {/* Left: form */}
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-text-muted uppercase mb-6">
-                Tell us about your needs
+                What the first call looks like
               </p>
-              <ContactForm />
+              <div className="card">
+                <ul className="space-y-4">
+                  {[
+                    "Thirty minutes. No deck.",
+                    "You tell us roughly how many old leads are in your CRM and where new ones come from.",
+                    "We tell you how many are likely still reachable and what Recover would do with them.",
+                    "If you want Scale, we check whether your state is still open.",
+                    "If there is nothing there, we say so.",
+                  ].map((i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
+                      <span className="text-sm text-text-secondary leading-relaxed">{i}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a href="https://cal.com/gtmpartner/30min" target="_blank" rel="noopener noreferrer" className="btn-primary w-full justify-center mt-8">
+                  Pick a time &rarr;
+                </a>
+              </div>
             </div>
 
             {/* Right: direct contact + Cal.com */}

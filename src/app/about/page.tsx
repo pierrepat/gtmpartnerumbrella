@@ -29,9 +29,10 @@ export default function AboutPage() {
                 and Lisbon.
               </p>
               <p className="text-text-secondary leading-relaxed">
-                GTM Partner is the AI growth partner for personal injury firms. We
-                also build outbound systems for B2B companies. Same
-                infrastructure. Same team.
+                GTM Partner does two things for personal injury firms. Recover
+                turns the old leads in a firm&rsquo;s CRM into signed cases.
+                Scale sends exclusive new leads in states we still have open.
+                The same team builds outbound systems for B2B companies.
               </p>
             </div>
 

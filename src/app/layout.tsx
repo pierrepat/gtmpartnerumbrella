@@ -32,12 +32,15 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "GTM Partner",
+    url: "https://gtmpartner.ai",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "GTM Partner. Two ways to get more signed cases." }],
     title: "GTM Partner | AI Growth Partner for Personal Injury Firms",
     description:
       "We turn the leads you already have into signed cases. AI agents that reactivate old leads, answer new ones in seconds, and follow up until the case is signed. Pay per signed case.",
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og.png"],
     title: "GTM Partner | AI Growth Partner for Personal Injury Firms",
     description:
       "We turn the leads you already have into signed cases. AI agents that reactivate old leads, answer new ones in seconds, and follow up until the case is signed. Pay per signed case.",

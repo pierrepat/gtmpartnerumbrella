@@ -12,10 +12,10 @@ type Stage = {
 
 const STAGES: Stage[] = [
   { label: "Lead comes in", leaky: 100, sealed: 100 },
-  { label: "Someone answers", leak: "Nobody answers fast enough", agent: "Respond", leaky: 74, sealed: 92 },
-  { label: "The inquiry is complete", leak: "Form dropped or call missed", agent: "Catch", leaky: 55, sealed: 84 },
-  { label: "They stay in the conversation", leak: "Goes quiet after the first call", agent: "Respond", leaky: 39, sealed: 76 },
-  { label: "They book a consult", leak: "Marked dead, sits in the CRM", agent: "Revive", leaky: 26, sealed: 68 },
+  { label: "Someone answers", leak: "Nobody answers fast enough", agent: "Answered in under a minute", leaky: 74, sealed: 92 },
+  { label: "The inquiry is complete", leak: "Form dropped or call missed", agent: "Called straight back", leaky: 55, sealed: 84 },
+  { label: "They stay in the conversation", leak: "Goes quiet after the first call", agent: "Followed up for five days", leaky: 39, sealed: 76 },
+  { label: "They book a consult", leak: "Marked dead, sits in the CRM", agent: "Recover", leaky: 26, sealed: 68 },
 ];
 
 export function LeakyFunnel() {

@@ -2,25 +2,28 @@
 
 interface Logo {
   name: string;
-  favicon?: string;
-  /** wide wordmark shown instead of a square icon; forced white for the dark surface */
+  /** wide logo (wordmark); shown alone, no caption */
   wordmark?: string;
+  /** small square mark; shown with the name beside it */
+  favicon?: string;
+  /** keep the brand's own colours instead of forcing white */
+  color?: boolean;
+  /** rendered height in px for wordmarks, so odd aspect ratios sit level */
+  h?: number;
 }
 
-/* One "Partners" row: the firms and agencies we work with, plus the CRMs we
-   plug into. TODO(Pierre): Walker Advertising publish no clean logo asset, so
-   they render as a text chip. Drop a file in /public/logos and add `wordmark`
-   or `favicon` to upgrade it. */
+/* Firms and agencies we work with, plus the CRMs we plug into.
+   Wordmarks carry the name, so no caption. */
 const partners: Logo[] = [
-  { name: "DK Law Group", favicon: "/logos/dk-law.svg" },
-  { name: "Kass & Moses", wordmark: "/logos/kass-moses.svg" },
-  { name: "Walker Advertising" },
-  { name: "Litify", favicon: "/logos/litify.png" },
-  { name: "Clio", favicon: "/logos/clio.png" },
-  { name: "Filevine", favicon: "/logos/filevine.png" },
-  { name: "Salesforce", favicon: "/logos/salesforce.png" },
-  { name: "HubSpot", favicon: "/logos/hubspot.png" },
-  { name: "GoHighLevel", favicon: "/logos/gohighlevel.png" },
+  { name: "DK Law Group", wordmark: "/logos/dk-law-wordmark.png", h: 26 },
+  { name: "Kass & Moses", wordmark: "/logos/kass-moses.svg", h: 30 },
+  { name: "Walker Advertising", wordmark: "/logos/walker-advertising.svg", h: 40 },
+  { name: "Litify", wordmark: "/logos/litify-wordmark.png", h: 22 },
+  { name: "Clio", wordmark: "/logos/clio-wordmark.png", h: 26 },
+  { name: "Filevine", wordmark: "/logos/filevine-wordmark.png", h: 32 },
+  { name: "Salesforce", wordmark: "/logos/salesforce-wordmark.svg", h: 34, color: true },
+  { name: "HubSpot", wordmark: "/logos/hubspot-wordmark.svg", h: 26 },
+  { name: "HighLevel", wordmark: "/logos/highlevel-wordmark.svg", h: 26, color: true },
 ];
 
 const b2bTeams: Logo[] = [
@@ -37,55 +40,6 @@ const b2bTeams: Logo[] = [
   { name: "7Eagle", favicon: "/logos/7eagle.png" },
 ];
 
-const crms: Logo[] = [
-  { name: "Litify", favicon: "/logos/litify.png" },
-  { name: "Clio", favicon: "/logos/clio.png" },
-  { name: "Filevine", favicon: "/logos/filevine.png" },
-  { name: "Salesforce", favicon: "/logos/salesforce.png" },
-  { name: "HubSpot", favicon: "/logos/hubspot.png" },
-  { name: "GoHighLevel", favicon: "/logos/gohighlevel.png" },
-];
-
-function Chip({ logo }: { logo: Logo }) {
-  if (!logo.name) return null;
-  if (logo.wordmark) {
-    return (
-      <div className="flex items-center px-3.5 py-2 rounded-lg border border-border-subtle bg-surface-raised/50 hover:border-border-hover transition-colors">
-        <img
-          src={logo.wordmark}
-          alt={logo.name}
-          className="h-[18px] w-auto opacity-70 [filter:brightness(0)_invert(1)]"
-        />
-      </div>
-    );
-  }
-  return (
-    <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-border-subtle bg-surface-raised/50 hover:border-border-hover transition-colors">
-      {logo.favicon && (
-        <img src={logo.favicon} alt="" className="w-4 h-4 rounded-sm object-contain" />
-      )}
-      <span className="text-[11px] font-medium text-text-secondary">{logo.name}</span>
-    </div>
-  );
-}
-
-function Row({ label, items }: { label: string; items: Logo[] }) {
-  const shown = items.filter((i) => i.name);
-  if (!shown.length) return null;
-  return (
-    <div className="mb-9 last:mb-0">
-      <p className="text-center text-[10px] font-semibold text-text-muted/60 tracking-[0.2em] uppercase mb-4">
-        {label}
-      </p>
-      <div className="flex flex-wrap justify-center gap-3">
-        {shown.map((l) => (
-          <Chip key={l.name} logo={l} />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /* Outbound & RevOps page keeps the full B2B set, including the tools. */
 const b2bTools: Logo[] = [
   ...b2bTeams,
@@ -95,7 +49,28 @@ const b2bTools: Logo[] = [
   { name: "Salesforce", favicon: "/logos/salesforce.png" },
 ];
 
-function Marquee({ items, speed = 55 }: { items: Logo[]; speed?: number }) {
+function Item({ logo }: { logo: Logo }) {
+  if (logo.wordmark) {
+    return (
+      <div className="shrink-0 flex items-center px-8 sm:px-10 opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <img
+          src={logo.wordmark}
+          alt={logo.name}
+          style={{ height: logo.h ?? 26 }}
+          className={`w-auto ${logo.color ? "" : "[filter:brightness(0)_invert(1)]"}`}
+        />
+      </div>
+    );
+  }
+  return (
+    <div className="shrink-0 flex items-center gap-2 px-6 opacity-60 hover:opacity-100 transition-opacity duration-300">
+      {logo.favicon && <img src={logo.favicon} alt="" className="w-5 h-5 rounded-sm object-contain" />}
+      <span className="text-xs font-medium text-text-secondary whitespace-nowrap">{logo.name}</span>
+    </div>
+  );
+}
+
+function Marquee({ items, speed = 55, reverse = false }: { items: Logo[]; speed?: number; reverse?: boolean }) {
   const tripled = [...items, ...items, ...items];
   return (
     <div className="relative overflow-hidden">
@@ -103,41 +78,41 @@ function Marquee({ items, speed = 55 }: { items: Logo[]; speed?: number }) {
       <div className="absolute right-0 top-0 bottom-0 w-16 lg:w-24 z-10 pointer-events-none bg-gradient-to-l from-surface to-transparent" />
       <div
         className="flex items-center w-max hover:[animation-play-state:paused]"
-        style={{ animation: `marquee ${speed}s linear infinite` }}
+        style={{ animation: `marquee ${speed}s linear infinite`, animationDirection: reverse ? "reverse" : "normal" }}
       >
         {tripled.map((logo, i) => (
-          <div key={`${logo.name}-${i}`} className="shrink-0 flex items-center gap-2 px-5 opacity-60 hover:opacity-100 transition-opacity duration-300">
-            {logo.favicon && <img src={logo.favicon} alt="" className="w-5 h-5 rounded-sm object-contain" />}
-            <span className="text-xs font-medium text-text-secondary whitespace-nowrap">{logo.name}</span>
-          </div>
+          <Item key={`${logo.name}-${i}`} logo={logo} />
         ))}
       </div>
     </div>
   );
 }
 
-/** Pass `title` for the B2B marquee (Outbound page). Omit it for the
- *  three labelled rows used on the homepage. */
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-center text-[10px] font-semibold text-text-muted/60 tracking-[0.2em] uppercase mb-5">
+      {children}
+    </p>
+  );
+}
+
+/** Pass `title` for the single B2B marquee (Outbound page). Omit it for the
+ *  two-row partner strip used on the homepage. */
 export function LogoGrid({ title }: { title?: string }) {
   if (title) {
     return (
       <section className="py-10 overflow-hidden">
-        <div className="mx-auto max-w-6xl px-6 mb-4">
-          <p className="text-center text-[10px] font-semibold text-text-muted/60 tracking-[0.2em] uppercase">
-            {title}
-          </p>
-        </div>
+        <div className="mx-auto max-w-6xl px-6"><Label>{title}</Label></div>
         <Marquee items={b2bTools} />
       </section>
     );
   }
-
   return (
-    <section className="py-12">
-      <div className="mx-auto max-w-5xl px-6">
-        <Row label="Partners" items={partners} />
-        <Row label="Teams we have built AI and outbound systems for" items={b2bTeams} />
-      </div>
+    <section className="py-10 overflow-hidden">
+      <div className="mx-auto max-w-6xl px-6"><Label>Partners</Label></div>
+      <Marquee items={partners} speed={45} />
+      <div className="mx-auto max-w-6xl px-6 mt-10"><Label>Teams we have built AI and outbound systems for</Label></div>
+      <Marquee items={b2bTeams} speed={60} reverse />
     </section>
   );
 }
