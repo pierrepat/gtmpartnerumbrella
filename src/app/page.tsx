@@ -1,5 +1,4 @@
 import { LogoGrid } from "@/components/logo-grid";
-import { PilotForm } from "@/components/pilot-form";
 import { FAQ } from "@/components/faq";
 import { Funnel } from "@/components/funnel";
 import { SmsDemo } from "@/components/sms-demo";
@@ -715,17 +714,17 @@ export default function Home() {
                 See what is in your database
               </h2>
               <p className="text-text-secondary leading-relaxed mb-8">
-                Tell us about your firm. We will show you how many leads are
-                sitting in your CRM, how many are still reachable, and what
-                Revive would do with them.
+                Fifteen minutes on the phone tells us whether there is money
+                sitting in your CRM. If there is, we will show you exactly how
+                much and what it would take to go get it.
               </p>
 
               <div className="space-y-4">
                 {[
-                  "We review your firm within 24 hours",
+                  "We look at your lead sources and your intake response times",
                   "We tell you how many old leads are still reachable",
-                  "You see what Revive would do with them",
-                  "No new ad budget to start",
+                  "You see what Revive would do with them, and what it pays",
+                  "You decide. There is nothing to install.",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <span className="mt-0.5 w-5 h-5 rounded-full bg-brand/10 flex items-center justify-center shrink-0">
@@ -738,7 +737,51 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <PilotForm />
+            {/* TODO(Pierre): the pilot form never had a working endpoint, so this
+                books straight into Cal.com instead. Restore <PilotForm /> once a
+                real webhook exists, or wire it to Netlify Forms. */}
+            <div className="card !border-brand/25 flex flex-col">
+              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+                Book a call
+              </p>
+              <h3 className="text-2xl font-bold text-text-primary mb-3">
+                30 minutes, and you will know
+              </h3>
+              <p className="text-sm text-text-secondary leading-relaxed mb-6">
+                Bring a rough number for how many old leads are sitting in your
+                CRM. We will tell you how many are likely still reachable, what
+                Revive would do with them, and what it would pay out. If there
+                is nothing there, we will say so.
+              </p>
+
+              <ul className="space-y-3 mb-8">
+                {[
+                  "No prep needed",
+                  "No new ad budget to start",
+                  "You confirm every signed case before we invoice",
+                ].map((i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-brand mt-0.5">&#10003;</span>
+                    <span className="text-sm text-text-secondary">{i}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href="https://cal.com/gtmpartner/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary w-full justify-center"
+              >
+                Pick a time &rarr;
+              </a>
+              <p className="text-xs text-text-muted text-center mt-4">
+                Or email{" "}
+                <a href="mailto:pierre@gtmpartner.ai" className="text-brand hover:text-brand-light transition-colors">
+                  pierre@gtmpartner.ai
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
