@@ -6,159 +6,83 @@ type Stage = {
   label: string;
   leak?: string;
   agent?: string;
-  leakyWidth: number;
-  sealedWidth: number;
+  leaky: number;
+  sealed: number;
 };
 
 const STAGES: Stage[] = [
-  { label: "Lead comes in", leakyWidth: 100, sealedWidth: 100 },
-  {
-    label: "Someone answers",
-    leak: "Nobody answers fast enough",
-    agent: "Respond",
-    leakyWidth: 78,
-    sealedWidth: 95,
-  },
-  {
-    label: "The inquiry is complete",
-    leak: "Form dropped or call missed",
-    agent: "Catch",
-    leakyWidth: 60,
-    sealedWidth: 88,
-  },
-  {
-    label: "They stay in the conversation",
-    leak: "Goes quiet after the first call",
-    agent: "Respond",
-    leakyWidth: 44,
-    sealedWidth: 80,
-  },
-  {
-    label: "They book a consult",
-    leak: "Marked dead, sits in the CRM",
-    agent: "Revive",
-    leakyWidth: 30,
-    sealedWidth: 72,
-  },
+  { label: "Lead comes in", leaky: 100, sealed: 100 },
+  { label: "Someone answers", leak: "Nobody answers fast enough", agent: "Respond", leaky: 74, sealed: 92 },
+  { label: "The inquiry is complete", leak: "Form dropped or call missed", agent: "Catch", leaky: 55, sealed: 84 },
+  { label: "They stay in the conversation", leak: "Goes quiet after the first call", agent: "Respond", leaky: 39, sealed: 76 },
+  { label: "They book a consult", leak: "Marked dead, sits in the CRM", agent: "Revive", leaky: 26, sealed: 68 },
 ];
 
 export function LeakyFunnel() {
   const ref = useRef<HTMLDivElement>(null);
   const [sealed, setSealed] = useState(false);
-  const [started, setStarted] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const reduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduced) {
-      setStarted(true);
-      setSealed(true);
-      return;
-    }
+    if (reduced) return setSealed(true);
 
     let seal: ReturnType<typeof setTimeout>;
-    const begin = () => {
-      setStarted(true);
-      seal = setTimeout(() => setSealed(true), 2200);
-    };
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          begin();
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 }
-    );
-    observer.observe(el);
-    const fallback = setTimeout(begin, 1800); // never leave it un-started
-
-    return () => {
-      observer.disconnect();
-      clearTimeout(fallback);
-      clearTimeout(seal);
-    };
+    const begin = () => { seal = setTimeout(() => setSealed(true), 2000); };
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { begin(); io.disconnect(); }
+    }, { threshold: 0.2 });
+    io.observe(el);
+    const fallback = setTimeout(begin, 1500);
+    return () => { io.disconnect(); clearTimeout(fallback); clearTimeout(seal); };
   }, []);
 
-  const btn = (on: boolean) =>
-    `px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${
-      on
-        ? "bg-brand/15 border border-brand/40 text-brand"
-        : "border border-border-default text-text-muted hover:text-text-secondary"
+  const tab = (on: boolean) =>
+    `px-3.5 py-2 rounded-lg text-xs font-medium transition-colors ${
+      on ? "bg-brand/15 border border-brand/40 text-brand"
+         : "border border-border-subtle text-text-muted hover:text-text-secondary"
     }`;
 
   return (
-    <div ref={ref} className="max-w-3xl">
-      {/* toggle */}
-      <div className="flex gap-2 mb-8">
-        <button onClick={() => setSealed(false)} className={btn(!sealed)}>
-          Without GTM Partner
-        </button>
-        <button onClick={() => setSealed(true)} className={btn(sealed)}>
-          With GTM Partner
-        </button>
+    <div ref={ref} className="max-w-2xl">
+      <div className="flex gap-2 mb-10">
+        <button onClick={() => setSealed(false)} className={tab(!sealed)}>Without GTM Partner</button>
+        <button onClick={() => setSealed(true)} className={tab(sealed)}>With GTM Partner</button>
       </div>
 
-      {/* sources */}
-      <div className="flex flex-wrap gap-2 mb-4" aria-hidden="true">
-        <span className="px-3 py-1.5 rounded-lg bg-surface-raised border border-border-default text-[11px] sm:text-xs text-text-secondary">
-          Your marketing
-        </span>
-        <span className="px-3 py-1.5 rounded-lg bg-surface-raised border border-border-default text-[11px] sm:text-xs text-text-secondary">
-          Leads we send you
-        </span>
-      </div>
+      <div className="relative">
+        {/* centre spine */}
+        <div className="absolute left-1/2 top-2 bottom-2 w-px -translate-x-1/2 bg-border-subtle" aria-hidden="true" />
 
-      <ol className="space-y-1">
-        {STAGES.map((s, i) => {
-          const w = sealed ? s.sealedWidth : s.leakyWidth;
-          return (
+        <ol className="relative space-y-0">
+          {STAGES.map((s, i) => (
             <li key={s.label}>
-              {/* leak row */}
               {s.leak && (
-                <div className="flex items-center gap-3 h-9 sm:h-10">
+                <div className="h-11 flex items-center justify-center">
                   <span
-                    className="relative block shrink-0"
-                    style={{ width: "18px" }}
-                    aria-hidden="true"
-                  >
-                    {started &&
-                      !sealed &&
-                      [0, 1, 2].map((d) => (
-                        <span
-                          key={d}
-                          className="absolute left-1/2 top-0 w-1 h-1 rounded-full bg-red-400/70"
-                          style={{
-                            animation: "leak-drip 1.1s linear infinite",
-                            animationDelay: `${d * 0.36}s`,
-                          }}
-                        />
-                      ))}
-                  </span>
-                  <span
-                    className={`text-[11px] sm:text-xs transition-colors duration-500 ${
-                      sealed
-                        ? "text-text-muted line-through decoration-brand/50"
-                        : "text-red-400/90"
-                    }`}
-                  >
-                    {s.leak}
-                  </span>
-                  <span
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md border border-brand/30 bg-brand/10 text-[10px] font-semibold text-brand transition-all duration-500"
+                    className="inline-flex items-center gap-2 text-[11px] transition-all duration-500"
                     style={{
-                      opacity: sealed ? 1 : 0,
-                      transform: sealed ? "translateX(0)" : "translateX(-6px)",
-                      transitionDelay: sealed ? `${i * 180}ms` : "0ms",
+                      opacity: sealed ? 0 : 1,
+                      transform: sealed ? "scale(.96)" : "none",
+                      position: sealed ? "absolute" : "relative",
                     }}
                   >
-                    <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" strokeWidth={3} stroke="currentColor">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400/80" />
+                    <span className="text-red-400/80">{s.leak}</span>
+                  </span>
+                  <span
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-brand/30 bg-brand/10 text-[10px] font-semibold text-brand transition-all duration-500"
+                    style={{
+                      opacity: sealed ? 1 : 0,
+                      transform: sealed ? "none" : "scale(.94)",
+                      transitionDelay: sealed ? `${i * 140}ms` : "0ms",
+                      position: sealed ? "relative" : "absolute",
+                    }}
+                  >
+                    <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" strokeWidth={3.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                     {s.agent}
@@ -166,37 +90,31 @@ export function LeakyFunnel() {
                 </div>
               )}
 
-              {/* stage bar */}
-              <div className="flex items-center gap-3">
-                <span className="w-[18px] shrink-0" aria-hidden="true" />
-                <div
-                  className="h-9 sm:h-10 rounded-lg bg-gradient-to-r from-brand/30 to-brand/10 border border-brand/20 flex items-center px-3 overflow-hidden transition-[width] duration-700 ease-out"
-                  style={{ width: `${w}%` }}
-                >
-                  <span className="text-[11px] sm:text-xs text-text-secondary whitespace-nowrap">
-                    {s.label}
-                  </span>
-                </div>
+              <div
+                className="mx-auto h-11 rounded-lg border flex items-center justify-center transition-[width] duration-700 ease-out bg-surface border-border-default"
+                style={{ width: `${sealed ? s.sealed : s.leaky}%` }}
+              >
+                <span className="text-[11px] sm:text-xs text-text-secondary whitespace-nowrap px-3 truncate">
+                  {s.label}
+                </span>
               </div>
             </li>
-          );
-        })}
+          ))}
 
-        {/* signed case */}
-        <li className="flex items-center gap-3 pt-1">
-          <span className="w-[18px] shrink-0" aria-hidden="true" />
-          <div
-            className="h-10 sm:h-11 rounded-lg bg-gradient-to-r from-brand to-brand-light flex items-center px-3 transition-[width] duration-700 ease-out"
-            style={{ width: `${sealed ? 72 : 30}%` }}
-          >
-            <span className="text-[11px] sm:text-xs font-semibold text-surface whitespace-nowrap">
-              Signed case
-            </span>
-          </div>
-        </li>
-      </ol>
+          <li className="pt-4">
+            <div
+              className="mx-auto h-12 rounded-lg flex items-center justify-center transition-[width] duration-700 ease-out bg-gradient-to-r from-brand to-brand-light shadow-[0_8px_30px_rgba(200,162,78,0.18)]"
+              style={{ width: `${sealed ? 68 : 26}%` }}
+            >
+              <span className="text-xs font-semibold text-surface whitespace-nowrap px-3">
+                Signed case
+              </span>
+            </div>
+          </li>
+        </ol>
+      </div>
 
-      <p className="mt-8 text-sm text-text-muted leading-relaxed">
+      <p className="mt-10 text-sm text-text-muted leading-relaxed">
         Every leak is a case you already paid for. We seal them in order,
         starting with the cheapest one to fix.
       </p>
