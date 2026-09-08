@@ -4,8 +4,6 @@ import { FAQ } from "@/components/faq";
 import { Funnel } from "@/components/funnel";
 import { SmsDemo } from "@/components/sms-demo";
 import { LeakyFunnel } from "@/components/leaky-funnel";
-import { Vsl } from "@/components/vsl";
-import { Testimonials } from "@/components/testimonials";
 
 const icon = (path: string) => (
   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.6} stroke="currentColor">
@@ -34,7 +32,7 @@ const pillars = [
     agent: "the Revive agent",
     glyph: icons.recover,
     badge: "Where most firms start",
-    desc: "Revive works every old lead in your CRM, starting with the most recent. It texts and calls in your firm's name, in a voice you approve, and books the consult when someone is ready. Your intake team gets the conversation and signs the case.",
+    desc: "Revive works every old lead in your CRM, newest first. It texts and calls in your firm's name, in a voice you approve, and books the consult when someone is ready. Your team gets the conversation and signs the case.",
     note: "Pay per signed case. No setup fee. No new ad budget.",
   },
   {
@@ -57,7 +55,7 @@ const pillars = [
     agent: "the Fuel system",
     glyph: icons.scale,
     badge: "Includes Revive",
-    desc: "Once the leaks are sealed, we add new demand. We run Meta and Google campaigns through our own bilingual, phone-verified qualification funnel and send you exclusive leads. You pay per qualified lead. Revive is included, and every lead we send is worked by Respond, so you never pay for a lead that gets ignored.",
+    desc: "Once the leaks are sealed, we add new demand. Meta and Google campaigns run through our own bilingual, phone-verified funnel. Leads are exclusive to your firm. Revive is included, and Respond works every lead we send, so you never pay for one that gets ignored.",
   },
 ];
 
@@ -133,7 +131,7 @@ export default function Home() {
               </div>
             </div>
 
-            <Vsl />
+            <SmsDemo />
           </div>
 
           {/* Stats */}
@@ -152,7 +150,7 @@ export default function Home() {
       <LogoGrid />
 
       {/* ═══ THE PROBLEM ═══ */}
-      <section className="py-20 lg:py-28 bg-surface-raised">
+      <section className="py-14 lg:py-20 bg-surface-raised">
         <div className="mx-auto max-w-6xl px-6">
           <p className="reveal text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             The problem
@@ -178,7 +176,7 @@ export default function Home() {
       </section>
 
       {/* ═══ THE SYSTEM ═══ */}
-      <section id="the-system" className="py-20 lg:py-28">
+      <section id="the-system" className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             The system
@@ -187,8 +185,7 @@ export default function Home() {
             Four parts. One system.
           </h2>
           <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            Each part is an agent with one job. Most firms start with Revive,
-            because it costs nothing to find out what is in their database.
+            Each part is an agent with one job. Most firms start with Revive.
           </p>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -226,66 +223,11 @@ export default function Home() {
             all of it.
           </p>
 
-          {/* Revive in action */}
-          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center mt-16">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-                Revive in action
-              </p>
-              <h3 className="text-2xl sm:text-3xl font-bold text-text-primary mb-4">
-                This is what your old leads get
-              </h3>
-              <p className="text-text-secondary leading-relaxed mb-4">
-                A short text that reads like a person, not a campaign. Tap the
-                replies to see how it handles each one, including someone who
-                wants out.
-              </p>
-              <p className="text-sm text-text-muted leading-relaxed">
-                Names and firm are made up. The flow is the real one.
-              </p>
-            </div>
-            <SmsDemo />
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ EXCLUSIVE VS SHARED ═══ */}
-      <section className="py-20 lg:py-28 bg-surface-raised">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-                On the demand we generate
-              </p>
-              <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-                Exclusive traffic signs more cases
-              </h2>
-              <p className="text-text-secondary leading-relaxed mb-6">
-                Sell one lead to five firms and the prospect gets five calls.
-                They pick the first one. Four firms paid for nothing. Every
-                case we generate goes to one firm only.
-              </p>
-              <p className="text-text-secondary leading-relaxed">
-                That means days to follow up instead of seconds. More trust.
-                And a lower cost per signed case.
-              </p>
-            </div>
-            <div className="space-y-6">
-              <div className="card !border-brand/20">
-                <div className="text-3xl font-bold stat-value mb-1">10-20%</div>
-                <p className="text-sm text-text-secondary">Sign rate on exclusive leads</p>
-              </div>
-              <div className="card">
-                <div className="text-3xl font-bold text-text-muted mb-1">1-5%</div>
-                <p className="text-sm text-text-muted">Sign rate on shared leads (sold to 5+ firms)</p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
       {/* ═══ PROOF: REAL PERFORMANCE DATA ═══ */}
-      <section className="py-20 lg:py-28 bg-surface-raised">
+      <section className="py-14 lg:py-20 bg-surface-raised">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             Campaigns we run with our media buying partners
@@ -375,11 +317,8 @@ export default function Home() {
       </section>
 
 
-      {/* ═══ TESTIMONIALS ═══ */}
-      <Testimonials />
-
       {/* ═══ COMPARISON TABLE ═══ */}
-      <section className="py-20 lg:py-28">
+      <section className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             The difference
@@ -412,7 +351,7 @@ export default function Home() {
       </section>
 
       {/* ═══ WHO THIS IS FOR ═══ */}
-      <section className="py-20 lg:py-28">
+      <section className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             Fit check
@@ -470,7 +409,7 @@ export default function Home() {
       </section>
 
       {/* ═══ HOW IT WORKS ═══ */}
-      <section id="how-it-works" className="py-20 lg:py-28 bg-surface-raised">
+      <section id="how-it-works" className="py-14 lg:py-20 bg-surface-raised">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             How it works
@@ -492,7 +431,7 @@ export default function Home() {
       </section>
 
       {/* ═══ REPORTING / VISIBILITY ═══ */}
-      <section id="reporting" className="py-20 lg:py-28">
+      <section id="reporting" className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             Reporting
@@ -510,7 +449,7 @@ export default function Home() {
       </section>
 
       {/* ═══ PRICING ═══ */}
-      <section id="pricing" className="py-20 lg:py-28 bg-surface-raised">
+      <section id="pricing" className="py-14 lg:py-20 bg-surface-raised">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Pricing</p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
@@ -607,7 +546,7 @@ export default function Home() {
         </div>
       </div>
       {/* ═══ VERTICAL INTEGRATION ═══ */}
-      <section className="py-20 lg:py-28">
+      <section className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             Our infrastructure
@@ -767,7 +706,7 @@ export default function Home() {
       <FAQ />
 
       {/* ═══ PILOT FORM ═══ */}
-      <section id="pilot-form" className="py-20 lg:py-28">
+      <section id="pilot-form" className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-start">
             <div>

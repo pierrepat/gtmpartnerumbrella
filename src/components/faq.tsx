@@ -88,7 +88,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-20 lg:py-28 bg-surface-raised">
+    <section className="py-14 lg:py-20 bg-surface-raised">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
