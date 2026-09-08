@@ -25,10 +25,10 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">Services</p>
             <ul className="space-y-2.5">
               {[
-                { href: "/#the-system", label: "The System" },
-                { href: "/#pricing", label: "Pricing" },
+                { href: "/#recover", label: "Recover" },
+                { href: "/#scale", label: "Scale, pricing by state" },
                 { href: "/#reporting", label: "Reporting" },
-                { href: "/#pilot-form", label: "See what is in your database" },
+                { href: "/#pilot-form", label: "Book a call" },
               ].map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-sm text-text-secondary hover:text-text-primary transition-colors">

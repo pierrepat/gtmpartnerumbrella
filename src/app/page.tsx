@@ -3,88 +3,17 @@ import { FAQ } from "@/components/faq";
 import { Funnel } from "@/components/funnel";
 import { SmsDemo } from "@/components/sms-demo";
 import { LeakyFunnel } from "@/components/leaky-funnel";
+import { TerritoryMap } from "@/components/territory-map";
+import { TERRITORIES } from "@/lib/territories";
 
-const icon = (path: string) => (
-  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={1.6} stroke="currentColor">
-    <path strokeLinecap="round" strokeLinejoin="round" d={path} />
-  </svg>
-);
-
-const icons = {
-  recover: icon("M16.023 9.348h4.992V4.356M2.985 19.644v-4.992h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"),
-  capture: icon("M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"),
-  convert: icon("M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"),
-  scale: icon("M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"),
-};
+const openStates = TERRITORIES.filter((t) => t.open).length;
+const lowestCpl = Math.min(...TERRITORIES.filter((t) => t.open).map((t) => t.cpl));
 
 const heroStats = [
   { value: "Pay per signed case", label: "Recover pricing" },
+  { value: `From $${lowestCpl} a lead`, label: "Scale pricing, varies by state" },
+  { value: `${openStates} states`, label: "Open for Scale right now" },
   { value: "Under 60 seconds", label: "Response to every new lead" },
-  { value: "$5M+ a month", label: "Ad spend run with our media buying partners" },
-  { value: "$15M+", label: "Pipeline generated for 50+ B2B companies" },
-];
-
-const pillars = [
-  {
-    num: "01",
-    name: "Recover",
-    agent: "the Revive agent",
-    glyph: icons.recover,
-    badge: "Where most firms start",
-    desc: "Revive works every old lead in your CRM, newest first. It texts and calls in your firm's name, in a voice you approve, and books the consult when someone is ready. Your team gets the conversation and signs the case.",
-    note: "Pay per signed case. No setup fee. No new ad budget.",
-  },
-  {
-    num: "02",
-    name: "Capture",
-    agent: "the Catch agent",
-    glyph: icons.capture,
-    desc: "Catch recovers the people who reached out and slipped away: dropped forms, missed calls, visitors who left without calling. It does not touch your SEO or your ad vendors.",
-  },
-  {
-    num: "03",
-    name: "Convert",
-    agent: "the Respond agent",
-    glyph: icons.convert,
-    desc: "Respond answers every new lead in under a minute, day or night, and follows up for five days if they go quiet. The first firm to respond usually signs the case. That firm is now you.",
-  },
-  {
-    num: "04",
-    name: "Scale",
-    agent: "the Fuel system",
-    glyph: icons.scale,
-    badge: "Includes Revive",
-    desc: "Once the leaks are sealed, we add new demand. Meta and Google campaigns run through our own bilingual, phone-verified funnel. Leads are exclusive to your firm. Revive is included, and Respond works every lead we send, so you never pay for one that gets ignored.",
-  },
-];
-
-const comparisonRows = [
-  { feature: "Your intake team", them: "Left to chase alone", us: "Backed by agents that never stop" },
-  { feature: "Scope", them: "Leads only", us: "Your whole case system" },
-  { feature: "Your old leads", them: "Not their problem", us: "Revive works them again" },
-  { feature: "Speed to lead", them: "You handle it", us: "Respond answers in seconds" },
-  { feature: "Visibility", them: "Lead counts", us: "Click to signed case" },
-  { feature: "Ad spend", them: "You fund it", us: "We fund it" },
-  { feature: "You pay for", them: "Leads", us: "Signed cases" },
-  { feature: "Relationship", them: "Vendor", us: "Partner on every source" },
-];
-
-const steps = [
-  {
-    num: "01",
-    title: "We map where cases leak",
-    desc: "We look at your traffic, your old leads, how fast intake answers, and what happens after a consult is booked. You see where cases are being lost.",
-  },
-  {
-    num: "02",
-    title: "We start with Revive",
-    desc: "Revive works the leads already in your CRM. It screens them against your rules and books consults. No new ad budget. You pay when a case signs.",
-  },
-  {
-    num: "03",
-    title: "We seal the next leak",
-    desc: "Then Catch, then Respond, then new demand. We work in the order of what is costing you the most.",
-  },
 ];
 
 const disqualifiers = [
@@ -96,45 +25,56 @@ const disqualifiers = [
   "Accident 60+ days ago with no treatment",
 ];
 
+const steps = [
+  {
+    num: "01",
+    title: "We look at what you already have",
+    desc: "How many old leads are in your CRM, where your new ones come from, and how fast intake answers. You see where cases are being lost.",
+  },
+  {
+    num: "02",
+    title: "We start with Recover",
+    desc: "It costs you nothing to find out what is in your database. We work those leads and you pay only when a case signs.",
+  },
+  {
+    num: "03",
+    title: "We turn on Scale when you want volume",
+    desc: "Exclusive leads in your state at a fixed price per lead. Recover keeps running underneath it, included.",
+  },
+];
+
 export default function Home() {
   return (
     <>
       {/* ═══ HERO ═══ */}
-      <section className="relative pt-32 pb-16 lg:pt-40 lg:pb-20 overflow-hidden">
+      <section className="relative pt-32 pb-14 lg:pt-40 lg:pb-20 overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative mx-auto max-w-6xl px-6">
-          <div className="grid lg:grid-cols-[1.05fr_1fr] gap-12 lg:gap-16 items-center">
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-6">
-                AI Growth Partner for Personal Injury Firms
-              </p>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight leading-[1.1] text-text-primary">
-                We turn the leads you already have into{" "}
-                <span className="text-gradient">signed cases.</span>
-              </h1>
-              <p className="mt-5 text-xl text-text-secondary font-medium">
-                Then we go get you more.
-              </p>
-              <p className="mt-5 text-base text-text-secondary leading-relaxed max-w-xl">
-                AI agents that work your old leads, answer new ones in seconds,
-                and follow up until the case is signed. You pay per signed case.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a href="#pilot-form" className="btn-primary">
-                  See what is in your database &rarr;
-                </a>
-                <a href="#how-it-works" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
-                  See how it works
-                </a>
-              </div>
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-6">
+              AI Growth Partner for Personal Injury Firms
+            </p>
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight leading-[1.1] text-text-primary">
+              Two ways to get more{" "}
+              <span className="text-gradient">signed cases.</span>
+            </h1>
+            <p className="mt-6 text-lg text-text-secondary leading-relaxed max-w-2xl">
+              Recover the leads you already paid for. Or buy exclusive new ones
+              in your state at a fixed price. Take Scale and Recover comes with
+              it, at no extra cost.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <a href="#pilot-form" className="btn-primary">
+                Book a call &rarr;
+              </a>
+              <a href="#scale" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
+                See pricing in your state
+              </a>
             </div>
-
-            <SmsDemo />
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mt-16 lg:mt-20 pt-10 border-t border-border-subtle">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mt-14 pt-10 border-t border-border-subtle">
             {heroStats.map((s) => (
               <div key={s.label}>
                 <div className="text-lg sm:text-xl font-bold text-brand leading-snug">{s.value}</div>
@@ -165,7 +105,7 @@ export default function Home() {
             morning. A lead from four months ago is not called at all. You
             already paid for every one of them.
           </p>
-          <p className="text-text-primary font-medium leading-relaxed max-w-2xl mb-14">
+          <p className="text-text-primary font-medium leading-relaxed max-w-2xl mb-12">
             We do not replace your intake team. We give them teammates that
             never get tired.
           </p>
@@ -174,54 +114,155 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ THE SYSTEM ═══ */}
-      <section id="the-system" className="py-14 lg:py-20">
+      {/* ═══ THE TWO OFFERS ═══ */}
+      <section id="offers" className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            The system
+            What we do
           </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-            Four parts. One system.
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
+            Two offers. Pick either one.
           </h2>
-          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            Each part is an agent with one job. Most firms start with Revive.
-          </p>
 
           <div className="grid md:grid-cols-2 gap-6">
-            {pillars.map((p) => (
-              <div key={p.name} className="card">
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className="flex items-center gap-3">
-                    <span className="w-9 h-9 rounded-lg bg-brand/10 border border-brand/20 flex items-center justify-center text-brand shrink-0">
-                      {p.glyph}
-                    </span>
-                    <span className="text-2xl font-bold stat-value">{p.num}</span>
-                  </div>
-                  {p.badge && (
-                    <span className="px-2.5 py-1 rounded-full bg-brand/10 border border-brand/25 text-[10px] font-semibold uppercase tracking-wider text-brand">
-                      {p.badge}
-                    </span>
-                  )}
-                </div>
-                <h3 className="text-lg font-semibold text-text-primary mb-1">
-                  {p.name}, <span className="text-brand font-medium">{p.agent}</span>
-                </h3>
-                <p className="text-sm text-text-secondary leading-relaxed mt-3">{p.desc}</p>
-                {p.note && (
-                  <div className="mt-4 pt-4 border-t border-border-subtle">
-                    <p className="text-xs text-text-muted leading-relaxed">{p.note}</p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+            {/* Recover */}
+            <div className="card !border-brand/25 flex flex-col">
+              <span className="self-start px-2.5 py-1 rounded-full bg-brand/10 border border-brand/25 text-[10px] font-semibold uppercase tracking-wider text-brand mb-5">
+                Start here
+              </span>
+              <h3 className="text-2xl font-bold text-text-primary mb-2">Recover</h3>
+              <p className="text-sm text-brand font-medium mb-4">
+                Turn your dead database into signed cases.
+              </p>
+              <p className="text-sm text-text-secondary leading-relaxed mb-6">
+                We work every old lead in your CRM with AI text and calls, in
+                your firm&rsquo;s name. The ones still worth having get booked
+                straight into your intake team&rsquo;s calendar.
+              </p>
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {[
+                  "You pay per signed case",
+                  "No setup fee, no software fee, no retainer",
+                  "No new ad budget",
+                  "Works on any database, any size",
+                ].map((i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
+                    <span className="text-sm text-text-secondary">{i}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#recover" className="btn-primary w-full justify-center">
+                How Recover works
+              </a>
+            </div>
 
-          <p className="text-text-secondary leading-relaxed max-w-3xl mt-12">
-            Start with Revive. Add Respond when you are ready. Scale when the
-            leaks are sealed. Or take the full suite and have one partner for
-            all of it.
+            {/* Scale */}
+            <div className="card flex flex-col">
+              <span className="self-start px-2.5 py-1 rounded-full bg-surface-overlay border border-border-default text-[10px] font-semibold uppercase tracking-wider text-text-secondary mb-5">
+                Recover included
+              </span>
+              <h3 className="text-2xl font-bold text-text-primary mb-2">Scale</h3>
+              <p className="text-sm text-brand font-medium mb-4">
+                Exclusive new leads in your state, priced per lead.
+              </p>
+              <p className="text-sm text-text-secondary leading-relaxed mb-6">
+                We run the ads, own the funnel, and qualify every lead before it
+                reaches you. You pay a fixed price per lead, and it is yours
+                alone. We hold one firm per state.
+              </p>
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {[
+                  `From $${lowestCpl} per lead, set by your state`,
+                  "Exclusive to your firm in your market",
+                  "We fund the ad spend",
+                  "Recover included at no extra cost",
+                ].map((i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="text-brand mt-0.5 shrink-0">&#10003;</span>
+                    <span className="text-sm text-text-secondary">{i}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#scale" className="btn-secondary w-full justify-center">
+                See pricing in your state
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ RECOVER ═══ */}
+      <section id="recover" className="py-14 lg:py-20 bg-surface-raised">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <div>
+              <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+                Offer one: Recover
+              </p>
+              <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-5">
+                This is what your old leads get
+              </h2>
+              <p className="text-text-secondary leading-relaxed mb-5">
+                A short text that reads like a person, not a campaign. It
+                answers questions, checks a couple of details against your
+                rules, and books the consult. Anyone who wants out is removed
+                for good.
+              </p>
+              <p className="text-text-secondary leading-relaxed mb-6">
+                We check accident dates against your state&rsquo;s statute of
+                limitations first, so we only chase cases you can still sign.
+              </p>
+              <p className="text-sm text-text-muted leading-relaxed">
+                Names and firm are made up. The flow is the real one.
+              </p>
+            </div>
+            <SmsDemo />
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ SCALE ═══ */}
+      <section id="scale" className="py-14 lg:py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            Offer two: Scale
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-5">
+            Find your state. See the price.
+          </h2>
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-10">
+            Every lead is exclusive to your firm. The price is fixed by state
+            and does not move with the auction. Greyed out states already have
+            a partner firm, so we are not selling there.
           </p>
 
+          <TerritoryMap />
+
+          <details className="mt-8 rounded-xl border border-border-subtle bg-surface-raised overflow-hidden group">
+            <summary className="cursor-pointer list-none px-5 py-3.5 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors flex items-center justify-between">
+              <span>Terms and what we replace for free</span>
+              <span className="text-text-muted text-lg group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div className="px-5 pb-5 pt-1 border-t border-border-subtle grid md:grid-cols-2 gap-8">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4 mt-3">Terms</p>
+                <ul className="space-y-2.5 text-sm text-text-secondary">
+                  {["Price is fixed by state", "Exclusive to one firm per market", "Pilot cap on the first batch", "50% prepayment per batch", "7-day dispute window", "20% replacement cap", "Month to month"].map((t) => (
+                    <li key={t} className="flex gap-3"><span className="text-brand">&#x2022;</span> {t}</li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4 mt-3">Replaced free</p>
+                <ul className="space-y-2.5 text-sm text-text-secondary">
+                  {disqualifiers.map((d) => (
+                    <li key={d} className="flex gap-3"><span className="text-brand">&#x2022;</span> {d}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </details>
         </div>
       </section>
 
@@ -229,14 +270,14 @@ export default function Home() {
       <section className="py-14 lg:py-20 bg-surface-raised">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Campaigns we run with our media buying partners
+            Proof behind Scale
           </p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-4">
             Real campaigns. Real signed cases.
           </h2>
           <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            These are Scale engagements. Screenshots are from live accounts,
-            shared with permission.
+            Campaigns we run with our media buying partners. Screenshots are
+            from live accounts, shared with permission.
           </p>
 
           {/* Google Ads Dashboard */}
@@ -316,239 +357,11 @@ export default function Home() {
       </section>
 
 
-      {/* ═══ COMPARISON TABLE ═══ */}
-      <section className="py-14 lg:py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            The difference
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
-            A lead vendor vs. a growth partner
-          </h2>
-
-          <div className="overflow-x-auto">
-            <table className="w-full max-w-4xl text-sm">
-              <thead>
-                <tr className="border-b border-border-default">
-                  <th className="text-left py-4 pr-8 font-medium text-text-muted text-xs uppercase tracking-wider w-1/3"></th>
-                  <th className="text-left py-4 pr-8 font-medium text-red-400/70 text-xs uppercase tracking-wider w-1/3">Lead Vendors</th>
-                  <th className="text-left py-4 font-medium text-brand text-xs uppercase tracking-wider w-1/3">GTM Partner</th>
-                </tr>
-              </thead>
-              <tbody>
-                {comparisonRows.map((row) => (
-                  <tr key={row.feature} className="border-b border-border-subtle">
-                    <td className="py-4 pr-8 font-medium text-text-primary">{row.feature}</td>
-                    <td className="py-4 pr-8 text-text-muted">{row.them}</td>
-                    <td className="py-4 font-medium text-text-primary">{row.us}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ WHO THIS IS FOR ═══ */}
-      <section className="py-14 lg:py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Fit check
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
-            Is this right for your firm?
-          </h2>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="card !border-brand/20">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-brand/10 border border-brand/20 mb-6">
-                <span className="text-xs font-semibold text-brand uppercase tracking-wider">Built for</span>
-              </div>
-              <ul className="space-y-4">
-                {[
-                  "Firms with old leads sitting in a CRM",
-                  "Firms with an intake team that is already busy",
-                  "Firms that want one partner, not five vendors",
-                  "Firms that want to know what a signed case costs",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-brand mt-0.5">&#10003;</span>
-                    <span className="text-sm text-text-secondary">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href="#pilot-form" className="btn-primary w-full justify-center mt-8">
-                See what is in your database &rarr;
-              </a>
-            </div>
-
-            <div className="card">
-              <div className="inline-block px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 mb-6">
-                <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Not for</span>
-              </div>
-              <ul className="space-y-4">
-                {[
-                  "Firms shopping for the cheapest leads",
-                  "Firms with no intake process or CRM",
-                  "Firms that cannot call a booked consult",
-                  "Mass tort or class action campaigns",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-red-400 mt-0.5">&#10005;</span>
-                    <span className="text-sm text-text-secondary">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <a href="#pilot-form" className="btn-secondary w-full justify-center mt-8">
-                Not sure? Let&rsquo;s talk &rarr;
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ HOW IT WORKS ═══ */}
-      <section id="how-it-works" className="py-14 lg:py-20 bg-surface-raised">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            How it works
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-16">
-            How a partnership starts
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {steps.map((step) => (
-              <div key={step.num} className="card group">
-                <span className="text-3xl font-bold stat-value mb-4 block">{step.num}</span>
-                <h3 className="text-lg font-semibold text-text-primary mb-3">{step.title}</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ REPORTING / VISIBILITY ═══ */}
-      <section id="reporting" className="py-14 lg:py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Reporting
-          </p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-            See every lead become a signed case.
-          </h2>
-          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            You get a live view of every stage, from traffic to signed case. No
-            black box. You always know what a signed case really cost.
-          </p>
-
-          <Funnel />
-        </div>
-      </section>
-
-      {/* ═══ PRICING ═══ */}
-      <section id="pricing" className="py-14 lg:py-20 bg-surface-raised">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Pricing</p>
-          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
-            You pay for outcomes.
-          </h2>
-          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
-            Start where it costs you the least to find out if this works. Most
-            firms start with Revive.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="card !border-brand/25 flex flex-col">
-              <span className="inline-block self-start px-2.5 py-1 rounded-full bg-brand/10 border border-brand/25 text-[10px] font-semibold uppercase tracking-wider text-brand mb-5">
-                Where most firms start
-              </span>
-              <h3 className="text-xl font-bold text-text-primary mb-1">Revive</h3>
-              <p className="text-xs text-text-muted uppercase tracking-wider mb-4">Recover</p>
-              <p className="text-sm text-text-secondary leading-relaxed flex-1">
-                Pay per signed case. No setup fee. No software fee. No retainer.
-                No new ad budget. You confirm every case before we invoice.
-              </p>
-              <a href="#pilot-form" className="btn-primary w-full justify-center mt-6">
-                See what is in your database
-              </a>
-            </div>
-
-            <div className="card flex flex-col">
-              <h3 className="text-xl font-bold text-text-primary mb-1 mt-[38px]">Respond + Catch</h3>
-              <p className="text-xs text-text-muted uppercase tracking-wider mb-4">Convert and Capture</p>
-              <p className="text-sm text-text-secondary leading-relaxed flex-1">
-                Flat monthly fee once Revive has proven itself. Cancel any time.
-              </p>
-              <a href="/contact" className="btn-secondary w-full justify-center mt-6">
-                Talk to us
-              </a>
-            </div>
-
-            <div className="card flex flex-col">
-              <h3 className="text-xl font-bold text-text-primary mb-1 mt-[38px]">Fuel</h3>
-              <p className="text-xs text-text-muted uppercase tracking-wider mb-4">Scale</p>
-              <p className="text-sm text-text-secondary leading-relaxed flex-1">
-                Pay per qualified lead. Exclusive to your firm in your market.
-                Revive included. Every lead worked by Respond.
-              </p>
-              <a href="/contact" className="btn-secondary w-full justify-center mt-6">
-                Talk to us
-              </a>
-            </div>
-          </div>
-
-          <details className="mt-8 rounded-xl border border-border-subtle bg-surface overflow-hidden group">
-            <summary className="cursor-pointer list-none px-6 py-4 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors flex items-center justify-between">
-              <span>Fuel terms and disqualifiers</span>
-              <span className="text-text-muted text-lg group-open:rotate-45 transition-transform">+</span>
-            </summary>
-            <div className="px-6 pb-6 pt-2 border-t border-border-subtle grid md:grid-cols-2 gap-8">
-              <div>
-                <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Terms</p>
-                <ul className="space-y-2.5 text-sm text-text-secondary">
-                  {["CPL varies by state and case type", "Pilot cap on first engagement", "50% prepayment per batch", "7-day dispute window", "20% replacement cap", "Month to month"].map((t) => (
-                    <li key={t} className="flex gap-3"><span className="text-brand">&#x2022;</span> {t}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Disqualifiers (free replacement)</p>
-                <ul className="space-y-2.5 text-sm text-text-secondary">
-                  {disqualifiers.map((d) => (
-                    <li key={d} className="flex gap-3"><span className="text-brand">&#x2022;</span> {d}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </details>
-
-          <p className="text-sm text-text-muted mt-10">
-            From the team that generated{" "}
-            <span className="text-text-secondary font-semibold">$15M+ in pipeline</span>{" "}
-            for{" "}
-            <span className="text-text-secondary font-semibold">50+ B2B companies</span>.{" "}
-            <a href="/outbound" className="text-brand hover:text-brand-light transition-colors">
-              See case studies &rarr;
-            </a>
-          </p>
-        </div>
-      </section>
-
-      {/* ═══ FOR FIRMS READY TO SCALE ═══ */}
-      <div className="pt-20 lg:pt-28">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase">
-            For firms ready to Scale
-          </p>
-        </div>
-      </div>
       {/* ═══ VERTICAL INTEGRATION ═══ */}
       <section className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
-            Our infrastructure
+            The engine behind Scale
           </p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
             We build the stack. We don&rsquo;t resell one.
@@ -701,6 +514,104 @@ export default function Home() {
       </section>
 
 
+      {/* ═══ WHO THIS IS FOR ═══ */}
+      <section className="py-14 lg:py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            Fit check
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-12">
+            Is this right for your firm?
+          </h2>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="card !border-brand/20">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-brand/10 border border-brand/20 mb-6">
+                <span className="text-xs font-semibold text-brand uppercase tracking-wider">Built for</span>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "Firms with old leads sitting in a CRM",
+                  "Firms with an intake team that is already busy",
+                  "Firms that want one partner, not five vendors",
+                  "Firms that want to know what a signed case costs",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="text-brand mt-0.5">&#10003;</span>
+                    <span className="text-sm text-text-secondary">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#pilot-form" className="btn-primary w-full justify-center mt-8">
+                Book a call &rarr;
+              </a>
+            </div>
+
+            <div className="card">
+              <div className="inline-block px-4 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 mb-6">
+                <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">Not for</span>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "Firms shopping for the cheapest leads",
+                  "Firms with no intake process or CRM",
+                  "Firms that cannot call a booked consult",
+                  "Mass tort or class action campaigns",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="text-red-400 mt-0.5">&#10005;</span>
+                    <span className="text-sm text-text-secondary">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <a href="#pilot-form" className="btn-secondary w-full justify-center mt-8">
+                Not sure? Let&rsquo;s talk &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ HOW IT WORKS ═══ */}
+      <section id="how-it-works" className="py-14 lg:py-20 bg-surface-raised">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            How it works
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-16">
+            How a partnership starts
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {steps.map((step) => (
+              <div key={step.num} className="card group">
+                <span className="text-3xl font-bold stat-value mb-4 block">{step.num}</span>
+                <h3 className="text-lg font-semibold text-text-primary mb-3">{step.title}</h3>
+                <p className="text-sm text-text-secondary leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ REPORTING / VISIBILITY ═══ */}
+      <section id="reporting" className="py-14 lg:py-20">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
+            Reporting
+          </p>
+          <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-6">
+            See every lead become a signed case.
+          </h2>
+          <p className="text-text-secondary leading-relaxed max-w-2xl mb-12">
+            You get a live view of every stage, from traffic to signed case. No
+            black box. You always know what a signed case really cost.
+          </p>
+
+          <Funnel />
+        </div>
+      </section>
+
       {/* ═══ FAQ ═══ */}
       <FAQ />
 
@@ -711,7 +622,7 @@ export default function Home() {
             <div>
               <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Get started</p>
               <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">
-                See what is in your database
+                Book a call
               </h2>
               <p className="text-text-secondary leading-relaxed mb-8">
                 Fifteen minutes on the phone tells us whether there is money
@@ -796,7 +707,7 @@ export default function Home() {
             Start with Revive. No new ad budget.
           </p>
           <a href="#pilot-form" className="btn-primary">
-            See what is in your database &rarr;
+            Book a call &rarr;
           </a>
         </div>
       </section>

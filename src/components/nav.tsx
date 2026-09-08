@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const links = [
-  { href: "/#the-system", label: "The System" },
+  { href: "/#recover", label: "Recover" },
+  { href: "/#scale", label: "Scale" },
   { href: "/#how-it-works", label: "How It Works" },
-  { href: "/#pricing", label: "Pricing" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -24,7 +24,7 @@ export function Nav() {
 
   // CTA destination depends on current page
   const ctaHref = pathname === "/" ? "#pilot-form" : "/contact";
-  const ctaLabel = "See what is in your database";
+  const ctaLabel = "Book a call";
 
   return (
     <nav
