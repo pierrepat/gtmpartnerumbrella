@@ -3,12 +3,24 @@
 interface Logo {
   name: string;
   favicon?: string;
+  /** wide wordmark shown instead of a square icon; forced white for the dark surface */
+  wordmark?: string;
 }
 
-/* TODO(Pierre): add more law firm logos here as they are cleared to be named.
-   Entries without a name render nothing, so the row stays clean. */
-const lawFirms: Logo[] = [
+/* One "Partners" row: the firms and agencies we work with, plus the CRMs we
+   plug into. TODO(Pierre): Walker Advertising publish no clean logo asset, so
+   they render as a text chip. Drop a file in /public/logos and add `wordmark`
+   or `favicon` to upgrade it. */
+const partners: Logo[] = [
   { name: "DK Law Group", favicon: "/logos/dk-law.svg" },
+  { name: "Kass & Moses", wordmark: "/logos/kass-moses.svg" },
+  { name: "Walker Advertising" },
+  { name: "Litify", favicon: "/logos/litify.png" },
+  { name: "Clio", favicon: "/logos/clio.png" },
+  { name: "Filevine", favicon: "/logos/filevine.png" },
+  { name: "Salesforce", favicon: "/logos/salesforce.png" },
+  { name: "HubSpot", favicon: "/logos/hubspot.png" },
+  { name: "GoHighLevel", favicon: "/logos/gohighlevel.png" },
 ];
 
 const b2bTeams: Logo[] = [
@@ -36,6 +48,17 @@ const crms: Logo[] = [
 
 function Chip({ logo }: { logo: Logo }) {
   if (!logo.name) return null;
+  if (logo.wordmark) {
+    return (
+      <div className="flex items-center px-3.5 py-2 rounded-lg border border-border-subtle bg-surface-raised/50 hover:border-border-hover transition-colors">
+        <img
+          src={logo.wordmark}
+          alt={logo.name}
+          className="h-[18px] w-auto opacity-70 [filter:brightness(0)_invert(1)]"
+        />
+      </div>
+    );
+  }
   return (
     <div className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-border-subtle bg-surface-raised/50 hover:border-border-hover transition-colors">
       {logo.favicon && (
@@ -112,9 +135,8 @@ export function LogoGrid({ title }: { title?: string }) {
   return (
     <section className="py-12">
       <div className="mx-auto max-w-5xl px-6">
-        <Row label="Law firms we work with" items={lawFirms} />
+        <Row label="Partners" items={partners} />
         <Row label="Teams we have built AI and outbound systems for" items={b2bTeams} />
-        <Row label="Works with your CRM" items={crms} />
       </div>
     </section>
   );

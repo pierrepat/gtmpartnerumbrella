@@ -7,12 +7,11 @@ import { TerritoryMap } from "@/components/territory-map";
 import { TERRITORIES } from "@/lib/territories";
 
 const openStates = TERRITORIES.filter((t) => t.open).length;
-const lowestCpl = Math.min(...TERRITORIES.filter((t) => t.open).map((t) => t.cpl));
 
 const heroStats = [
-  { value: "Pay per signed case", label: "Recover pricing" },
-  { value: `From $${lowestCpl} a lead`, label: "Scale pricing, varies by state" },
-  { value: `${openStates} states`, label: "Open for Scale right now" },
+  { value: "Pay per signed case", label: "How Recover is priced" },
+  { value: "One firm per state", label: "Scale leads are never shared" },
+  { value: `${openStates} states`, label: "Still open for Scale" },
   { value: "Under 60 seconds", label: "Response to every new lead" },
 ];
 
@@ -39,7 +38,7 @@ const steps = [
   {
     num: "03",
     title: "We turn on Scale when you want volume",
-    desc: "Exclusive leads in your state at a fixed price per lead. Recover keeps running underneath it, included.",
+    desc: "Exclusive leads in your state, never shared with another firm. Recover keeps running underneath it, included.",
   },
 ];
 
@@ -60,16 +59,16 @@ export default function Home() {
               <span className="text-gradient">signed cases.</span>
             </h1>
             <p className="mt-6 text-lg text-text-secondary leading-relaxed max-w-2xl">
-              Recover the leads you already paid for. Or buy exclusive new ones
-              in your state at a fixed price. Take Scale and Recover comes with
-              it, at no extra cost.
+              Recover the leads you already paid for. Or take exclusive new
+              ones in your state, yours alone. Take Scale and Recover comes
+              with it, at no extra cost.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a href="#pilot-form" className="btn-primary">
                 Book a call &rarr;
               </a>
               <a href="#scale" className="text-sm font-medium text-text-secondary hover:text-text-primary transition-colors">
-                See pricing in your state
+                Check your state
               </a>
             </div>
           </div>
@@ -141,7 +140,7 @@ export default function Home() {
               </p>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {[
-                  "You pay per signed case",
+                  "You pay when a case signs, and not before",
                   "No setup fee, no software fee, no retainer",
                   "No new ad budget",
                   "Works on any database, any size",
@@ -164,17 +163,17 @@ export default function Home() {
               </span>
               <h3 className="text-2xl font-bold text-text-primary mb-2">Scale</h3>
               <p className="text-sm text-brand font-medium mb-4">
-                Exclusive new leads in your state, priced per lead.
+                Exclusive new leads in your state, yours alone.
               </p>
               <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                We run the ads, own the funnel, and qualify every lead before it
-                reaches you. You pay a fixed price per lead, and it is yours
-                alone. We hold one firm per state.
+                We run the ads, own the funnel, and qualify every lead before
+                it reaches you. We hold one firm per state, and that
+                exclusivity is written into the agreement.
               </p>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {[
-                  `From $${lowestCpl} per lead, set by your state`,
-                  "Exclusive to your firm in your market",
+                  "Never resold or re-routed, in writing",
+                  "One firm per state, and we hold the line",
                   "We fund the ad spend",
                   "Recover included at no extra cost",
                 ].map((i) => (
@@ -185,7 +184,7 @@ export default function Home() {
                 ))}
               </ul>
               <a href="#scale" className="btn-secondary w-full justify-center">
-                See pricing in your state
+                Check your state
               </a>
             </div>
           </div>
@@ -212,6 +211,8 @@ export default function Home() {
               <p className="text-text-secondary leading-relaxed mb-6">
                 We check accident dates against your state&rsquo;s statute of
                 limitations first, so we only chase cases you can still sign.
+                On a four month old database that matters more than it does on
+                a fresh lead.
               </p>
               <p className="text-sm text-text-muted leading-relaxed">
                 Names and firm are made up. The flow is the real one.
@@ -229,12 +230,13 @@ export default function Home() {
             Offer two: Scale
           </p>
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary mb-5">
-            Find your state. See the price.
+            Is your state still open?
           </h2>
           <p className="text-text-secondary leading-relaxed max-w-2xl mb-10">
-            Every lead is exclusive to your firm. The price is fixed by state
-            and does not move with the auction. Greyed out states already have
-            a partner firm, so we are not selling there.
+            Every lead we send is exclusive to your firm. We do not resell it
+            and we do not re-route it, and that is in the agreement, in
+            writing. Greyed out states already have a partner firm, so we are
+            not taking another one there.
           </p>
 
           <TerritoryMap />
@@ -248,7 +250,7 @@ export default function Home() {
               <div>
                 <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4 mt-3">Terms</p>
                 <ul className="space-y-2.5 text-sm text-text-secondary">
-                  {["Price is fixed by state", "Exclusive to one firm per market", "Pilot cap on the first batch", "50% prepayment per batch", "7-day dispute window", "20% replacement cap", "Month to month"].map((t) => (
+                  {["Exclusive to one firm per state, in writing", "Never resold or re-routed", "Pilot cap on the first batch", "50% prepayment per batch", "7-day dispute window", "20% replacement cap", "Month to month"].map((t) => (
                     <li key={t} className="flex gap-3"><span className="text-brand">&#x2022;</span> {t}</li>
                   ))}
                 </ul>
@@ -341,9 +343,7 @@ export default function Home() {
             <div className="flex flex-wrap gap-4 sm:gap-6 mb-6">
               {[
                 { value: "7", label: "Signed cases" },
-                { value: "$2,519", label: "Cost per signed case" },
                 { value: "318", label: "Leads (1 week)" },
-                { value: "$55", label: "Cost per lead" },
               ].map((s) => (
                 <div key={s.label}>
                   <div className="text-xl font-bold stat-value">{s.value}</div>

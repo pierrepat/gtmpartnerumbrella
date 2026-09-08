@@ -3,17 +3,10 @@
 import { useMemo, useState } from "react";
 import {
   TERRITORIES,
-  TIERS,
-  TIER_COLOR,
   GRID_COLS,
   GRID_ROWS,
   type Territory,
 } from "@/lib/territories";
-
-const money = (n: number) => "$" + n.toLocaleString("en-US");
-
-/* dark ink on the light steps, light ink on the dark one */
-const inkFor = (cpl: number) => (cpl >= 275 ? "#0a0a12" : "#f0e7d2");
 
 export function TerritoryMap() {
   const [selected, setSelected] = useState<Territory | null>(null);
@@ -26,27 +19,18 @@ export function TerritoryMap() {
   return (
     <div>
       {/* legend */}
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mb-6">
-        <span className="text-[10px] uppercase tracking-[0.18em] text-text-muted">
-          Cost per lead
+      <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mb-6">
+        <span className="flex items-center gap-2">
+          <span className="w-3 h-3 rounded-[3px] bg-brand" />
+          <span className="text-xs text-text-secondary">Open</span>
         </span>
-        {TIERS.map((t) => (
-          <span key={t} className="flex items-center gap-2">
-            <span
-              className="w-3 h-3 rounded-[3px]"
-              style={{ background: TIER_COLOR[t] }}
-            />
-            <span className="text-xs text-text-secondary">{money(t)}</span>
-          </span>
-        ))}
         <span className="flex items-center gap-2">
           <span className="w-3 h-3 rounded-[3px] border border-border-default bg-surface-raised" />
-          <span className="text-xs text-text-muted">Not available</span>
+          <span className="text-xs text-text-muted">Taken by another firm</span>
         </span>
       </div>
 
       <div className="grid lg:grid-cols-[1fr_260px] gap-8 items-start">
-        {/* tile grid */}
         <div
           className="grid gap-[3px] sm:gap-1 w-full max-w-[600px]"
           style={{
@@ -67,22 +51,17 @@ export function TerritoryMap() {
                 onBlur={() => setHovered(null)}
                 aria-label={
                   t.open
-                    ? `${t.name}, ${money(t.cpl)} per lead`
-                    : `${t.name}, not available`
+                    ? `${t.name}, open`
+                    : `${t.name}, taken by another firm`
                 }
                 aria-pressed={isSel}
-                style={{
-                  gridColumnStart: t.c + 1,
-                  gridRowStart: t.r + 1,
-                  background: t.open ? TIER_COLOR[t.cpl] : "transparent",
-                  color: t.open ? inkFor(t.cpl) : undefined,
-                }}
+                style={{ gridColumnStart: t.c + 1, gridRowStart: t.r + 1 }}
                 className={`aspect-square rounded-[4px] sm:rounded-md flex items-center justify-center
                   text-[8px] sm:text-[11px] font-semibold tracking-tight transition-all
                   focus:outline-none focus-visible:ring-2 focus-visible:ring-brand
                   ${
                     t.open
-                      ? "hover:brightness-110"
+                      ? "bg-brand text-surface hover:brightness-110"
                       : "border border-border-default bg-surface-raised text-text-muted/50 hover:border-border-hover"
                   }
                   ${isSel ? "ring-2 ring-white/80 z-10" : ""}`}
@@ -93,42 +72,40 @@ export function TerritoryMap() {
           })}
         </div>
 
-        {/* detail */}
         <div className="card !p-5 min-h-[168px] flex flex-col justify-center lg:sticky lg:top-28">
           {shown ? (
             <>
               <p className="text-xs uppercase tracking-[0.16em] text-text-muted mb-2">
-                {shown.open ? "Available" : "Not available"}
+                {shown.open ? "Open" : "Taken"}
               </p>
               <p className="text-xl font-bold text-text-primary mb-4">
                 {shown.name}
               </p>
               {shown.open ? (
                 <>
-                  <p className="text-3xl font-bold stat-value leading-none">
-                    {money(shown.cpl)}
+                  <p className="text-sm text-text-secondary leading-relaxed">
+                    We can take one firm here. Every lead is yours alone, and
+                    that is written into the agreement.
                   </p>
-                  <p className="text-xs text-text-muted mt-1.5">
-                    per exclusive lead
-                  </p>
-                  <p className="text-xs text-text-secondary mt-4 pt-4 border-t border-border-subtle leading-relaxed">
-                    About {money(shown.retainer)} per signed case if you sign
-                    one in ten. Your rate decides the real number.
-                  </p>
+                  <a
+                    href="#pilot-form"
+                    className="btn-primary w-full justify-center mt-5 !py-2.5 text-xs"
+                  >
+                    Claim this state
+                  </a>
                 </>
               ) : (
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  We have an exclusivity deal with a firm here, so we are not
-                  taking new partners in this state. Recover is still open to
-                  you.
+                  We already have an exclusivity deal with a firm here, so we
+                  are not taking another. Recover is still open to you.
                 </p>
               )}
             </>
           ) : (
             <p className="text-sm text-text-muted leading-relaxed">
-              Tap your state to see the cost per lead.
+              Tap your state to check availability.
               <span className="block mt-3 text-text-secondary">
-                {open.length} states open. {closed.length} spoken for.
+                {open.length} states open. {closed.length} already taken.
               </span>
             </p>
           )}
@@ -143,37 +120,26 @@ export function TerritoryMap() {
             +
           </span>
         </summary>
-        <div className="px-5 pb-5 pt-1 border-t border-border-subtle overflow-x-auto">
-          <table className="w-full text-sm mt-3">
-            <thead>
-              <tr className="border-b border-border-subtle">
-                <th className="text-left py-2 pr-4 text-xs uppercase tracking-wider text-text-muted font-medium">
-                  State
-                </th>
-                <th className="text-left py-2 pr-4 text-xs uppercase tracking-wider text-text-muted font-medium">
-                  Cost per lead
-                </th>
-                <th className="text-left py-2 text-xs uppercase tracking-wider text-text-muted font-medium">
-                  Status
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {[...TERRITORIES]
-                .sort((a, b) => a.name.localeCompare(b.name))
-                .map((t) => (
-                  <tr key={t.ab} className="border-b border-border-subtle/60">
-                    <td className="py-2 pr-4 text-text-secondary">{t.name}</td>
-                    <td className="py-2 pr-4 text-text-primary font-medium">
-                      {t.open ? money(t.cpl) : "Not sold"}
-                    </td>
-                    <td className="py-2 text-text-muted">
-                      {t.open ? "Open" : "Exclusive to another firm"}
-                    </td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+        <div className="px-5 pb-5 pt-1 border-t border-border-subtle">
+          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-1.5 mt-3">
+            {[...TERRITORIES]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((t) => (
+                <div
+                  key={t.ab}
+                  className="flex items-center justify-between py-1.5 border-b border-border-subtle/60"
+                >
+                  <span className="text-sm text-text-secondary">{t.name}</span>
+                  <span
+                    className={`text-xs font-medium ${
+                      t.open ? "text-brand" : "text-text-muted"
+                    }`}
+                  >
+                    {t.open ? "Open" : "Taken"}
+                  </span>
+                </div>
+              ))}
+          </div>
         </div>
       </details>
     </div>

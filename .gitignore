@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# lead data (PII)
+meta_offline_conversions_*.csv
+meta_exclusion_audience_*.csv
+src/lib/*.csv
