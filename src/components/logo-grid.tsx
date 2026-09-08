@@ -5,11 +5,10 @@ interface Logo {
   favicon?: string;
 }
 
-/* TODO(Pierre): add logo files for firms 3 and 4, then add them here.
-   Entries without a name render nothing. */
+/* TODO(Pierre): add more law firm logos here as they are cleared to be named.
+   Entries without a name render nothing, so the row stays clean. */
 const lawFirms: Logo[] = [
   { name: "DK Law Group", favicon: "/logos/dk-law.svg" },
-  { name: "Kass & Moses" },
 ];
 
 const b2bTeams: Logo[] = [
