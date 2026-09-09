@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 
-const faqItems = [
+export type FaqItem = { question: string; answer: string };
+
+const defaultItems: FaqItem[] = [
   {
     question: "What exactly do you do?",
     answer:
@@ -60,22 +62,20 @@ const faqItems = [
   },
 ];
 
-// FAQ Schema for SEO
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
-
-export function FAQ() {
+export function FAQ({ items = defaultItems }: { items?: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const faqItems = items;
+
+  // FAQ Schema for SEO
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
 
   return (
     <section className="py-14 lg:py-20 bg-surface-raised">

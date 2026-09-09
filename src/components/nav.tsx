@@ -4,15 +4,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-const links = [
-  { href: "/#recover", label: "Recover" },
-  { href: "/#scale", label: "Scale" },
-  { href: "/#how-it-works", label: "How It Works" },
-  { href: "/contact", label: "Contact" },
-];
-
+// One CTA on the whole site. No nav links, so nothing competes with it.
 export function Nav() {
-  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
@@ -22,9 +15,7 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // CTA destination depends on current page
-  const ctaHref = pathname === "/" ? "#pilot-form" : "/contact";
-  const ctaLabel = "Book a call";
+  const onApply = pathname === "/apply";
 
   return (
     <nav
@@ -57,72 +48,13 @@ export function Nav() {
           </div>
         </Link>
 
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-6">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className={`text-sm font-medium transition-colors ${
-                pathname === l.href
-                  ? "text-text-primary"
-                  : "text-text-secondary hover:text-text-primary"
-              }`}
-            >
-              {l.label}
-            </Link>
-          ))}
-          <a href={ctaHref} className="btn-primary text-sm !py-2.5 !px-5">
-            {ctaLabel}
-          </a>
-        </div>
-
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 text-text-secondary hover:text-text-primary transition-colors"
-          aria-label="Toggle menu"
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2}
-            stroke="currentColor"
-          >
-            {open ? (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
-            )}
-          </svg>
-        </button>
+        {!onApply && (
+          <Link href="/apply" className="btn-primary text-xs sm:text-sm !py-2.5 !px-4 sm:!px-5">
+            <span className="sm:hidden">Book a Free Call</span>
+            <span className="hidden sm:inline">Book a Free Case Growth Call</span>
+          </Link>
+        )}
       </div>
-
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden bg-surface/95 backdrop-blur-md border-t border-border-subtle">
-          <div className="px-6 py-4 space-y-3">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="block text-sm font-medium text-text-secondary hover:text-text-primary"
-                onClick={() => setOpen(false)}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <a
-              href={ctaHref}
-              className="btn-primary text-sm !py-2.5 w-full justify-center"
-              onClick={() => setOpen(false)}
-            >
-              {ctaLabel}
-            </a>
-          </div>
-        </div>
-      )}
     </nav>
   );
 }

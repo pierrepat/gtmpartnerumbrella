@@ -18,17 +18,16 @@ export function Footer() {
               </div>
             </div>
             <p className="text-sm text-text-muted leading-relaxed">
-              The AI growth partner for personal injury firms.
+              The AI-native growth boutique for personal injury firms.
             </p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">Services</p>
             <ul className="space-y-2.5">
               {[
-                { href: "/#recover", label: "Recover" },
-                { href: "/#scale", label: "Scale, pricing by state" },
-                { href: "/#reporting", label: "Reporting" },
-                { href: "/#pilot-form", label: "Book a call" },
+                { href: "/system", label: "The System" },
+                { href: "/outbound", label: "Outbound & RevOps" },
+                { href: "/apply", label: "Book a Free Case Growth Call" },
               ].map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-sm text-text-secondary hover:text-text-primary transition-colors">
@@ -42,7 +41,6 @@ export function Footer() {
             <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">Company</p>
             <ul className="space-y-2.5">
               {[
-                { href: "/outbound", label: "Outbound & RevOps" },
                 { href: "/about", label: "About" },
                 { href: "/contact", label: "Contact" },
               ].map((l) => (

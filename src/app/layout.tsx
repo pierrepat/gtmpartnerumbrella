@@ -19,11 +19,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "GTM Partner | AI Growth Partner for Personal Injury Firms",
+    default: "Exclusive MVA Leads + AI Reactivation for Personal Injury Firms | GTM Partner",
     template: "%s | GTM Partner",
   },
   description:
-    "We turn the leads you already have into signed cases. AI agents that reactivate old leads, answer new ones in seconds, and follow up until the case is signed. Pay per signed case.",
+    "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
   metadataBase: new URL("https://gtmpartner.ai"),
   icons: {
     icon: "/favicon.svg",
@@ -33,17 +33,17 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "GTM Partner",
     url: "https://gtmpartner.ai",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "GTM Partner. Two ways to get more signed cases." }],
-    title: "GTM Partner | AI Growth Partner for Personal Injury Firms",
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Exclusive MVA leads plus AI reactivation for personal injury firms" }],
+    title: "Exclusive MVA Leads + AI Reactivation for Personal Injury Firms | GTM Partner",
     description:
-      "We turn the leads you already have into signed cases. AI agents that reactivate old leads, answer new ones in seconds, and follow up until the case is signed. Pay per signed case.",
+      "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
   },
   twitter: {
     card: "summary_large_image",
     images: ["/og.png"],
-    title: "GTM Partner | AI Growth Partner for Personal Injury Firms",
+    title: "Exclusive MVA Leads + AI Reactivation for Personal Injury Firms | GTM Partner",
     description:
-      "We turn the leads you already have into signed cases. AI agents that reactivate old leads, answer new ones in seconds, and follow up until the case is signed. Pay per signed case.",
+      "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
   },
   robots: {
     index: true,
@@ -58,7 +58,7 @@ const jsonLd = {
   url: "https://gtmpartner.ai",
   logo: "https://gtmpartner.ai/favicon.svg",
   description:
-    "AI growth partner for personal injury law firms. We reactivate old leads, answer new ones in seconds, and follow up until the case is signed.",
+    "AI-native growth boutique for personal injury law firms. Exclusive MVA leads plus an AI that reactivates old leads, answers new ones in seconds, and follows up until the case is signed.",
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",
