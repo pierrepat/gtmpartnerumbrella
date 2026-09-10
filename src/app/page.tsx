@@ -149,8 +149,7 @@ export default function Home() {
 
           <p className="mt-3 text-sm text-text-muted max-w-2xl mx-auto">
             Every lead we send is answered by our AI in under a minute and
-            followed up for 30 days. Reactivation of your old CRM is included
-            with your pilot.
+            followed up for 30 days.
           </p>
           <p className="mt-2 text-xs text-text-muted">
             AI-native growth boutique. A few firms a month, not hundreds.
@@ -180,9 +179,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="mt-8 text-center text-sm text-text-secondary">
-            We take on a few firms a month. That is the point.
-          </p>
         </div>
       </section>
 
@@ -318,33 +314,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Exclusive vs shared */}
-          <div className="reveal mt-6 card !p-6 lg:!p-8">
-            <p className="text-xs font-semibold tracking-[0.2em] text-text-muted uppercase mb-5">Why exclusive leads sign more often</p>
-            <div className="space-y-4">
-              <div>
-                <div className="flex justify-between text-sm mb-1.5">
-                  <span className="text-text-primary font-medium">Exclusive, phone-verified, answered in under a minute</span>
-                  <span className="text-brand font-semibold">10 to 20%</span>
-                </div>
-                <div className="h-2.5 rounded-full bg-surface overflow-hidden">
-                  <div className="h-full w-[75%] rounded-full bg-brand" />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between text-sm mb-1.5">
-                  <span className="text-text-secondary">Shared leads, sold to several firms at once</span>
-                  <span className="text-text-muted font-semibold">2 to 5%</span>
-                </div>
-                <div className="h-2.5 rounded-full bg-surface overflow-hidden">
-                  <div className="h-full w-[18%] rounded-full bg-text-muted/50" />
-                </div>
-              </div>
-            </div>
-            <p className="mt-4 text-xs text-text-muted">
-              Sign rates on qualified leads. Shared-lead range is the industry norm; exclusive range is what we build for.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -394,7 +363,7 @@ export default function Home() {
           </p>
           <CtaButton />
           <p className="mt-6 text-xs text-text-muted">
-            We reply within one business day. A few firms a month, first come, first served.
+            We reply within one business day.
           </p>
         </div>
       </section>

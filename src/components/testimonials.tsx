@@ -26,7 +26,7 @@ const testimonials = [
       "Pierre is on every call. That is the difference between this and the last three vendors we tried.",
     name: "Owner",
     role: "Personal injury firm, California",
-    result: "Six signed cases in the first 44 days",
+    result: "Founder on the account, not a rep",
   },
 ];
 
