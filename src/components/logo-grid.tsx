@@ -16,7 +16,6 @@ interface Logo {
    Wordmarks carry the name, so no caption. */
 const partners: Logo[] = [
   { name: "DK Law Group", wordmark: "/logos/dk-law-wordmark.png", h: 26 },
-  { name: "Kass & Moses", wordmark: "/logos/kass-moses.svg", h: 30 },
   { name: "Walker Advertising", wordmark: "/logos/walker-advertising.svg", h: 40 },
   { name: "Litify", wordmark: "/logos/litify-wordmark.png", h: 22 },
   { name: "Clio", wordmark: "/logos/clio-wordmark.png", h: 26 },
