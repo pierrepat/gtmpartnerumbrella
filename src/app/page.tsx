@@ -4,12 +4,13 @@ import { Vsl } from "@/components/vsl";
 import { Testimonials } from "@/components/testimonials";
 import { HashRedirect } from "@/components/hash-redirect";
 
-// TODO(Pierre): VSL_EMBED_PLACEHOLDER. Paste the embed URL in `src`.
-// Set aspect to "16/9" if it is a Tella recording. Poster is optional.
+// The VSL. Swap the id to change the video; poster is the YouTube still
+// saved to /public so the first paint does not wait on YouTube.
 const VSL = {
-  src: "",
-  aspect: "9/16" as const,
-  poster: "",
+  videoId: "sZx0F15CPio",
+  aspect: "16/9" as const,
+  poster: "/vsl-poster.jpg",
+  duration: "6:30",
 };
 
 const CTA = "Book a Free Case Growth Call";
@@ -127,11 +128,11 @@ export default function Home() {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="relative mx-auto max-w-5xl px-6 text-center">
-          <span className="inline-block px-4 py-1.5 rounded-full border border-brand/40 bg-brand/10 text-xs font-medium text-brand mb-6">
+          <span className="inline-block text-balance px-4 py-1.5 rounded-full border border-brand/40 bg-brand/10 text-[11px] sm:text-xs font-medium text-brand mb-6">
             For Personal Injury and MVA Law Firms Doing $1M+ a Year
           </span>
 
-          <h1 className="text-[1.9rem] leading-[1.15] sm:text-4xl lg:text-[2.85rem] font-bold tracking-tight text-text-primary">
+          <h1 className="text-balance text-[1.9rem] leading-[1.15] sm:text-4xl lg:text-[2.7rem] font-bold tracking-tight text-text-primary">
             Exclusive MVA Leads That Sign at 10 to 20% + An AI That Works
             Every Lead You&rsquo;ve Ever Paid For
           </h1>
@@ -148,7 +149,7 @@ export default function Home() {
           </p>
 
           <div className="mt-6">
-            <Vsl src={VSL.src} aspect={VSL.aspect} poster={VSL.poster} />
+            <Vsl videoId={VSL.videoId} aspect={VSL.aspect} poster={VSL.poster} duration={VSL.duration} />
           </div>
 
           <div className="mt-6 flex justify-center">
