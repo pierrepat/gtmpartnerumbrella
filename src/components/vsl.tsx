@@ -85,7 +85,6 @@ export function Vsl({
           rel: 0,
           modestbranding: 1,
           playsinline: 1,
-          cc_load_policy: 1,
           iv_load_policy: 3,
           controls: 1,
           origin: window.location.origin,
