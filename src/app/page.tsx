@@ -25,8 +25,8 @@ const stats = [
     label: "Signed cases on a California pilot, first 44 days after SB37",
   },
   {
-    value: "$5M+ / mo",
-    label: "Ad spend run with our media buying partners",
+    value: "26%",
+    label: "of law firms never respond to a web lead (Hennessey Digital, 2025 study of 1,333 firms)",
   },
 ];
 
@@ -45,21 +45,24 @@ const boutique = [
   },
 ];
 
-const steps = [
+const packageRows = [
   {
-    num: "01",
-    title: "We look at your CRM.",
-    desc: "On the call we show you how many old leads are still reachable and what one signed case in a hundred would mean for you.",
+    title: "Exclusive MVA leads",
+    desc: "Long-form qualified and phone-verified. One firm per market. Pay per lead or a flat management fee, your choice.",
+    note: "Exclusive leads sign at 10 to 20%. Shared leads sign at 2 to 5%.",
+    badge: "",
   },
   {
-    num: "02",
-    title: "We turn on the AI.",
-    desc: "Reactivation starts on your old leads in your firm's name. Every new lead we send is answered in under a minute.",
+    title: "AI follow-up on every lead",
+    desc: "Answered in under a minute. Chased for 30 days. Handed to your intake team with the full conversation.",
+    note: "",
+    badge: "In pilot. Pilot firms get it first.",
   },
   {
-    num: "03",
-    title: "You sign cases. You confirm each one before we invoice.",
-    desc: "Pay per lead or a flat fee on the new leads, your choice. On the reactivation you pay per signed case, and nothing until it signs.",
+    title: "Database reactivation, included",
+    desc: "Our AI texts every old lead in your CRM, in your firm's name. $1,000 per signed case, paid after it signs.",
+    note: "Kass & Moses signed 1 in 100 old leads in month one.",
+    badge: "Included",
   },
 ];
 
@@ -144,7 +147,12 @@ export default function Home() {
             </span>
           </p>
 
-          <p className="mt-3 text-sm text-text-muted">
+          <p className="mt-3 text-sm text-text-muted max-w-2xl mx-auto">
+            Every lead we send is answered by our AI in under a minute and
+            followed up for 30 days. Reactivation of your old CRM is included
+            with your pilot.
+          </p>
+          <p className="mt-2 text-xs text-text-muted">
             AI-native growth boutique. A few firms a month, not hundreds.
           </p>
 
@@ -195,21 +203,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══ HOW THE PILOT WORKS ═══ */}
+      {/* ═══ WHAT YOU GET ═══ */}
       <section className="py-14 lg:py-20">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4 text-center">
-            How the pilot works
-          </p>
+        <div className="mx-auto max-w-4xl px-6">
           <h2 className="reveal text-3xl sm:text-4xl font-bold text-text-primary text-center mb-12">
-            Three steps. No new ad budget to start.
+            What you get with a lead package
           </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {steps.map((s) => (
-              <div key={s.num} className="card">
-                <span className="text-3xl font-bold stat-value mb-4 block">{s.num}</span>
-                <h3 className="text-lg font-semibold text-text-primary mb-3">{s.title}</h3>
-                <p className="text-sm text-text-secondary leading-relaxed">{s.desc}</p>
+          <div className="space-y-4">
+            {packageRows.map((r, i) => (
+              <div key={r.title} className="card !p-6 sm:!p-8 grid sm:grid-cols-[3rem_1fr] gap-4 sm:gap-6">
+                <span className="text-2xl font-bold stat-value leading-none">0{i + 1}</span>
+                <div>
+                  <div className="flex flex-wrap items-center gap-3 mb-2">
+                    <h3 className="text-lg font-semibold text-text-primary">{r.title}</h3>
+                    {r.badge && (
+                      <span className="px-2 py-0.5 rounded-full border border-brand/40 bg-brand/10 text-[10px] font-semibold uppercase tracking-wider text-brand">
+                        {r.badge}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-text-secondary leading-relaxed">{r.desc}</p>
+                  {r.note && (
+                    <p className="mt-3 text-sm font-medium text-brand">{r.note}</p>
+                  )}
+                </div>
               </div>
             ))}
           </div>
