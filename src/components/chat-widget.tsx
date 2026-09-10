@@ -2,9 +2,9 @@
 
 import { useEffect } from "react";
 
-// LeadConnector chat widget. Loaded after the first scroll or 15 seconds,
-// whichever comes first, so its greeting bubble does not sit on top of the
-// VSL play button in the first screen on phones.
+// LeadConnector chat widget. On desktop it loads after the first scroll or
+// 15 seconds. On phones its greeting bubble lands on top of the video, so
+// there it waits for the first scroll only.
 const WIDGET_ID = "6a71d820a4347d15e373f74f";
 
 export function ChatWidget() {
@@ -23,9 +23,10 @@ export function ChatWidget() {
       window.removeEventListener("scroll", load);
     };
     window.addEventListener("scroll", load, { passive: true, once: true });
-    const t = setTimeout(load, 15000);
+    const desktop = window.matchMedia("(min-width: 1024px)").matches;
+    const t = desktop ? setTimeout(load, 15000) : undefined;
     return () => {
-      clearTimeout(t);
+      if (t) clearTimeout(t);
       window.removeEventListener("scroll", load);
     };
   }, []);
