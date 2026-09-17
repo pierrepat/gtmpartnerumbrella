@@ -2,67 +2,9 @@
 
 import { useState } from "react";
 
-export type FaqItem = { question: string; answer: string };
+export type FaqItem = { question: string; answer: string; extra?: React.ReactNode };
 
-const defaultItems: FaqItem[] = [
-  {
-    question: "What exactly do you do?",
-    answer:
-      "Two things. Recover works the old leads already sitting in your CRM and books the ones still worth having into your intake team's calendar. Scale sends you new, exclusive leads in your state from campaigns we run and pay for. Take Scale and Recover comes with it.",
-  },
-  {
-    question: "How is Recover priced?",
-    answer:
-      "Per signed case. No setup fee, no software fee, no retainer, no ad budget. You confirm every signed case before we invoice, so there is nothing to dispute and no guarantee to argue about. If your database has nothing in it, you owe nothing.",
-  },
-  {
-    question: "How is Scale priced?",
-    answer:
-      "Per lead, fixed by state, and we walk you through it on the first call. Every lead is exclusive to your firm, never resold and never re-routed, and that is written into the agreement. We take one firm per state.",
-  },
-  {
-    question: "Do we have to replace our intake team?",
-    answer:
-      "No. Your intake team is human. Some days they are sharp, some days they are tired, and every day there are more leads than hours. We handle the repetitive front end: answering in seconds, following up, screening, and booking. Your people make every legal decision and sign every client.",
-  },
-  {
-    question: "How does the AI contact people?",
-    answer:
-      "Mostly by text, because that is what people answer. It opens with a short, human message in your firm's name, answers questions, checks a couple of details against your rules, and books the consult. It follows up if someone goes quiet. Anyone who opts out is removed for good. Everything runs from numbers registered to your firm, only to people who already contacted you.",
-  },
-  {
-    question: "What happens once a consult is booked?",
-    answer:
-      "The whole conversation and a plain summary go to your intake team, so they know what was said before they pick up the phone. We then check that the consult was actually called. If it was not, we tell you.",
-  },
-  {
-    question: "How do you screen Scale leads?",
-    answer:
-      "Before a lead reaches you we check injury, fault, whether they already have a lawyer, case type, and whether the case is still inside the statute of limitations. New leads are phone-verified by one-time passcode and TrustedForm certified. A lead that fails your agreed criteria is replaced free.",
-  },
-  {
-    question: "What will we be able to see?",
-    answer:
-      "A live view of the full funnel: inquiries, qualified prospects, booked consults, and signed cases, broken out by source. You always know what a signed case cost you.",
-  },
-  {
-    question: "Which CRMs do you work with?",
-    answer:
-      "Litify and Salesforce, Filevine, Clio, HubSpot, and GoHighLevel, among others. We plug into what you already run. We do not ask you to switch.",
-  },
-  {
-    question: "Who is this not for?",
-    answer:
-      "Firms shopping for the cheapest possible leads, firms with no intake process or CRM, and mass tort or class action work. If you cannot call a booked consult back the same day, we are not a fit yet.",
-  },
-  {
-    question: "Why trust a company that also does B2B outbound?",
-    answer:
-      "Law firms are the focus. We run reactivation and intake for personal injury firms, we own and operate MVACompensation.com, and our campaign results are on this page. The B2B work is where the AI and outbound systems were built. Years of outreach and follow-up infrastructure for demanding B2B companies is what powers the agents now working your leads.",
-  },
-];
-
-export function FAQ({ items = defaultItems }: { items?: FaqItem[] }) {
+export function FAQ({ items }: { items: FaqItem[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const faqItems = items;
 
@@ -131,6 +73,7 @@ export function FAQ({ items = defaultItems }: { items?: FaqItem[] }) {
                     <p className="text-sm text-text-secondary leading-relaxed">
                       {item.answer}
                     </p>
+                    {item.extra}
                   </div>
                 </div>
               </div>
