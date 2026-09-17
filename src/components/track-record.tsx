@@ -82,9 +82,9 @@ export function TrackRecord() {
 
         <div className="flex flex-wrap items-center gap-x-7 gap-y-4 mb-12">
           {teams.map((t) => (
-            <div key={t.name} className="flex items-center gap-2 opacity-60 hover:opacity-100 transition-opacity">
+            <div key={t.name} className="flex items-center gap-2 group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={t.icon} alt="" loading="lazy" width={20} height={20} className="w-5 h-5 rounded-sm object-contain" />
+              <img src={t.icon} alt="" loading="lazy" width={20} height={20} className="w-5 h-5 rounded-sm object-contain opacity-70 group-hover:opacity-100 transition-opacity" />
               <span className="text-xs font-medium text-text-secondary whitespace-nowrap">{t.name}</span>
             </div>
           ))}
