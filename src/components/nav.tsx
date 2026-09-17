@@ -44,7 +44,7 @@ export function Nav() {
             <span className="text-sm font-semibold tracking-[0.2em] uppercase text-text-primary group-hover:text-brand transition-colors leading-tight">
               GTM Partner
             </span>
-            <span className="text-[8px] tracking-[0.12em] uppercase text-text-muted/50 leading-none">
+            <span className="text-[8px] tracking-[0.12em] uppercase text-text-muted leading-none">
               LLC
             </span>
           </div>

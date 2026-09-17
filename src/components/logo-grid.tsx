@@ -48,7 +48,7 @@ export function FirmsStrip() {
   return (
     <section className="py-10">
       <div className="mx-auto max-w-6xl px-6">
-        <p className="text-center text-[10px] font-semibold text-text-muted/60 tracking-[0.2em] uppercase mb-6">
+        <p className="text-center text-[10px] font-semibold text-text-muted tracking-[0.2em] uppercase mb-6">
           Firms we have delivered for
         </p>
         <Row items={firms} />
