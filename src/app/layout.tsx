@@ -6,6 +6,7 @@ import { Footer } from "@/components/footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { BackToTop } from "@/components/back-to-top";
 import { ChatWidget } from "@/components/chat-widget";
+import { CONTACT_EMAIL, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -18,33 +19,37 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TITLE = "GTM Partner LLC | Growth infrastructure for plaintiff law firms";
+// Under 155 characters.
+const DESCRIPTION =
+  "GTM Partner LLC owns PlaintiffPilot and MVA Compensation. Two brands, one job: more signed cases per marketing dollar for plaintiff law firms.";
+
 export const metadata: Metadata = {
   title: {
-    default: "Exclusive MVA Leads + AI Reactivation for Personal Injury Firms | GTM Partner",
-    template: "%s | GTM Partner",
+    default: TITLE,
+    template: "%s | GTM Partner LLC",
   },
-  description:
-    "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
-  metadataBase: new URL("https://gtmpartner.ai"),
+  description: DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
   icons: {
     icon: "/favicon.svg",
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "GTM Partner",
-    url: "https://gtmpartner.ai",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Exclusive MVA leads plus AI reactivation for personal injury firms" }],
-    title: "Exclusive MVA Leads + AI Reactivation for Personal Injury Firms | GTM Partner",
-    description:
-      "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
+    siteName: "GTM Partner LLC",
+    url: SITE_URL,
+    // TODO(Pierre): og.png still carries the old "leads + AI reactivation"
+    // headline. Replace it with a company card before sharing the new site.
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "GTM Partner LLC" }],
+    title: TITLE,
+    description: DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
     images: ["/og.png"],
-    title: "Exclusive MVA Leads + AI Reactivation for Personal Injury Firms | GTM Partner",
-    description:
-      "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
+    title: TITLE,
+    description: DESCRIPTION,
   },
   robots: {
     index: true,
@@ -55,31 +60,43 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "GTM Partner",
-  url: "https://gtmpartner.ai",
-  logo: "https://gtmpartner.ai/favicon.svg",
+  name: "GTM Partner LLC",
+  legalName: "GTM Partner LLC",
+  url: SITE_URL,
+  logo: `${SITE_URL}/favicon.svg`,
+  email: CONTACT_EMAIL,
   description:
-    "AI-native growth boutique for personal injury law firms. Exclusive MVA leads plus an AI that reactivates old leads, answers new ones in seconds, and follows up until the case is signed.",
+    "GTM Partner LLC builds growth infrastructure for plaintiff law firms. It owns PlaintiffPilot, the AI intake engine for PI law firms, and MVA Compensation, a bilingual accident help site.",
   address: {
     "@type": "PostalAddress",
+    addressRegion: "DE",
     addressCountry: "US",
   },
-  brand: {
-    "@type": "Brand",
-    name: "MVACompensation",
-    url: "https://mvacompensation.com",
-    description:
-      "Bilingual consumer resource for US car accident victims. State and injury guides, settlement estimator, and free attorney matching. Owned and operated by GTM Partner.",
-  },
-  sameAs: [
-    "https://linkedin.com/in/pierrepatrouillard",
-    "https://www.youtube.com/@gtmpartner",
-  ],
   founder: {
     "@type": "Person",
     name: "Pierre Patrouillard",
-    jobTitle: "CEO",
+    jobTitle: "Founder",
+    sameAs: "https://linkedin.com/in/pierrepatrouillard",
   },
+  brand: [
+    {
+      "@type": "Brand",
+      name: "PlaintiffPilot",
+      url: "https://plaintiffpilot.com",
+      description: "The AI intake engine for PI law firms.",
+    },
+    {
+      "@type": "Brand",
+      name: "MVA Compensation",
+      url: "https://mvacompensation.com",
+      description: "Bilingual accident help for injured people. Free lawyer matching.",
+    },
+  ],
+  sameAs: [
+    "https://plaintiffpilot.com",
+    "https://mvacompensation.com",
+    "https://linkedin.com/in/pierrepatrouillard",
+  ],
 };
 
 export default function RootLayout({
@@ -94,8 +111,6 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
       <head>
-        <link rel="preconnect" href="https://www.youtube.com" />
-        <link rel="preconnect" href="https://i.ytimg.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { CTA } from "@/lib/site";
 
 // One CTA on the whole site. No nav links, so nothing competes with it.
 export function Nav() {
@@ -32,6 +33,7 @@ export function Nav() {
             height="24"
             viewBox="0 0 100 100"
             fill="none"
+            aria-hidden="true"
             className="text-text-primary group-hover:text-brand transition-colors"
           >
             <circle cx="50" cy="50" r="44" stroke="currentColor" strokeWidth="8" />
@@ -43,7 +45,7 @@ export function Nav() {
               GTM Partner
             </span>
             <span className="text-[8px] tracking-[0.12em] uppercase text-text-muted/50 leading-none">
-              Your Go-To-Market Team
+              LLC
             </span>
           </div>
         </Link>
@@ -51,7 +53,7 @@ export function Nav() {
         {!onApply && (
           <Link href="/apply" className="btn-primary text-xs sm:text-sm !py-2.5 !px-4 sm:!px-5">
             <span className="sm:hidden">Book a Free Call</span>
-            <span className="hidden sm:inline">Book a Free Case Growth Call</span>
+            <span className="hidden sm:inline">{CTA}</span>
           </Link>
         )}
       </div>
