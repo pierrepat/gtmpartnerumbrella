@@ -1,38 +1,20 @@
 import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/lib/site";
 
+// /apply is noindex, so it stays out of the sitemap.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://gtmpartner.ai";
-
   return [
     {
-      url: baseUrl,
+      url: SITE_URL,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/system`,
+      url: `${SITE_URL}/leads`,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/outbound`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.7,
+      priority: 0.9,
     },
   ];
 }

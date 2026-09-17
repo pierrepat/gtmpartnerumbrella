@@ -276,9 +276,8 @@ export default function LeadsPage() {
               </h2>
               <p className="text-text-secondary leading-relaxed max-w-2xl">
                 PlaintiffPilot sends the first text in under 60 seconds and
-                chases the lead until it books or disqualifies. It is a
-                separate product from GTM Partner LLC. Ask about it on the
-                call.
+                chases the lead until it books or disqualifies. It is sold
+                separately. Ask about it on the call.
               </p>
             </div>
             <a

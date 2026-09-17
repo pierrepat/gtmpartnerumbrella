@@ -4,3 +4,101 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# 301 redirects. force = true so they run at the edge before the Next.js
+# handler. Mirrored in next.config.ts so `next dev` behaves the same.
+
+# AI intake, follow-up and reactivation content lives on plaintiffpilot.com.
+# TODO(Pierre): point at the matching PlaintiffPilot page once its sitemap
+# is confirmed. Today it has no /reactivation or /intake route.
+[[redirects]]
+  from = "/reactivation"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/database-reactivation"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ai"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/ai-followup"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/intake"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/system"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/system/*"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/recover"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/scale"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pricing"
+  to = "https://plaintiffpilot.com/"
+  status = 301
+  force = true
+
+# Removed pages that were not about AI or reactivation go home.
+[[redirects]]
+  from = "/about"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/outbound"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/outbound/*"
+  to = "/"
+  status = 301
+  force = true
+
+# Booking shortcut stays.
+[[redirects]]
+  from = "/book"
+  to = "/apply"
+  status = 301
+  force = true

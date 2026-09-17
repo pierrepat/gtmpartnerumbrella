@@ -15,8 +15,8 @@ export default function NotFound() {
           <Link href="/" className="btn-primary">
             Back to homepage &rarr;
           </Link>
-          <Link href="/contact" className="btn-secondary">
-            Contact us
+          <Link href="/leads" className="btn-secondary">
+            Exclusive MVA leads
           </Link>
         </div>
       </div>
