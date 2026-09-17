@@ -44,3 +44,6 @@ next-env.d.ts
 meta_offline_conversions_*.csv
 meta_exclusion_audience_*.csv
 src/lib/*.csv
+
+# netlify cli
+.netlify
