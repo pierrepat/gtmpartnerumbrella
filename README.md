@@ -22,8 +22,8 @@ Open [http://localhost:3000](http://localhost:3000).
 | `/apply` | Fit quiz, then redirect to the Cal.com booking link (noindex) |
 
 Everything else 301s. AI and reactivation paths go to plaintiffpilot.com,
-other removed pages go to `/`. The list is in `netlify.toml` (production)
-and mirrored in `next.config.ts` (local dev).
+`/outbound` goes to `/#track-record`, other removed pages go to `/`. The
+list is in `next.config.ts`.
 
 ## Stack
 

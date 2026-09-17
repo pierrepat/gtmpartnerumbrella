@@ -1,27 +1,35 @@
 import type { NextConfig } from "next";
 
-// Production redirects are 301s in netlify.toml. This mirror keeps `next dev`
-// in step with them (Next emits 308 here, which is fine locally).
+// All redirects are 301s. statusCode instead of permanent, because permanent
+// would emit a 308. The Netlify Next runtime serves these as-is, including
+// the external plaintiffpilot.com targets, so netlify.toml stays build only.
+
+// AI intake, follow-up and reactivation content lives on plaintiffpilot.com.
+// TODO(Pierre): point at the matching PlaintiffPilot page once its sitemap
+// is confirmed. Today it has no /reactivation or /intake route. Browsers
+// carry the hash across, so /system#recover lands on plaintiffpilot.com/#recover.
 const PP = "https://plaintiffpilot.com/";
 
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      { source: "/reactivation", destination: PP, permanent: true },
-      { source: "/database-reactivation", destination: PP, permanent: true },
-      { source: "/ai", destination: PP, permanent: true },
-      { source: "/ai-followup", destination: PP, permanent: true },
-      { source: "/intake", destination: PP, permanent: true },
-      { source: "/system", destination: PP, permanent: true },
-      { source: "/system/:path*", destination: PP, permanent: true },
-      { source: "/recover", destination: PP, permanent: true },
-      { source: "/scale", destination: PP, permanent: true },
-      { source: "/pricing", destination: PP, permanent: true },
-      { source: "/about", destination: "/", permanent: true },
-      { source: "/contact", destination: "/", permanent: true },
-      { source: "/outbound", destination: "/", permanent: true },
-      { source: "/outbound/:path*", destination: "/", permanent: true },
-      { source: "/book", destination: "/apply", permanent: true },
+      { source: "/reactivation", destination: PP, statusCode: 301 },
+      { source: "/database-reactivation", destination: PP, statusCode: 301 },
+      { source: "/ai", destination: PP, statusCode: 301 },
+      { source: "/ai-followup", destination: PP, statusCode: 301 },
+      { source: "/intake", destination: PP, statusCode: 301 },
+      { source: "/system", destination: PP, statusCode: 301 },
+      { source: "/system/:path*", destination: PP, statusCode: 301 },
+      { source: "/recover", destination: PP, statusCode: 301 },
+      { source: "/scale", destination: PP, statusCode: 301 },
+      { source: "/pricing", destination: PP, statusCode: 301 },
+      // Removed pages that were not about AI or reactivation.
+      { source: "/about", destination: "/", statusCode: 301 },
+      { source: "/contact", destination: "/", statusCode: 301 },
+      { source: "/outbound", destination: "/#track-record", statusCode: 301 },
+      { source: "/outbound/:path*", destination: "/#track-record", statusCode: 301 },
+      // Booking shortcut stays.
+      { source: "/book", destination: "/apply", statusCode: 301 },
     ];
   },
 };
