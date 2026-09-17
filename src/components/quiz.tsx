@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { BOOKING_URL, CONTACT_EMAIL, CTA } from "@/lib/site";
 
-// TODO(Pierre): swap for the HighLevel booking page. Name, email and phone are
-// appended as query params (HighLevel reads first_name, last_name, email,
-// phone; Cal.com reads name and email), so the booking form is pre-filled.
-const BOOKING_URL = "https://cal.com/gtmpartner/30min";
+// Name, email and phone are appended to the booking link as query params
+// (HighLevel reads first_name, last_name, email, phone; Cal.com reads name
+// and email), so the booking form is pre-filled.
 
-// Optional. Set to a HighLevel inbound webhook and every completed quiz is
-// POSTed there as JSON before the redirect. Leave empty to skip.
-const QUIZ_WEBHOOK_URL = "";
+// TODO(Pierre): set NEXT_PUBLIC_QUIZ_WEBHOOK_URL in Netlify to the
+// PlaintiffPilot lead webhook. Every completed quiz is then POSTed there as
+// JSON before the redirect. Empty means skip.
+const QUIZ_WEBHOOK_URL = process.env.NEXT_PUBLIC_QUIZ_WEBHOOK_URL ?? "";
 
 type Option = { label: string; value: string; fit: boolean };
 type Step = { key: string; question: string; help?: string; options: Option[] };
@@ -35,20 +36,19 @@ const STEPS: Step[] = [
     ],
   },
   {
-    key: "oldLeads",
-    question: "How many old leads are sitting in your CRM?",
-    help: "A rough guess is fine. Anyone who contacted you and did not sign.",
+    key: "crm",
+    question: "Which CRM do you run intake in?",
+    help: "We deliver leads straight into it.",
     options: [
-      { label: "Under 500", value: "lt500", fit: true },
-      { label: "500 to 2,000", value: "500to2k", fit: true },
-      { label: "2,000 to 10,000", value: "2kto10k", fit: true },
-      { label: "More than 10,000", value: "gt10k", fit: true },
+      { label: "Litify or Salesforce", value: "litify_salesforce", fit: true },
+      { label: "Filevine, Clio or HubSpot", value: "filevine_clio_hubspot", fit: true },
+      { label: "GoHighLevel or another CRM", value: "other", fit: true },
       { label: "We do not have a CRM", value: "none", fit: false },
     ],
   },
   {
     key: "intake",
-    question: "Can your intake team call a booked consult back the same day?",
+    question: "Can your intake team call a new lead back within minutes?",
     options: [
       { label: "Yes, every time", value: "yes", fit: true },
       { label: "Most of the time", value: "mostly", fit: true },
@@ -121,11 +121,12 @@ export function Quiz() {
         <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">Not a fit yet</p>
         <h2 className="text-2xl font-bold text-text-primary mb-4">Thanks for being straight with us.</h2>
         <p className="text-sm text-text-secondary leading-relaxed max-w-md mx-auto mb-6">
-          The pilot works best for personal injury firms doing $1M+ a year with
-          a CRM full of old leads and an intake team that can call back fast.
-          If that changes, come back. If you think we got it wrong, email us.
+          Exclusive leads work best for personal injury firms doing $1M+ a
+          year with a CRM and an intake team that can call a lead back within
+          minutes. If that changes, come back. If you think we got it wrong,
+          email us.
         </p>
-        <a href="mailto:pierre@gtmpartner.ai" className="btn-secondary">pierre@gtmpartner.ai</a>
+        <a href={`mailto:${CONTACT_EMAIL}`} className="btn-secondary">{CONTACT_EMAIL}</a>
       </div>
     );
   }
@@ -197,7 +198,7 @@ export function Quiz() {
             <input required type="tel" className={inputClass} placeholder="Phone" autoComplete="tel" value={contact.phone} onChange={(e) => setContact({ ...contact, phone: e.target.value })} />
           </div>
           <button type="submit" disabled={submitting} className="btn-primary w-full justify-center mt-6">
-            {submitting ? "One moment" : "Book a Free Case Growth Call"}
+            {submitting ? "One moment" : CTA}
           </button>
           <button
             type="button"

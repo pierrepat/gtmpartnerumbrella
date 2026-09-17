@@ -4,7 +4,7 @@ import { Quiz } from "@/components/quiz";
 export const metadata: Metadata = {
   title: "Book a Free Case Growth Call",
   description:
-    "Four quick questions so we know whether the pilot fits your firm, then pick a time.",
+    "Four quick questions so we know whether exclusive MVA leads fit your firm, then pick a time.",
   robots: { index: false, follow: true },
 };
 
@@ -19,11 +19,11 @@ export default function ApplyPage() {
           Four quick questions first.
         </h1>
         <p className="text-sm text-text-secondary text-center mb-10">
-          We take on a few firms a month, so we check fit before we book. It takes about a minute.
+          We hold one firm per market, so we check fit before we book. It takes about a minute.
         </p>
         <Quiz />
         <p className="text-xs text-text-muted text-center mt-6">
-          We reply within one business day. A few firms a month, first come, first served.
+          We reply within one business day.
         </p>
       </div>
     </section>
