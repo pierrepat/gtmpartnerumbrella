@@ -64,14 +64,27 @@ const jsonLd = {
     "@type": "PostalAddress",
     addressCountry: "US",
   },
-  brand: {
-    "@type": "Brand",
-    name: "MVACompensation",
-    url: "https://mvacompensation.com",
-    description:
-      "Bilingual consumer resource for US car accident victims. State and injury guides, settlement estimator, and free attorney matching. Owned and operated by GTM Partner.",
-  },
+  subOrganization: [
+    {
+      "@type": "Organization",
+      name: "PlaintiffPilot",
+      url: "https://plaintiffpilot.com",
+      description:
+        "AI intake engine for personal injury law firms. Answers new leads in seconds, follows up for 30 days, and reactivates old leads in the firm's name. A subsidiary of GTM Partner LLC.",
+      parentOrganization: { "@type": "Organization", name: "GTM Partner LLC", url: "https://gtmpartner.ai" },
+    },
+    {
+      "@type": "Organization",
+      name: "MVACompensation",
+      url: "https://mvacompensation.com",
+      description:
+        "Bilingual consumer resource for US car accident victims. State and injury guides, settlement estimator, and free attorney matching. A subsidiary of GTM Partner LLC.",
+      parentOrganization: { "@type": "Organization", name: "GTM Partner LLC", url: "https://gtmpartner.ai" },
+    },
+  ],
   sameAs: [
+    "https://plaintiffpilot.com",
+    "https://mvacompensation.com",
     "https://linkedin.com/in/pierrepatrouillard",
     "https://www.youtube.com/@gtmpartner",
   ],

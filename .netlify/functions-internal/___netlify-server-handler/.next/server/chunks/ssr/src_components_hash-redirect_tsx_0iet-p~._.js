@@ -1,0 +1,3 @@
+module.exports=[14249,a=>{"use strict";var b=a.i(72131),c=a.i(95140);let d=new Set(["#recover","#scale","#offers","#reporting","#how-it-works"]);a.s(["HashRedirect",0,function(){return(0,b.useEffect)(()=>{let a=window.location.hash;d.has(a)&&window.location.replace(`${c.PLAINTIFFPILOT_URL}/`),("#pilot-form"===a||"#book"===a)&&window.location.replace("/apply")},[]),null}])}];
+
+//# sourceMappingURL=src_components_hash-redirect_tsx_0iet-p~._.js.map

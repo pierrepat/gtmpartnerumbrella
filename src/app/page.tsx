@@ -3,6 +3,7 @@ import { FAQ } from "@/components/faq";
 import { Vsl } from "@/components/vsl";
 import { Testimonials } from "@/components/testimonials";
 import { HashRedirect } from "@/components/hash-redirect";
+import { Subsidiaries } from "@/components/subsidiaries";
 
 // The VSL. Swap the id to change the video; poster is the YouTube still
 // saved to /public so the first paint does not wait on YouTube.
@@ -232,8 +233,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ OUR OWN TECH ═══ */}
+      <Subsidiaries />
+
       {/* ═══ PROOF ═══ */}
-      <section className="py-14 lg:py-20 bg-surface-raised">
+      <section className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             Campaigns we run with our media buying partners

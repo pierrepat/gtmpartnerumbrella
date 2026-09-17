@@ -1,0 +1,183 @@
+{
+  "version": 3,
+  "pages404": true,
+  "appType": "app",
+  "caseSensitive": false,
+  "basePath": "",
+  "redirects": [
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "internal": true,
+      "priority": true,
+      "statusCode": 308,
+      "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
+    },
+    {
+      "source": "/reactivation",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/reactivation(?:/)?$"
+    },
+    {
+      "source": "/database-reactivation",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/database-reactivation(?:/)?$"
+    },
+    {
+      "source": "/ai",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/ai(?:/)?$"
+    },
+    {
+      "source": "/ai-followup",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/ai-followup(?:/)?$"
+    },
+    {
+      "source": "/intake",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/intake(?:/)?$"
+    },
+    {
+      "source": "/system",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/system(?:/)?$"
+    },
+    {
+      "source": "/system/:path*",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/system(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    },
+    {
+      "source": "/recover",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/recover(?:/)?$"
+    },
+    {
+      "source": "/scale",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/scale(?:/)?$"
+    },
+    {
+      "source": "/pricing",
+      "destination": "https://plaintiffpilot.com/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/pricing(?:/)?$"
+    },
+    {
+      "source": "/about",
+      "destination": "/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/about(?:/)?$"
+    },
+    {
+      "source": "/contact",
+      "destination": "/",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/contact(?:/)?$"
+    },
+    {
+      "source": "/outbound",
+      "destination": "/#track-record",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/outbound(?:/)?$"
+    },
+    {
+      "source": "/outbound/:path*",
+      "destination": "/#track-record",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/outbound(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    },
+    {
+      "source": "/book",
+      "destination": "/apply",
+      "statusCode": 301,
+      "regex": "^(?!/_next)/book(?:/)?$"
+    }
+  ],
+  "headers": [],
+  "onMatchHeaders": [],
+  "rewrites": {
+    "beforeFiles": [],
+    "afterFiles": [],
+    "fallback": []
+  },
+  "dynamicRoutes": [],
+  "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
+    {
+      "page": "/_global-error",
+      "regex": "^/_global\\-error(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_global\\-error(?:/)?$"
+    },
+    {
+      "page": "/_not-found",
+      "regex": "^/_not\\-found(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/_not\\-found(?:/)?$"
+    },
+    {
+      "page": "/apply",
+      "regex": "^/apply(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/apply(?:/)?$"
+    },
+    {
+      "page": "/favicon.ico",
+      "regex": "^/favicon\\.ico(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/leads",
+      "regex": "^/leads(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/leads(?:/)?$"
+    },
+    {
+      "page": "/robots.txt",
+      "regex": "^/robots\\.txt(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/robots\\.txt(?:/)?$"
+    },
+    {
+      "page": "/sitemap.xml",
+      "regex": "^/sitemap\\.xml(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    }
+  ],
+  "dataRoutes": [],
+  "rsc": {
+    "header": "rsc",
+    "varyHeader": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "prefetchHeader": "next-router-prefetch",
+    "didPostponeHeader": "x-nextjs-postponed",
+    "contentTypeHeader": "text/x-component",
+    "suffix": ".rsc",
+    "prefetchSegmentHeader": "next-router-segment-prefetch",
+    "prefetchSegmentSuffix": ".segment.rsc",
+    "prefetchSegmentDirSuffix": ".segments",
+    "clientParamParsing": false,
+    "dynamicRSCPrerender": false
+  },
+  "rewriteHeaders": {
+    "pathHeader": "x-nextjs-rewritten-path",
+    "queryHeader": "x-nextjs-rewritten-query"
+  }
+}
