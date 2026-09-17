@@ -310,79 +310,29 @@
     "distDirRoot": ".next",
     "_originalRedirects": [
       {
-        "source": "/reactivation",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
-      },
-      {
-        "source": "/database-reactivation",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
-      },
-      {
-        "source": "/ai",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
-      },
-      {
-        "source": "/ai-followup",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
-      },
-      {
-        "source": "/intake",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
-      },
-      {
-        "source": "/system",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
-      },
-      {
-        "source": "/system/:path*",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
+        "source": "/leads",
+        "destination": "/",
+        "permanent": true
       },
       {
         "source": "/recover",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
+        "destination": "/system#recover",
+        "permanent": true
       },
       {
         "source": "/scale",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
+        "destination": "/system#scale",
+        "permanent": true
       },
       {
         "source": "/pricing",
-        "destination": "https://plaintiffpilot.com/",
-        "statusCode": 301
-      },
-      {
-        "source": "/about",
-        "destination": "/",
-        "statusCode": 301
-      },
-      {
-        "source": "/contact",
-        "destination": "/",
-        "statusCode": 301
-      },
-      {
-        "source": "/outbound",
-        "destination": "/#track-record",
-        "statusCode": 301
-      },
-      {
-        "source": "/outbound/:path*",
-        "destination": "/#track-record",
-        "statusCode": 301
+        "destination": "/system#scale",
+        "permanent": true
       },
       {
         "source": "/book",
         "destination": "/apply",
-        "statusCode": 301
+        "permanent": true
       }
     ]
   },

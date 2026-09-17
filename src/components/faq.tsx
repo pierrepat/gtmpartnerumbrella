@@ -26,9 +26,9 @@ const defaultItems: FaqItem[] = [
       "No. Your intake team is human. Some days they are sharp, some days they are tired, and every day there are more leads than hours. We handle the repetitive front end: answering in seconds, following up, screening, and booking. Your people make every legal decision and sign every client.",
   },
   {
-    question: "How does the AI contact people?",
+    question: "How does PlaintiffPilot contact people?",
     answer:
-      "Mostly by text, because that is what people answer. It opens with a short, human message in your firm's name, answers questions, checks a couple of details against your rules, and books the consult. It follows up if someone goes quiet. Anyone who opts out is removed for good. Everything runs from numbers registered to your firm, only to people who already contacted you.",
+      "Mostly by text, because that is what people answer. PlaintiffPilot is our own AI intake engine, a subsidiary of GTM Partner LLC. It opens with a short, human message in your firm's name, answers questions, checks a couple of details against your rules, and books the consult. It follows up if someone goes quiet. Anyone who opts out is removed for good. Everything runs from numbers registered to your firm, only to people who already contacted you.",
   },
   {
     question: "What happens once a consult is booked?",
@@ -58,7 +58,7 @@ const defaultItems: FaqItem[] = [
   {
     question: "Why trust a company that also does B2B outbound?",
     answer:
-      "Law firms are the focus. We run reactivation and intake for personal injury firms, we own and operate MVACompensation.com, and our campaign results are on this page. The B2B work is where the AI and outbound systems were built. Years of outreach and follow-up infrastructure for demanding B2B companies is what powers the agents now working your leads.",
+      "Law firms are the focus. We run reactivation and intake for personal injury firms through PlaintiffPilot, we own MVACompensation.com, and our campaign results are on this page. The B2B work is where the AI and outbound systems were built. Years of outreach and follow-up infrastructure for demanding B2B companies is what powers the agents now working your leads.",
   },
 ];
 

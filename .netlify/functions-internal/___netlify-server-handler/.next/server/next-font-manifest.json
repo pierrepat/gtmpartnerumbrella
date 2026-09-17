@@ -4,7 +4,15 @@
       "static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2",
       "static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"
     ],
+    "[project]/src/app/about/page": [
+      "static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2",
+      "static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"
+    ],
     "[project]/src/app/apply/page": [
+      "static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2",
+      "static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"
+    ],
+    "[project]/src/app/contact/page": [
       "static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2",
       "static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"
     ],
@@ -12,7 +20,15 @@
       "static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2",
       "static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"
     ],
+    "[project]/src/app/outbound/page": [
+      "static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2",
+      "static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"
+    ],
     "[project]/src/app/page": [
+      "static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2",
+      "static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"
+    ],
+    "[project]/src/app/system/page": [
       "static/media/caa3a2e1cccd8315-s.p.09~u27dqhyhd6.woff2",
       "static/media/797e433ab948586e-s.p.08e28id.o-okb.woff2"
     ]

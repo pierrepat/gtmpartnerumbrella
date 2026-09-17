@@ -1,10 +1,14 @@
 {
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
   "/apply/page": "/apply",
+  "/contact/page": "/contact",
   "/favicon.ico/route": "/favicon.ico",
   "/leads/page": "/leads",
+  "/outbound/page": "/outbound",
   "/page": "/",
   "/robots.txt/route": "/robots.txt",
-  "/sitemap.xml/route": "/sitemap.xml"
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/system/page": "/system"
 }

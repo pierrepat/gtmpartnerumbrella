@@ -14,93 +14,33 @@
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
     },
     {
-      "source": "/reactivation",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/reactivation(?:/)?$"
-    },
-    {
-      "source": "/database-reactivation",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/database-reactivation(?:/)?$"
-    },
-    {
-      "source": "/ai",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/ai(?:/)?$"
-    },
-    {
-      "source": "/ai-followup",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/ai-followup(?:/)?$"
-    },
-    {
-      "source": "/intake",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/intake(?:/)?$"
-    },
-    {
-      "source": "/system",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/system(?:/)?$"
-    },
-    {
-      "source": "/system/:path*",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/system(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+      "source": "/leads",
+      "destination": "/",
+      "statusCode": 308,
+      "regex": "^(?!/_next)/leads(?:/)?$"
     },
     {
       "source": "/recover",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
+      "destination": "/system#recover",
+      "statusCode": 308,
       "regex": "^(?!/_next)/recover(?:/)?$"
     },
     {
       "source": "/scale",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
+      "destination": "/system#scale",
+      "statusCode": 308,
       "regex": "^(?!/_next)/scale(?:/)?$"
     },
     {
       "source": "/pricing",
-      "destination": "https://plaintiffpilot.com/",
-      "statusCode": 301,
+      "destination": "/system#scale",
+      "statusCode": 308,
       "regex": "^(?!/_next)/pricing(?:/)?$"
-    },
-    {
-      "source": "/about",
-      "destination": "/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/about(?:/)?$"
-    },
-    {
-      "source": "/contact",
-      "destination": "/",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/contact(?:/)?$"
-    },
-    {
-      "source": "/outbound",
-      "destination": "/#track-record",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/outbound(?:/)?$"
-    },
-    {
-      "source": "/outbound/:path*",
-      "destination": "/#track-record",
-      "statusCode": 301,
-      "regex": "^(?!/_next)/outbound(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
     },
     {
       "source": "/book",
       "destination": "/apply",
-      "statusCode": 301,
+      "statusCode": 308,
       "regex": "^(?!/_next)/book(?:/)?$"
     }
   ],
@@ -132,10 +72,22 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/about",
+      "regex": "^/about(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/about(?:/)?$"
+    },
+    {
       "page": "/apply",
       "regex": "^/apply(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/apply(?:/)?$"
+    },
+    {
+      "page": "/contact",
+      "regex": "^/contact(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/contact(?:/)?$"
     },
     {
       "page": "/favicon.ico",
@@ -150,6 +102,12 @@
       "namedRegex": "^/leads(?:/)?$"
     },
     {
+      "page": "/outbound",
+      "regex": "^/outbound(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/outbound(?:/)?$"
+    },
+    {
       "page": "/robots.txt",
       "regex": "^/robots\\.txt(?:/)?$",
       "routeKeys": {},
@@ -160,6 +118,12 @@
       "regex": "^/sitemap\\.xml(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/sitemap\\.xml(?:/)?$"
+    },
+    {
+      "page": "/system",
+      "regex": "^/system(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/system(?:/)?$"
     }
   ],
   "dataRoutes": [],
