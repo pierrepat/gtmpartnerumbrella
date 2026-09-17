@@ -33,8 +33,8 @@ export default function SystemPage() {
             How the leads you already paid for become signed cases.
           </h1>
           <p className="text-lg text-text-secondary leading-relaxed max-w-2xl">
-            The long version. Two offers, the AI that runs them, the states we
-            still have open, and what you get to see.
+            The long version. Two offers, PlaintiffPilot, the AI that runs
+            them, the states we still have open, and what you get to see.
           </p>
         </div>
       </section>
@@ -85,8 +85,8 @@ export default function SystemPage() {
                 Turn your dead database into signed cases.
               </p>
               <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                We work every old lead in your CRM with AI text and calls, in
-                your firm&rsquo;s name. The ones still worth having get booked
+                PlaintiffPilot, our AI intake engine, works every old lead in
+                your CRM with text and calls, in your firm&rsquo;s name. The ones still worth having get booked
                 straight into your intake team&rsquo;s calendar.
               </p>
               <ul className="space-y-2.5 mb-8 flex-1">
@@ -154,8 +154,8 @@ export default function SystemPage() {
                 This is what your old leads get
               </h2>
               <p className="text-text-secondary leading-relaxed mb-5">
-                A short text that reads like a person, not a campaign. It
-                answers questions, checks a couple of details against your
+                A short text from PlaintiffPilot that reads like a person, not
+                a campaign. It answers questions, checks a couple of details against your
                 rules, and books the consult. Anyone who wants out is removed
                 for good.
               </p>
@@ -248,7 +248,7 @@ export default function SystemPage() {
                     <span className="text-brand">Compensation</span>
                   </span>
                   <span className="px-2 py-1 rounded text-[10px] font-semibold tracking-[0.12em] uppercase bg-brand/10 border border-brand/30 text-brand">
-                    Owned &amp; operated
+                    Subsidiary of GTM Partner LLC
                   </span>
                 </div>
 
@@ -256,11 +256,11 @@ export default function SystemPage() {
                   We own the property the demand comes from.
                 </h3>
                 <p className="text-text-secondary leading-relaxed mb-6">
-                  MVACompensation.com is our own consumer brand. Accident
-                  victims land there researching what their claim is worth, get
-                  plain answers about their options, and get matched with a firm
-                  that fits their case. It is not a list we buy. It is a
-                  property we run.
+                  MVACompensation.com is our own subsidiary and our organic
+                  lead flow engine. Accident victims land there researching
+                  what their claim is worth, get plain answers about their
+                  options, and get matched with a firm that fits their case. It
+                  is not a list we buy. It is a property we run.
                 </p>
 
                 <ul className="space-y-3 text-sm text-text-secondary mb-8">

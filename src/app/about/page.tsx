@@ -32,7 +32,9 @@ export default function AboutPage() {
                 GTM Partner does two things for personal injury firms. Recover
                 turns the old leads in a firm&rsquo;s CRM into signed cases.
                 Scale sends exclusive new leads in states we still have open.
-                The same team builds outbound systems for B2B companies.
+                Both run on our own subsidiaries: PlaintiffPilot, the AI intake
+                engine, and MVACompensation.com, the organic lead property. The
+                same team builds outbound systems for B2B companies.
               </p>
             </div>
 

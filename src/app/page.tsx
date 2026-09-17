@@ -3,6 +3,7 @@ import { FAQ } from "@/components/faq";
 import { Vsl } from "@/components/vsl";
 import { Testimonials } from "@/components/testimonials";
 import { HashRedirect } from "@/components/hash-redirect";
+import { Subsidiaries } from "@/components/subsidiaries";
 
 // The VSL. Swap the id to change the video; poster is the YouTube still
 // saved to /public so the first paint does not wait on YouTube.
@@ -36,8 +37,8 @@ const boutique = [
     desc: "You talk to the person who built the system, not an account manager reading a script.",
   },
   {
-    title: "The AI is tuned to your intake.",
-    desc: "Our agents are trained on personal injury and adjusted to your firm's scripts, states, and case types.",
+    title: "PlaintiffPilot is tuned to your intake.",
+    desc: "Our own AI agents, trained on personal injury and adjusted to your firm's scripts, states, and case types.",
   },
   {
     title: "We only take firms we can win for.",
@@ -48,19 +49,19 @@ const boutique = [
 const packageRows = [
   {
     title: "Exclusive MVA leads",
-    desc: "Long-form qualified and phone-verified. One firm per market. Pay per lead or a flat management fee, your choice.",
+    desc: "Long-form qualified and phone-verified. Sourced from our own property, MVACompensation.com, and the campaigns we run with our media buying partners. One firm per market. Pay per lead or a flat management fee, your choice.",
     note: "Exclusive leads sign at 10 to 20%. Shared leads sign at 2 to 5%.",
     badge: "",
   },
   {
     title: "AI follow-up on every lead",
-    desc: "Answered in under a minute. Chased for 30 days. Handed to your intake team with the full conversation.",
+    desc: "Run by PlaintiffPilot, our AI intake engine. Answered in under a minute. Chased for 30 days. Handed to your intake team with the full conversation.",
     note: "",
     badge: "In pilot. Pilot firms get it first.",
   },
   {
     title: "Database reactivation, included",
-    desc: "Our AI texts every old lead in your CRM, in your firm's name. $1,000 per signed case, paid after it signs.",
+    desc: "PlaintiffPilot texts every old lead in your CRM, in your firm's name. $1,000 per signed case, paid after it signs.",
     note: "Kass & Moses signed 1 in 100 old leads in month one.",
     badge: "Included",
   },
@@ -87,7 +88,7 @@ const faq = [
       "No. Your intake team is human, and some days there are more leads than hours. We handle the repetitive front end: answering in seconds, following up, screening, and booking. Your people make every legal decision and sign every client.",
   },
   {
-    question: "What happens when the AI books a consult?",
+    question: "What happens when PlaintiffPilot books a consult?",
     answer:
       "The whole conversation and a plain summary go to your intake team, so they know what was said before they pick up the phone. We then check that the consult was actually called. If it was not, we tell you.",
   },
@@ -99,7 +100,7 @@ const faq = [
   {
     question: "Can we do only the reactivation?",
     answer:
-      "Yes. It is pay per signed case either way. The pilot is where the bigger results come from, because the AI works your new exclusive leads and your old leads at the same time.",
+      "Yes. It is pay per signed case either way. The pilot is where the bigger results come from, because PlaintiffPilot works your new exclusive leads and your old leads at the same time.",
   },
   {
     question: "What about TCPA and consent?",
@@ -148,8 +149,8 @@ export default function Home() {
           </p>
 
           <p className="mt-3 text-sm text-text-muted max-w-2xl mx-auto">
-            Every lead we send is answered by our AI in under a minute and
-            followed up for 30 days.
+            Every lead we send is answered by PlaintiffPilot, our AI intake
+            engine, in under a minute and followed up for 30 days.
           </p>
           <p className="mt-2 text-xs text-text-muted">
             AI-native growth boutique. A few firms a month, not hundreds.
@@ -232,8 +233,11 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ═══ OUR OWN TECH ═══ */}
+      <Subsidiaries />
+
       {/* ═══ PROOF ═══ */}
-      <section className="py-14 lg:py-20 bg-surface-raised">
+      <section className="py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-xs font-semibold tracking-[0.2em] text-brand uppercase mb-4">
             Campaigns we run with our media buying partners

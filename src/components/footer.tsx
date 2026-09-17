@@ -20,6 +20,9 @@ export function Footer() {
             <p className="text-sm text-text-muted leading-relaxed">
               The AI-native growth boutique for personal injury firms.
             </p>
+            <p className="mt-3 text-xs text-text-muted leading-relaxed">
+              PlaintiffPilot and MVA Compensation are subsidiaries of GTM Partner LLC.
+            </p>
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mb-4">Services</p>
@@ -48,6 +51,19 @@ export function Footer() {
                   <Link href={l.href} className="text-sm text-text-secondary hover:text-text-primary transition-colors">
                     {l.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs font-semibold uppercase tracking-wider text-text-muted mt-8 mb-4">Subsidiaries</p>
+            <ul className="space-y-2.5">
+              {[
+                { href: "https://plaintiffpilot.com", label: "PlaintiffPilot" },
+                { href: "https://mvacompensation.com", label: "MVA Compensation" },
+              ].map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-text-primary transition-colors">
+                    {l.label}
+                  </a>
                 </li>
               ))}
             </ul>

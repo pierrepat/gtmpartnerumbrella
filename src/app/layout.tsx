@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | GTM Partner",
   },
   description:
-    "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
+    "Exclusive MVA leads that sign at 10 to 20%, plus PlaintiffPilot, our AI intake engine trained on personal injury, working every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
   metadataBase: new URL("https://gtmpartner.ai"),
   icons: {
     icon: "/favicon.svg",
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Exclusive MVA leads plus AI reactivation for personal injury firms" }],
     title: "Exclusive MVA Leads + AI Reactivation for Personal Injury Firms | GTM Partner",
     description:
-      "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
+      "Exclusive MVA leads that sign at 10 to 20%, plus PlaintiffPilot, our AI intake engine trained on personal injury, working every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
   },
   twitter: {
     card: "summary_large_image",
     images: ["/og.png"],
     title: "Exclusive MVA Leads + AI Reactivation for Personal Injury Firms | GTM Partner",
     description:
-      "Exclusive MVA leads that sign at 10 to 20%, plus an AI trained on personal injury that works every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
+      "Exclusive MVA leads that sign at 10 to 20%, plus PlaintiffPilot, our AI intake engine trained on personal injury, working every lead you've ever paid for. Reactivation included with your pilot. You pay nothing on an old lead until it signs.",
   },
   robots: {
     index: true,
@@ -59,19 +59,32 @@ const jsonLd = {
   url: "https://gtmpartner.ai",
   logo: "https://gtmpartner.ai/favicon.svg",
   description:
-    "AI-native growth boutique for personal injury law firms. Exclusive MVA leads plus an AI that reactivates old leads, answers new ones in seconds, and follows up until the case is signed.",
+    "AI-native growth boutique for personal injury law firms. Exclusive MVA leads plus PlaintiffPilot, our own AI intake engine that reactivates old leads, answers new ones in seconds, and follows up until the case is signed. MVACompensation.com is our organic lead property.",
   address: {
     "@type": "PostalAddress",
     addressCountry: "US",
   },
-  brand: {
-    "@type": "Brand",
-    name: "MVACompensation",
-    url: "https://mvacompensation.com",
-    description:
-      "Bilingual consumer resource for US car accident victims. State and injury guides, settlement estimator, and free attorney matching. Owned and operated by GTM Partner.",
-  },
+  subOrganization: [
+    {
+      "@type": "Organization",
+      name: "PlaintiffPilot",
+      url: "https://plaintiffpilot.com",
+      description:
+        "AI intake engine for personal injury law firms. Answers new leads in seconds, follows up for 30 days, and reactivates old leads in the firm's name. A subsidiary of GTM Partner LLC.",
+      parentOrganization: { "@type": "Organization", name: "GTM Partner LLC", url: "https://gtmpartner.ai" },
+    },
+    {
+      "@type": "Organization",
+      name: "MVACompensation",
+      url: "https://mvacompensation.com",
+      description:
+        "Bilingual consumer resource for US car accident victims. State and injury guides, settlement estimator, and free attorney matching. A subsidiary of GTM Partner LLC.",
+      parentOrganization: { "@type": "Organization", name: "GTM Partner LLC", url: "https://gtmpartner.ai" },
+    },
+  ],
   sameAs: [
+    "https://plaintiffpilot.com",
+    "https://mvacompensation.com",
     "https://linkedin.com/in/pierrepatrouillard",
     "https://www.youtube.com/@gtmpartner",
   ],
