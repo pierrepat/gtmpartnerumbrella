@@ -216,12 +216,13 @@ export default function LeadsPage() {
           <div className="reveal card !p-6 lg:!p-8 mb-6">
             <p className="text-xs font-semibold tracking-[0.2em] text-text-muted uppercase mb-3">Weekly performance snapshot</p>
             <h3 className="text-xl sm:text-2xl font-bold text-text-primary mb-6">
-              7 signed cases from one week of traffic
+              $17,632 spend, 318 leads, 7 signed, one week
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-3 gap-4 mb-6">
               {[
-                { value: "7", label: "Signed cases" },
-                { value: "318", label: "Leads, one week" },
+                { value: "$17,632", label: "Ad spend" },
+                { value: "318", label: "Leads" },
+                { value: "7", label: "Signed" },
               ].map((s) => (
                 <div key={s.label}>
                   <div className="text-xl sm:text-2xl font-bold text-brand">{s.value}</div>

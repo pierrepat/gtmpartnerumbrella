@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HashRedirect } from "@/components/hash-redirect";
+import { TrackRecord } from "@/components/track-record";
 import { MVACOMPENSATION_URL, PLAINTIFFPILOT_URL } from "@/lib/site";
 
 const brands = [
@@ -71,6 +72,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ═══ TRACK RECORD ═══ */}
+      <TrackRecord />
 
       {/* ═══ LEAD OFFER TEASER ═══ */}
       <section className="py-14 lg:py-20 bg-surface-raised">
@@ -171,10 +175,9 @@ export default function Home() {
                 Pierre Patrouillard, founder
               </h2>
               <p className="text-text-secondary leading-relaxed max-w-2xl">
-                Pierre Patrouillard founded GTM Partner LLC and runs it from
-                Portugal. He has spent five years running performance lead
-                generation and now builds PlaintiffPilot. He works in English,
-                Spanish and French.
+                Five years of performance lead generation for plaintiff firms,
+                now building PlaintiffPilot. Based in Portugal, works US hours.
+                English, Spanish, French.
               </p>
               <a
                 href="https://linkedin.com/in/pierrepatrouillard"
