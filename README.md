@@ -52,3 +52,5 @@ Netlify with `@netlify/plugin-nextjs`. Build command `npm run build`.
 - `/public/vsl-poster.jpg` and `src/components/vsl.tsx`: the YouTube player
   is not mounted anywhere right now. Kept for reuse on plaintiffpilot.com.
 - `/public/favicon.svg`: target logo mark.
+- `/public/og.png`: rendered from `scripts/og.html` with headless Chrome at
+  1200x630. Edit the HTML and re-screenshot to change it.

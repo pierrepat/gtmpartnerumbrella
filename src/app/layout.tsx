@@ -39,9 +39,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     siteName: "GTM Partner LLC",
     url: SITE_URL,
-    // TODO(Pierre): og.png still carries the old "leads + AI reactivation"
-    // headline. Replace it with a company card before sharing the new site.
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "GTM Partner LLC" }],
+    // og.png is rendered from scripts/og.html (see README).
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "GTM Partner LLC. Growth infrastructure for plaintiff law firms." }],
     title: TITLE,
     description: DESCRIPTION,
   },
