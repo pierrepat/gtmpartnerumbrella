@@ -3,7 +3,7 @@ import { FAQ } from "@/components/faq";
 import { Vsl } from "@/components/vsl";
 import { Testimonials } from "@/components/testimonials";
 import { HashRedirect } from "@/components/hash-redirect";
-import { Subsidiaries } from "@/components/subsidiaries";
+import { Subsidiaries, PoweredBy } from "@/components/subsidiaries";
 
 // The VSL. Swap the id to change the video; poster is the YouTube still
 // saved to /public so the first paint does not wait on YouTube.
@@ -166,6 +166,8 @@ export default function Home() {
           <p className="mt-2 text-xs text-text-muted">
             AI-native growth boutique. A few firms a month, not hundreds.
           </p>
+
+          <PoweredBy />
 
           <div className="mt-6">
             <Vsl videoId={VSL.videoId} aspect={VSL.aspect} poster={VSL.poster} duration={VSL.duration} />

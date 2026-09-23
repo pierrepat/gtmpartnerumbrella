@@ -14,16 +14,16 @@ function ExternalIcon() {
   );
 }
 
-function MvaMark() {
+function MvaMark({ small = false }: { small?: boolean }) {
   // Same mark the property itself uses: shield in a navy square, two tone wordmark.
   return (
-    <span className="flex items-center gap-2.5">
-      <span className="w-9 h-9 rounded-lg bg-[#0f1f3d] border border-white/10 flex items-center justify-center shrink-0">
-        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden="true">
+    <span className={`flex items-center ${small ? "gap-2" : "gap-2.5"}`}>
+      <span className={`${small ? "w-6 h-6 rounded-md" : "w-9 h-9 rounded-lg"} bg-[#0f1f3d] border border-white/10 flex items-center justify-center shrink-0`}>
+        <svg className={`${small ? "w-3.5 h-3.5" : "w-5 h-5"} text-white`} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 3l7 3v5.5c0 4.2-2.9 7.9-7 9-4.1-1.1-7-4.8-7-9V6l7-3z" />
         </svg>
       </span>
-      <span className="text-xl font-bold tracking-tight">
+      <span className={`${small ? "text-sm" : "text-xl"} font-bold tracking-tight`}>
         <span className="text-text-primary">MVA</span>
         <span className="text-brand">Compensation</span>
       </span>
@@ -62,6 +62,32 @@ const subsidiaries = [
     label: "mvacompensation.com",
   },
 ];
+
+/* Hero strip: the two subsidiaries, clickable, above the fold. */
+export function PoweredBy() {
+  const chip =
+    "inline-flex items-center gap-2 px-4 py-2 rounded-full border border-brand/30 bg-surface-raised hover:border-brand/70 hover:bg-brand/10 transition-colors text-text-muted hover:text-brand";
+  return (
+    <div className="mt-6 flex flex-col items-center gap-3">
+      <p className="text-[10px] font-semibold tracking-[0.2em] uppercase text-text-muted">
+        Powered by our own tools
+      </p>
+      <div className="flex flex-wrap justify-center gap-3">
+        <a href={PP_URL} target="_blank" rel="noopener noreferrer" className={chip} aria-label="PlaintiffPilot, our AI intake engine (opens plaintiffpilot.com)">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logos/plaintiffpilot-wordmark.png" alt="PlaintiffPilot" width={434} height={88} className="h-5 w-auto" />
+          <span className="hidden sm:inline text-xs text-text-secondary">AI intake</span>
+          <ExternalIcon />
+        </a>
+        <a href={MVA_URL} target="_blank" rel="noopener noreferrer" className={chip} aria-label="MVA Compensation, our organic lead source (opens mvacompensation.com)">
+          <MvaMark small />
+          <span className="hidden sm:inline text-xs text-text-secondary">Lead source</span>
+          <ExternalIcon />
+        </a>
+      </div>
+    </div>
+  );
+}
 
 export function Subsidiaries() {
   return (
