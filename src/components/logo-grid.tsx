@@ -110,7 +110,7 @@ export function LogoGrid({ title }: { title?: string }) {
   }
   return (
     <section className="py-10 overflow-hidden">
-      <div className="mx-auto max-w-6xl px-6"><Label>Partners</Label></div>
+      <div className="mx-auto max-w-6xl px-6"><Label>Partners &amp; Law Firms</Label></div>
       <Marquee items={partners} speed={45} />
       <div className="mx-auto max-w-6xl px-6 mt-10"><Label>Teams we have built AI and outbound systems for</Label></div>
       <Marquee items={b2bTeams} speed={60} reverse />
