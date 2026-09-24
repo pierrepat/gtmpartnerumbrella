@@ -19,6 +19,7 @@ const partners: Logo[] = [
   { name: "Kass & Moses", wordmark: "/logos/kass-moses.svg", h: 30 },
   { name: "Walker Advertising", wordmark: "/logos/walker-advertising.svg", h: 40 },
   { name: "Jacoby & Meyers", wordmark: "/logos/jacoby-meyers.svg", h: 26 },
+  { name: "Larry H. Parker", wordmark: "/logos/larry-h-parker.png", h: 30 },
   { name: "Litify", wordmark: "/logos/litify-wordmark.png", h: 22 },
   { name: "Clio", wordmark: "/logos/clio-wordmark.png", h: 26 },
   { name: "Filevine", wordmark: "/logos/filevine-wordmark.png", h: 32 },
