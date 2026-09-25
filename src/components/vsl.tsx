@@ -46,6 +46,39 @@ function loadApi(): Promise<YTNamespace> {
 }
 
 /*
+  A band of tape across the frame, in the manner of scene tape. The run of
+  words is rendered twice and the track slides by half its width, so the
+  loop closes on itself with no visible seam. Wider than the frame and
+  rotated, so both ends run off the edge.
+*/
+function Tape({ className = "", reverse = false }: { className?: string; reverse?: boolean }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`absolute left-1/2 top-1/2 w-[170%] -translate-x-1/2 -translate-y-1/2 ${className}`}
+    >
+      <div className="overflow-hidden border-y-2 border-brand-dark/70 bg-brand shadow-[0_10px_30px_rgba(0,0,0,0.45)]">
+        <div className={`flex w-max py-1.5 ${reverse ? "animate-tape-reverse" : "animate-tape"}`}>
+          {[0, 1].map((run) => (
+            <div key={run} className="flex shrink-0 items-center">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <span
+                  key={i}
+                  className="flex items-center whitespace-nowrap text-[11px] sm:text-xs font-bold uppercase tracking-[0.28em] text-surface"
+                >
+                  Under construction
+                  <span className="mx-5 inline-block w-1.5 h-1.5 rotate-45 bg-surface/60" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/*
   The player is created behind the poster as soon as the page loads, so the
   tap on the poster calls playVideo() inside the user gesture. That is what
   makes it start with sound on iPhones, where an iframe added after the tap
@@ -153,44 +186,26 @@ export function Vsl({
             <img
               src={poster}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover scale-105 opacity-45 blur-[2px]"
+              className="absolute inset-0 w-full h-full object-cover"
               fetchPriority="high"
             />
           ) : (
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(200,162,78,0.12),transparent_60%)]" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-surface/90 via-surface/70 to-surface/50" />
+          {/* Light scrim only: the video should still read clearly through it */}
+          <div className="absolute inset-0 bg-surface/25" />
 
-          {/* Light travelling across the frame */}
-          <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-            <div className="absolute inset-y-0 -left-1/4 w-1/4 bg-gradient-to-r from-transparent via-brand/15 to-transparent animate-sheen-sweep" />
-          </div>
+          {/* Tape stretched across the frame, scrolling in opposite directions */}
+          <Tape className="rotate-[-8deg] -mt-14 sm:-mt-20" />
+          <Tape className="rotate-[7deg] mt-10 sm:mt-14" reverse />
 
-          {/* Tape along the top and bottom edges */}
-          <div className="absolute inset-x-0 top-0 h-[3px] hazard-rule opacity-60" aria-hidden="true" />
-          <div className="absolute inset-x-0 bottom-0 h-[3px] hazard-rule opacity-60" aria-hidden="true" />
-
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/40 bg-brand/10 text-[11px] sm:text-xs font-medium text-brand">
-              <span className="relative flex w-1.5 h-1.5" aria-hidden="true">
-                <span className="absolute inline-flex w-full h-full rounded-full bg-brand opacity-75 animate-ping" />
-                <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-brand" />
-              </span>
-              Under construction
+          <span className="absolute left-4 right-4 bottom-4 flex items-center gap-2 text-[11px] sm:text-xs font-medium text-text-primary/90">
+            <span className="relative flex w-1.5 h-1.5" aria-hidden="true">
+              <span className="absolute inline-flex w-full h-full rounded-full bg-brand opacity-75 animate-ping" />
+              <span className="relative inline-flex w-1.5 h-1.5 rounded-full bg-brand" />
             </span>
-
-            <p className="text-sm sm:text-base font-semibold text-text-primary">
-              This video is being updated
-            </p>
-            <p className="text-xs text-text-muted">Back in a few days</p>
-
-            <div
-              className="mt-1 h-[2px] w-32 sm:w-40 overflow-hidden rounded-full bg-border-default"
-              aria-hidden="true"
-            >
-              <div className="h-full w-1/3 rounded-full bg-gradient-to-r from-transparent via-brand to-transparent animate-progress-slide" />
-            </div>
-          </div>
+            Back in a few days
+          </span>
         </div>
       )}
 

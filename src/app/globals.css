@@ -65,36 +65,21 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Under-construction placeholder (VSL) ───────────────────────────── */
+/* ── Under-construction tape (VSL) ──────────────────────────────────── */
 
-/* Light sweeping across the frame, same idiom as the CTA sheen */
-@keyframes sheen-sweep {
-  0%   { transform: translateX(-140%) skewX(-12deg); }
-  100% { transform: translateX(340%) skewX(-12deg); }
+/* The run of words is doubled, so half a track is exactly one full run */
+@keyframes tape-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
-.animate-sheen-sweep { animation: sheen-sweep 4.5s ease-in-out infinite; }
+.animate-tape { animation: tape-scroll 26s linear infinite; }
 
-/* Indeterminate bar, reads as work in progress */
-@keyframes progress-slide {
-  0%   { transform: translateX(-110%); }
-  100% { transform: translateX(310%); }
+/* Opposite direction, slightly off-tempo so the two bands never lock up */
+@keyframes tape-scroll-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
-.animate-progress-slide { animation: progress-slide 2.6s ease-in-out infinite; }
-
-/* Hazard rule: construction tape, drawn in brand gold rather than orange */
-@keyframes hazard-drift {
-  from { background-position: 0 0; }
-  to   { background-position: 28px 0; }
-}
-.hazard-rule {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    var(--color-brand) 0 7px,
-    transparent 7px 14px
-  );
-  background-size: 28px 100%;
-  animation: hazard-drift 1.8s linear infinite;
-}
+.animate-tape-reverse { animation: tape-scroll-reverse 31s linear infinite; }
 
 /* Button base */
 .btn-primary {
