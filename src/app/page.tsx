@@ -8,7 +8,9 @@ import { Subsidiaries, PoweredBy } from "@/components/subsidiaries";
 // The VSL. Swap the id to change the video; poster is the YouTube still
 // saved to /public so the first paint does not wait on YouTube.
 const VSL = {
-  videoId: "sZx0F15CPio",
+  // Temporarily disabled: empty id means no player loads and the poster shows
+  // "Video coming soon". Restore by putting "sZx0F15CPio" back.
+  videoId: "",
   aspect: "16/9" as const,
   poster: "/vsl-poster.jpg",
   duration: "6:30",

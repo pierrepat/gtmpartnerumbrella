@@ -141,8 +141,10 @@ export function Vsl({
         <button
           type="button"
           onClick={play}
-          disabled={!!videoId && !ready}
-          className="absolute inset-0 w-full h-full group cursor-pointer disabled:cursor-wait"
+          disabled={!videoId || !ready}
+          className={`absolute inset-0 w-full h-full group ${
+            videoId ? "cursor-pointer disabled:cursor-wait" : "cursor-default"
+          }`}
           aria-label={videoId ? "Play video" : "Video coming soon"}
         >
           {poster ? (
